@@ -1,0 +1,635 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{times}              
+% Use Times New Roman
+\usepackage{graphicx}           
+% Enhanced support for images
+\usepackage{float}              
+% Improved interface for floating objects
+\usepackage{booktabs}           
+% Publication quality tables
+\usepackage{xcolor}             
+% Driver-independent color extensions
+\usepackage{geometry}           
+% Customize document dimensions
+\usepackage{fullpage}           
+% all 4 margins to be either 1 inch or 1.5 cm
+\usepackage{comment}            
+% Commenting
+\usepackage{minted}             
+% Highlighted source code. Syntax highlighting
+\usepackage{listings}           
+% Typeset programs (programming code) within LaTeX
+\usepackage{lastpage}           
+% Reference last page for Page N of M type footers.
+\usepackage{fancyhdr}           
+% Control of page headers and footers
+\usepackage{hyperref}           
+% Cross-referencing 
+\usepackage[small,bf]{caption}  
+% Captions
+\usepackage{multicol}
+\usepackage{tikz}               
+% Creating graphic elements
+\usepackage{circuitikz}         
+% Creating circuits
+\usepackage{verbatim}          
+% Print exactly what you type in
+\usepackage{cite}               
+% Citation
+\usepackage[us]{datetime} 
+% Various time format
+\usepackage{blindtext}
+% Generate blind text
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[brazil]{babel}
+
+\input{defs.tex}
+
+
+
+\begin{document}
+
+\textcolor{UM_Brown}{
+\begin{minipage}{0.1\textwidth}
+    \begin{flushleft}
+        \includegraphics[height=3.5cm]{Figures/UFRN_Brasao.png}
+    \end{flushleft}
+\end{minipage}
+\begin{minipage}{0.8\textwidth}
+    \begin{center}
+        \textbf{\Large Laboratório de Física Moderna}\\
+        \vspace{5pt}
+        Relatórios 6 - 9 \\
+        \vspace{20pt}
+        \textit{Gabriel Wendell Celestino Rocha} \\
+        \vspace{5pt}
+        \textit{Vinícius Câmara Filgueira}
+    \end{center}
+\end{minipage}
+\vspace{10pt}
+\hrule
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section*{Atividade 6 - Experimento de Michelson e Morley}
+\begin{enumerate}[label = \alph*)]
+    \item Da análise do interferômetro de Michelson-Morley, podemos escrever:
+    \begin{equation}\label{eq:Atv6a-1}
+        \Delta d=\frac{\ell v^2}{\lambda c^2}\quad\therefore\quad\boxed{\Delta d=0.052\text{ m}}
+    \end{equation}
+    onde $\ell$ é a distância entre os espelhos do interferômetro, $v$ é a velocidade de propagação do feixe após do feixe após passar pelos lâminas de vidro, $\lambda$ o comprimento de onda do feixe e $c$ a velocidade da luz no vácuo.
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+
+
+
+    \item  Considere o sistema ótico representado pela Figura \ref{fig:fig1}. Para calcularmos o comprimento ótico entre os pontos $A$ e $B$ para a situação onde o feixe incidente é paralelo à normal, podemos usar a relação:
+    \begin{equation}\label{eq:Atv6b-1}
+        \Lambda=\sum_{i=1}^{N}\Lambda_{i},
+    \end{equation}
+    onde $\Lambda_i$ é o comprimento ótico de cada camada e $\Lambda$ o comprimento ótico resultante.
+
+    \begin{figure}[h!]
+     \centering
+    \includegraphics[width=0.7\linewidth]{Figures/Comprimento otico.png}
+     \caption{Sistema ótico constituído por duas camadas de vidro separadas por uma camada de ar.}
+     \label{fig:fig1}
+     \end{figure}
+
+    Por definição, o comprimento $\Lambda_i$ ótico para uma camada $i$ de espessura $t_i$ e índice de refração $n_i$ é dada por
+    \begin{equation}\label{eq:Atv6b-2}
+        \Lambda_i=n_i\cdot t_i.
+    \end{equation}
+
+    Substituindo a Equação (\ref{eq:Atv6b-2}) em (\ref{eq:Atv6b-1}) obtemos então:
+    \begin{equation} \label{eq:Atv6b-3}
+        \Lambda=\sum_{i=1}^{N}n_i\cdot t_i.
+    \end{equation}
+
+    Para o sistema ótico apresentado na Figura \ref{fig:fig1}, temos que $i=3$, onde cada camada possui espessura e índice de refração bem definidos. Os valores para cada camada se encontram na Tabela \ref{tab:Atv6b-1}.
+    \begin{table}[htp!]
+        \centering
+        \begin{tabular}{|c|c|c|}
+            \hline
+             $i$ & $t_i$ (mm) & $n_i$ \\
+             \hline
+             1 & 2.00 & 1.4 \\
+             2 & 1.00 & 1.0 \\
+             3 & 3.00 & 1.5 \\
+             \hline
+        \end{tabular}
+        \caption{Características de cada camada do sistema ótico apresentado.}
+        \label{tab:Atv6b-1}
+    \end{table}
+
+    Substituindo os dados apresentados na Tabela \ref{tab:Atv6b-1} na Equação (\ref{eq:Atv6b-3}) obtemos finalmente:
+    \begin{equation}\label{eq:Atv6b-4}
+        \Lambda=2.8\text{ mm}+1.0\text{ mm}+4.5\text{ mm}\quad\therefore\quad\boxed{\Lambda=8.3\text{ mm}}
+    \end{equation}
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+
+
+
+    \item Dado o experimento de Michelson-Morley, temos que o índice de refração resultante é dado pela Equação abaixo:
+    \begin{equation}\label{eq:Atv6c-1}
+        n=\frac{(2t-N\lambda)(1-\cos{i})}{2t(1-\cos{i})-N\lambda},
+    \end{equation}
+    onde $t$ é a espessura da lâmina de vidro, $\lambda$ é o comprimento de onda do feixe incidente, $N$ o número de comprimento de onda e $i$ é o ângulo que o feixe incidente faz com a normal à lâmina de vidro, respectivamente.
+
+    Para o experimento 6B, temos $t=1\text{ mm}$, $\lambda=622\text{ nm}$, $N=50$ e $i=21^{\circ}$, respectivamente. Substituindo tais valores na Equação (\ref{eq:Atv6c-1}) obtemos:
+    \begin{equation}\label{eq:Atv6c-2}
+        n=\frac{(2\cdot1\cdot10^{-3}\text{ m}-50\cdot633\cdot10^{-9}\text{ m})(1-0.93)}{2\cdot1\cdot10^{-3}\text{ m}(1-0.93)-50\cdot633\cdot10^{-9}\text{ m}}\quad\therefore\quad\boxed{n\approxeq1.292}
+    \end{equation}
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+
+
+
+    \item Dada a configuração do experimento 6B, valem as seguintes relações:
+    \begin{equation}\label{eq:Atv6d-1}
+        \Delta=2(\overline{ae}-\overline{ac})=N\lambda=2t\left(\sqrt{n^2-\sin^2{i}}+1-n-\cos{i}\right).
+    \end{equation}
+
+    Substituindo os dados mencionados no item c) na Equação (\ref{eq:Atv6d-1}) obtemos o seguinte valor para a diferença de caminhos óticos:
+    \begin{equation}\label{eq:Atv6d-2}
+        \Delta=2\cdot1\cdot10^{-3}\text{ m}\left[\sqrt{(1.29)^2-\sin^2{(21^{\circ}})}+1-1.29-0.93\right]\quad\therefore\quad\boxed{\Delta=3.128\cdot10^{-5}\text{ m}}
+    \end{equation}
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+
+
+
+    \item Sabe-se da teoria ondulatória clássica que a condição de formação de anéis interferência dada a condição de ângulos gaussianos, ou seja, $\theta\ll5^{\circ}$ pode ser expressa como:
+    \begin{equation}\label{eq:Atv6e-1}
+        2d=m\lambda\iff m=\frac{2d}{\lambda}.
+    \end{equation}
+
+    Substituindo $d=1.5\text{ }\mu\text{m}$ e $\lambda=633\text{ nm}$ na Equação (\ref{eq:Atv6e-1}) e aplicando a função piso no resultado obtemos:
+    \begin{equation}\label{eq:Atv6e-2}
+        m'=\lfloor m \rfloor=\left\lfloor \frac{2\cdot1.5\cdot10^{-6}\text{ m}}{633\cdot10^{-9}\text{ m}}\right\rfloor=\lfloor 4.739\rfloor\quad\therefore\quad\boxed{m'=5\text{ anéis}\rightarrow4\text{ anéis}}
+    \end{equation}
+    Matematicamente, pelas propriedades da função piso, deveríamos visualizar a formação de 5 anéis de interferência. Entretanto, experimentalmente notou-se a formação apenas de 4 anéis.
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+    
+
+
+
+    \item Considere novamente a Equação (\ref{eq:Atv6e-1}). Considerando um deslocamento $d=2.5\cdot10^{-5}\text{ m}$ nota-se, experimentalmente, a formação de 90 anéis de interferência. Nesse caso, a faixa de comprimentos de onda responsável por gerar essa quantidade de anéis é dada por:
+    \begin{equation}\label{eq:Atv6f-1}
+        \lambda=\frac{2d}{m}=\frac{2\cdot1.4\cdot10^{-5}\text{ m}}{90\text{ anéis}}\quad\therefore\quad\boxed{\lambda\approxeq533\text{ nm}}
+    \end{equation}
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+
+
+
+    \item O experimento de Michelson \& Morley consiste em um interferômetro formado por três espelhos, uma fonte de luz e um detector, como ilustrado na Figura \ref{fig:Michelson-Morley}.
+    \begin{figure}[htp!]
+        \centering
+        \includegraphics[width=0.5\linewidth]{Figures/Michelson-Morley.png}
+        \caption{Esquema do experimento de Michelson-Morley.}
+        \label{fig:Michelson-Morley}
+    \end{figure}
+
+    Considerando tal experimento, temos que os tempos de deslocamento da luz nos dois sentidos serão dados por:
+    \begin{equation}\label{eq:Atv6g-1}
+        t_{AB}=\frac{\ell}{c-v}\quad,\quad t_{BA}=\frac{\ell}{c+v}. 
+    \end{equation}
+
+    Com base na geometria do experimento (vide Figura \ref{fig:Michelson-Morley}), podemos escrever:
+    \begin{equation}
+        L^2+\left(vt_{AC}\right)^2=\left(ct_{AC}\right)^2\implies
+        \begin{cases}\label{eq:Atv6g-2}
+            t_{AC}=\frac{\ell}{\sqrt{c^2-v^2}} \\
+            t_{AC'}=\frac{\ell}{\sqrt{c^2}-v^2}
+        \end{cases}\therefore\quad
+        t_{AC}=t_{AC'}.
+    \end{equation}
+
+    Novamente com base na geometria do experimento e com base no resultado obtido em (\ref{eq:Atv6g-2}), obtemos finalmente:
+    \begin{equation*}
+        \Delta t\approxeq\left(t_{AB}+t_{BA}\right)-\left(t_{AC}+t_{CA}\right)=\left(\frac{\ell}{c-v}+\frac{\ell}{c+v}\right)-\left(\frac{\ell}{\sqrt{c^2-v^2}}+\frac{\ell}{\sqrt{c^2-v^2}}\right)
+    \end{equation*}
+    \begin{equation}\label{eq:Atv6g-3}
+        \therefore\quad\boxed{\Delta t\approxeq\frac{\ell v^2}{c^{3}}}
+    \end{equation}
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+
+
+
+    \item Considere a Figura \ref{fig:optic} abaixo. Note que, com base na geometria da mesma, podemos exprimir as distâncias apresentadas da seguinte forma:
+    \begin{equation}\label{eq:Atv8h-1}
+        \Delta=n\left(AB+BC\right)-AD,
+    \end{equation}
+    onde o índice de refração $n$ e as distâncias apresentadas satisfazem as seguintes relações:
+    \begin{equation}\label{eq:Atv8h-2}
+        \begin{cases}
+            n=\frac{c}{v}=\frac{\lambda_{\text{ar}}f}{\lambda_{L} f}=\frac{\lambda_{\text{ar}}}{\lambda_L} \\
+            AB+BC=M\lambda_L=\frac{M\lambda_{\text{ar}}}{n} \\
+            AD=N\lambda_{\text{ar}}
+        \end{cases}\implies
+        \Delta=\left(M-N\right)\lambda_{\text{ar}}.
+    \end{equation}
+    
+    \begin{figure}[htp!]
+        \centering
+        \includegraphics[width=0.5\linewidth]{Figures/optic.png}
+        \caption{Caminhos óticos percorridos em uma lâmina.}
+        \label{fig:optic}
+    \end{figure}
+
+    \begin{figure}[htp!]
+        \centering
+        \includegraphics[width=0.5\linewidth]{Figures/optic-.png}
+        \caption{Caminhos ópticos percorridos em uma lâmina inclinada.}
+        \label{fig:optic-}
+    \end{figure}
+
+    Analisando agora a geometria do sistema óptico apresentado na Figura \ref{fig:optic-}, podemos escrever as relações:
+    \begin{equation}\label{eq:Atv8h-3}
+        \Delta=N\lambda=n\left(\overline{ae}+\overline{ac}\right)\quad,\quad
+        \begin{cases}
+            \overline{ae}=\overline{ad}\cdot n+\overline{de} \\
+            \overline{ac}=nt+\overline{bc}
+        \end{cases}
+    \end{equation}
+
+    Aplicando trigonometria clássica na Figura \ref{fig:optic-}, temos
+    \begin{equation*}
+        \cos{r}=\frac{t}{\overline{ad}}\quad\wedge\quad\overline{de}=\overline{dc}\sin{i}\implies\overline{de}=\left(\overline{fc}-\overline{fd}\right)\sin{i}\quad,\quad
+        \begin{cases}
+            \overline{fc}=t\cdot\tan{i} \\
+            \overline{fd}=t\cdot\tan{r}
+        \end{cases}
+    \end{equation*}
+    \begin{equation}\label{eq:Atv8h-4}
+        \therefore\quad\cos{i}=\frac{t}{t+\overline{bc}}\implies\overline{bc}=-t+\frac{t}{\cos{i}}.
+    \end{equation}
+
+    Aplicando a lei de Snell-Descartes na Figura \ref{fig:optic-} podemos escrever:
+    \begin{equation*}
+        n\sin{r}=\sin{i}\implies\cos{r}=\frac{\sqrt{n^2}-\sin^2{i}}{n}
+    \end{equation*}
+    \begin{equation}\label{eq:Atv8h-5}
+        \overline{ae}=n\cdot\frac{t}{\cos{r}}+\left[t\left(\tan{i}-\tan{r}\right)\right]\sin{i}\implies\overline{ac}=nt-t+\frac{t}{\cos{i}}.
+    \end{equation}
+
+    Simplificando ao máximo e realizando algumas manipulações algébricas com o resultado obtido em (\ref{eq:Atv8h-5}) obtemos finalmente:
+    \begin{equation*}
+        \frac{N\lambda}{2}=\frac{tn}{\cos{r}}+t\sin{i}\left(\tan{i}-\tan{r}\right)-nt+t-\frac{t}{\cos{i}}\implies\frac{N\lambda}{2t}+\cos{i}+n-1=\sqrt{n^2-\sin{^2i}}
+    \end{equation*}
+    \begin{equation}\label{eq:Atv8h-6}
+        \therefore\quad\boxed{n=\frac{\left(2t-N\lambda\right)\left(1-\cos{i}\right)}{2t\left(1-\cos{i}\right)-N\lambda}}
+    \end{equation}
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+    
+\end{enumerate}
+
+
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\newpage
+
+
+ 
+\section*{Atividade 7 - Experimento de Franck-Hertz}
+
+\begin{enumerate}[label = \alph*)]
+    \item O objetivo do experimento de Franck-Hertz é constatar as energias das transições atômicas que por sua vez são discretas. Com base nisso, é possível então reforçar os argumentos apresentados por Böhr em seu modelo para o átomo de hidrogênio.
+
+
+    
+    \item Para que o experimento de Franck-Hertz ocorra é necessário que o mercúrio (Hg) esteja em seu estado gasoso para que haja a liberação de elétrons pelo Hg que por sua vez serão acelerados devido a uma diferença de potencial $\Delta V$. Uma vez que o ponto de ebulição do Hg é demasiadamente alto, cerca de $356.7\text{ }^{\circ}\text{C}$, faz-se necessário o uso de um forno capaz de atingir tais temperaturas. 
+
+    
+    
+    \item O experimento de Franck-Hertz consiste em acelerar elétrons
+    de baixa energia emitidos termicamente (efeito termoiônico) pelo
+    cátodo $C$ e acelerados na direção de um anodo A por uma diferença de potencial $V$. Alguns elétrons passam através dos buracos
+    localizados no anodo e conseguem chegar até uma placa P desde
+    que sua energia cinética seja suficiente para vencer o potencial de
+    retardo $V$ aplicado entre a placa P e o ânodo A. A primeira medidas foi realizada em um tubo contendo vapor de Hg. Para uma baixa voltagem, observa-se I cresce quando $V$ cresce. quando $V$ chega a 4, 9 V a corrente cai abruptamente.
+    Isto foi interpretado como sendo uma interação entre os elétrons
+    e os átomos de Hg que tem um inicio repentino quando os elétrons adquirem uma energia cinética de 4, 9 eV. Aparentemente
+    uma parcela significante dos elétrons excita os átomos de Hg e
+    perdem totalmente sua energia cinética. Se V for apenas ligeiramente maior que 4, 9 V o processo de excitação dos átomos de Hg ocorre exatamente em frente ao anodo A, após este processo os elétrons não conseguem mais ganhar energia suficiente para superar o que causa os picos e vales.
+    \item Observando a figura abaixo constatamos de um vale para um pico a variação de potencia gira em torno de 4,9 eV, indicando que essa foi a energia que o elétron absorveu e , após colidir com as camadas de valência, de maneira discreta, forneceu energia aos elétrons
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.7\linewidth]{Figures/gráficoFH.png}
+        \caption{Variação da corrente com a tensão.}
+        \label{fig:fig2}
+    \end{figure}
+    \item 
+    \begin{enumerate}
+        \item Falso. Não são os fótons os responsáveis pela absorção de energia pelos átomos de Hg e sim os elétrons.
+
+        \item Falso. As colisões entre os átomos de Hg são responsáveis por ionizar o gás em torno das placas.
+
+        \item Falso. As colisões dos átomos de Hg com a grade não são os responsáveis pela absorção de energia dos mesmos.
+        
+        \item Verdadeiro. De fato, as colisões dos elétrons com os átomos de Hg, especificamente os elétrons de valência fazem com que ocorra a absorção da energia.
+        
+        \item Falso. As colisões entre o ar e o Hg fornecem os elétrons livres que por sua vez são acelerados.
+    \end{enumerate}
+    
+
+
+    
+    \item Considere a equação da energia de um fóton. Podemos obter a frequência de oscilação da seguinte forma:
+    \begin{equation}\label{eq:Atv7f-1}
+        E=hf\implies f=\frac{E}{h}=\frac{4.9\text{ eV}}{4,14\cdot10^{-15}\text{ eV}\cdot\text{s}}\quad\therefore\quad\boxed{f=1.18\cdot10^{-15}\text{ s}^{-1}}
+    \end{equation}
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+
+    
+    
+    \item Supondo que o forno não estivesse ligado, notaríamos a formação de um gráfico de caráter puramente exponencial.
+    
+
+    
+    \item As excitações provocadas nos átomos de Hg não podem ser provocadas pela luz visível devido ao fato de que a frequência mais energética do espectro de luz visível possuir energia de $2.9\text{ eV}$.
+\end{enumerate}
+
+
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\newpage
+
+
+
+\section*{Atividade 8 - Princípio de Incerteza de Heisenberg}
+    \begin{enumerate}[label = \alph*)]
+        \item Considere o experimento de difração de um feixe de elétrons por uma pequena fenda de largura $a$ como ilustrado abaixo:
+        \begin{figure}[htp!]
+            \centering
+            \includegraphics[width=0.5\linewidth]{Figures/single-slit.png}
+            \caption{Representação do experimento de difração de elétrons.}
+            \label{fig:single-slit}
+        \end{figure}
+
+        Do estudo da ótica física, a primeira abertura angular não nula para a qual ocorre um máximo de intensidade é dada por:
+        \begin{equation}\label{eq:Atv8a-1}
+            \sin{\theta_1}=\frac{\lambda}{a}.
+        \end{equation}
+
+        Uma vez que o elétron se move para a direção do eixo vertical, tal elétron irá adquirir um \textit{momentum} na direção vertical, sendo esse \textit{momentum} $\Delta p_z$ e $p$ o \textit{momentum} total. Dessa forma, temos
+        \begin{equation}\label{eq:Atv8a-2}
+            \sin{\theta_1}\approxeq\frac{\Delta p_z}{p}\implies\frac{\Delta p_z}{p}\approxeq\frac{\lambda}{a}\implies a\cdot\Delta p_z\approxeq\lambda\cdot p.
+        \end{equation}
+
+        Pelo princípio da dualidade onda-partícula de De Broglie, temos que $p=h/\lambda$. Substituindo esse resultado na Equação (\ref{eq:Atv8a-2}) obtemos finalmente:
+        \begin{equation}\label{eq:Atv8a-3}
+            \therefore\quad\boxed{\Delta z\Delta p_z\approxeq h}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+
+
+        
+        \item Durante o experimento utilizou-se três larguras de fendas distintas: $d_1=0.4\text{ mm}$, $d_2=0.15\text{ mm}$ e $d_3=0.075\text{ mm}$, respectivamente. Para uma melhor medição do primeiro mínimo de interferência, optou-se por medir a largura $L$ da franja e dividir o resultado por $2$, dando assim uma melhor precisão do primeiro mínimo que se localiza exatamente no feio da franja de interferência. Em símbolos:
+        \begin{equation}\label{eq:Atv8b-1}
+            L=2a_i\implies a_i=\frac{L}{2},
+        \end{equation}
+
+        Com base nisso, obteve-se como resultado: $a_1=1.6\text{ cm}$, $a_2=4.1\text{ cm}$ e $a_3=9.0\text{ cm}$, respectivamente. A distância entre a fenda e o anteparo foi mantida constante ao longo de todo o experimento e seu valor é $b=9.47\text{ m}=9.47\cdot10^{3}\text{ mm}$.
+
+        Além disso, para cada etapa do experimento, mediu-se a grandeza dada pela seguinte relação:
+        \begin{equation}\label{eq:Atv8b-2}
+            \frac{\Delta y\Delta p_y}{h}=\frac{d}{\lambda}\sin{\left[\arctan{\left(\frac{a}{b}\right)}\right]}.
+        \end{equation}
+
+        E com base nos resultados obtidos através da Equação (\ref{eq:Atv8b-2}) foi possível obter a incerteza no \textit{momentum} da seguinte forma:
+        \begin{equation}\label{eq:Atv8b-3}
+            \Delta p_y=\frac{\lambda}{h}=\sin{\alpha_1}\implies\Delta p_y=\frac{h}{\lambda}\sin{\alpha_1}=1.
+        \end{equation}
+
+        Sendo $\lambda=632.8\text{ nm}$ o comprimento de onda do feixe utilizado no experimento e $\alpha_1=0.097$, $\alpha_2=0.25$ e $\alpha_3=0.54$ os ângulos utilizados em cada etapa, foi possível realizar a construção da Tabela \ref{tab:Atv8b}.
+        \begin{table}[htp!]
+            \centering
+            \caption{Grandezas de interesse medidas ao longo do experimento.}
+            \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+               $i$ & $d_i$ (mm)  & $a_i$ (mm) & $b$ (mm) & $\Delta p_y$ (kg$\cdot$m/s) & $\frac{\Delta y\Delta p_y}{h}$ \\
+            \hline
+                1 & $0.4$ & $160$ & $9.47\cdot10^{3}$ & $1.014\cdot10^{-28}$ & $1.070$ \\
+                2 & $0.15$ & $410$ & $9.47\cdot10^{3}$ & $2.591\cdot10^{-28}$ & $1.034$ \\
+                3 & $0.075$ & $900$ & $9.47\cdot10^{3}$ & $5.383\cdot10^{-28}$ & $1.117$ \\
+            \hline
+            \end{tabular}
+            \label{tab:Atv8b}
+        \end{table}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+
+        
+        \item Podemos exprimir a relação de incerteza da seguinte forma:
+        \begin{equation}\label{eq:Atv8c-1}
+            \Delta p_x\Delta  x\geq\frac{h}{4\pi},
+        \end{equation}
+        onde $\Delta p_x$ e $\Delta x$ são as incertezas no \textit{momentum} e na posição e $h$ a constante de Planck, respectivamente. Note que, se minimizarmos a desigualdade (\ref{eq:Atv8c-1}), obtemos 
+        \begin{equation}\label{eq:Atv8c-2}
+            \left(\Delta p_x\Delta x\right)_{\text{mín}}=\frac{h}{4\pi}.
+        \end{equation}
+
+        Isolando a incerteza no \textit{momentum} e substituindo os devidos valores obtemos então:
+        \begin{equation*}
+            \left(\Delta p_x\right)_{\text{mín.}}=\frac{h}{4\pi\Delta x}=\frac{6.62\cdot10^{-34}\text{ J}\cdot\text{s}}{4\cdot3.14\cdot1.0\cdot10^{-4}\text{ m}}\quad\therefore
+        \end{equation*}
+        \begin{equation}\label{eq:Atv8c-3}
+            \boxed{\left(\Delta p_x\right)_{\text{mín.}}=5.33\cdot10^{-31}\text{ kg}\cdot\text{m}\cdot\text{s}^{-1}}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+        
+        \item Seja $m_e=9.109\cdot10^{-31}\text{ kg}$ a massa do elétron, então a incerteza no \textit{momentum} para um elétron que viaja a velocidades não relativísticas será
+        \begin{equation}\label{eq:Atv8d-1}
+            \Delta p_x=m_e\cdot\Delta v_x.
+        \end{equation}
+
+        Substituindo a Equação (\ref{eq:Atv8d-1}) em (\ref{eq:Atv8c-2}) e resolvendo-a com relação à incerteza na posição obtemos então
+        \begin{equation*}
+            \left(\Delta x\right)_{\text{mín.}}=\frac{h}{4\pi\cdot m_e\Delta p_x}=\frac{6.62\cdot10^{-34}\text{ J}\cdot\text{s}}{4\cdot3.14\cdot9.109\cdot10^{-31}\text{ kg}40\text{ m/s}}
+        \end{equation*}
+        \begin{equation}\label{eq:Atv8d-2}
+            \therefore\quad\boxed{\left(\Delta x\right)_{\text{mín.}}=1.447\cdot10^{-6}\text{ m}}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+
+
+        \item Considerando a incerteza na posição de um átomo de cloro (Cl) podemos obter a incerteza no \textit{momentum} deste mesmo átomo através da Equação (\ref{eq:Atv8c-2}):
+        \begin{equation}\label{eq:Atv8e-1}
+            \left(\Delta p_x\right)_{\text{mín.}}=\frac{h}{4\pi\Delta x}=\frac{6.62\cdot10^{-34}\text{ J}\cdot\text{s}}{4\cdot3.14\cdot2\cdot10^{-6}\text{ m}}=2.636\cdot10^{-29}\text{ kg}\cdot\text{m}\cdot\text{s}^{-1}.
+        \end{equation}
+
+        De posse da incerteza no \textit{momentum} do átomo de Cl, podemos obter a incerteza na determinação experimental da velocidade através da seguinte forma:
+        \begin{equation*}
+            \Delta p_x=m_{\text{Cl}}\cdot\Delta v_x\iff\Delta v_x=\frac{\Delta p_x}{m_{\text{Cl}}}
+        \end{equation*}
+        \begin{equation}\label{eq:Atv8e-2}
+            \Delta v_x=\frac{2.636\cdot10^{-29}\text{ kg}\cdot\text{m}\cdot\text{s}^{-1}}{5.86\cdot10^{-26}\text{ kg}}\quad\therefore\quad\boxed{\Delta v_x=4.49\cdot10^{-4}\text{ m/s}}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$    
+        \end{flushright}
+
+        
+    \end{enumerate}
+
+
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\newpage
+
+
+
+\section*{Atividade 9 - Efeito Fotoelétrico}
+    \begin{enumerate}[label = \alph*)]
+        \item Sabemos que o efeito fotoelétrico é um fenômeno de origem quântica que consiste na emissão de elétrons por algum material que é iluminado por radiações eletromagnéticas de frequências específicas. O experimento tem como objetivo conseguir detectar a ejeção de elétrons de um material exposto a uma determinada frequência de radiação eletromagnética, por meio da constatação de corrente elétrica. Os fótons transferem energia para os elétrons. Se essa quantidade de energia for maior do que a energia mínima (função trabalho) necessária para se arrancar os elétrons, estes serão arrancados da superfície do material, formando uma corrente de fotoelétrons.
+
+
+             
+        \item Para saber quais dos elementos são mais propícios para se fazer uma célula foto-voltaica devemos calcular a energia carregada por um fóton na frequência da luz visível com mais energia, ou seja, o fóton cujo comprimento de onda vale $425\text{ nm}$ e comparar com as funções trabalho dos elementos apresentados. Dessa forma, escrevemos
+        \begin{equation}\label{eq:Atv9b-1}
+            E=hf=\frac{hc}{\lambda}=\frac{6.626\cdot10^{-34}\text{ m}^{2}\text{ kg/s}\cdot3\cdot10^{8}\text{ m/s}}{4,25\cdot10^{-7}\text{ m}}=2.9\text{ eV}.
+        \end{equation}
+
+        Comparando o resultado obtido em (\ref{eq:Atv9b-1}) notamos que os únicos elementos apropriados para a construção da célula foto-voltaica é o Lítio (Li) e o Bário (Ba) cujas funções trabalho valem $2.3\text{ eV}$ e $2.5\text{ eV}$, respectivamente.
+
+        
+        
+        \item Quando a energia do fóton incidente é maior que $W_0$, a energia restante é transformada em energia cinética do elétron. Dessa forma, a energia cinética máxima $E_{\text{máx.}}$ do elétron arrancado é dada por:
+        \begin{equation}\label{eq:Atv9c-1}
+            E=K_{\text{máx.}}=hf-W_0.
+        \end{equation}
+
+        Convertendo os valores de energia em elétron-volt (eV) para Joules (J) e substituindo na Equação (\ref{eq:Atv9c-1}) obtemos:
+        \begin{equation}\label{eq:Atv9c-2}
+            K_{\text{máx.}}=9.28\cdot10^{-19}\text{ J}-7.2\cdot10^{-19}\text{ J}=2.08\cdot10^{-19}\text{ J}.
+        \end{equation}
+
+        Por outro lado, a velocidade de máxima ejeção do elétron pode ser obtida da seguinte forma:
+        \begin{equation}\label{eq:Atv9c-3}
+            K_{\text{máx.}}=\frac{m_e v^2_{\text{máx.}}}{2}\implies v=\sqrt{\frac{2K_{\text{máx.}}}{m_e}}.
+        \end{equation}
+
+        Sendo $m_e=9.109\cdot10^{-31}\text{ kg}$ a massa do elétron e substituindo o resultado obtido em (\ref{eq:Atv9c-2}) na Equação (\ref{eq:Atv9c-3}) obtemos finalmente
+        \begin{equation}\label{eq:Atv9c-4}
+            v_{\text{máx.}}=\sqrt{\frac{2\cdot2.08\cdot10^{-19}\text{ J}}{9.109\cdot10^{-31}\text{ kg}}}\quad\therefore\quad\boxed{v_{\text{máx.}}=6.76\cdot10^{5}\text{ m/s}}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+        
+
+        
+        \item Da natureza discreta das trocas de energia, cada fóton incidente sobre o material é responsável por emitir um fóton-elétron. Uma vez que o potencial de corte é atingido, quanto maior a intensidade da luz incidente maior a será quantidade de fótons incidindo sobre a superfície do material e, consequentemente, maior será a quantidade de fóton-elétrons emitidos.
+
+        Dessa forma, partindo de uma razão de proporção de um fóton incidente para um fóton-elétron emitido é fácil ver que para termos o dobro de fóton-elétrons emitidos devemos dobrar a quantidade de elétron incidentes.
+
+
+        
+        \item A energia cinética de ejeção dos elétrons não depende da intensidade do feixe incidente. Para perceber isso, basta notar que na Equação (\ref{eq:Atv9b-1}) a energia cinética adquirida pelo fóton-elétron depende da energia dos fótons, que por sua vez depende da frequência dos fótons incidentes. Logo, quanto maior a frequência desses fótons incidentes maior será a energia cinética de ejeção dos fóton-elétrons e maior será a velocidade de ejeção dos mesmos.
+        
+        
+
+        \item Considere a Tabela \ref{tab:Atv9f} abaixo com os valores de tensão $V$ e comprimento de onda $\lambda$ usados no experimento em questão.
+        \begin{table}[htp!]
+            \centering
+            \caption{Valores de comprimento de onda e tensão para o experimento.}
+            \begin{tabular}{|c|c|c|}
+            \hline
+                 $\lambda$ (nm) & $c/e\lambda$ ($\text{C}^{-1}\cdot\text{s}^{-1}$) & $V$ (Volts) \\
+                 \hline
+                 $578$ & $3.237\cdot10^{24}$ & $0.617$ \\
+                 $546$ & $3.427\cdot10^{24}$ & $0.738$ \\
+                 $436$ & $4.292\cdot10^{24}$ & $1.334$ \\
+                 $405$ & $4.620\cdot10^{24}$ & $1.521$ \\
+                 $366$ & $5.112\cdot10^{24}$ & $1.898$ \\
+                 \hline 
+            \end{tabular}
+            \label{tab:Atv9f}
+        \end{table}
+
+        Como demonstrado em sala, o potencial de corte $V$ pode ser escrito como uma função afim dependente do parâmetro $c/e\lambda$ da seguinte forma:
+        \begin{equation}\label{eq:Atv9f-1}
+            V=-\frac{A}{e}+h\left(\frac{c}{e\lambda}\right),
+        \end{equation}
+        onde $A=W_0$ é a função trabalho do elemento em análise, $e=-1.602\cdot10^{-19}\text{ C}$ é a carga elementar do elétron, $h=6.626\cdot10^{-34}\text{ J}\cdot\text{s}$ é a constante de Planck, $c=299792458\cdot10^{8}\text{ m/s}$ é a velocidade da luz no vácuo e $\lambda$ o comprimento de onda do feixe incidente.
+
+        Analisando a Equação (\ref{eq:Atv9f-1}), é fácil ver que o potencial de corte é uma função afim cujos coeficiente linear e angular valem $b=-\frac{A}{e}$ e $a=h$, respectivamente. Dessa forma, para determinarmos experimentalmente o valor da constante de Planck, basta calcularmos o coeficiente angular a reta que melhor se ajusta aos dados experimentais expostos na Tabela \ref{tab:Atv9f}.
+
+        Portanto, optou-se por plotar uma curva polinomial do tipo $V(c/e\lambda)=A'\cdot\left(\frac{c}{e\lambda}\right)+B'$, onde $A'$ e $B'$ são os coeficientes angular e linear da curva de ajuste, respectivamente. Os resultados desse ajuste se encontram na Figura \ref{fig:Fit_h}.
+
+        \begin{figure}[htp!]
+            \centering
+            \includegraphics[width=1.00\linewidth]{Figures/Fit_h.png}
+            \caption{Ajuste linear (reta) para os dados experimentais (pontos). A região hachurada indica o intervalo de confiança padrão de $95\%$. Os parâmetros $A',B'$ foram obtidos por meio do método de regressão linear.}
+            \label{fig:Fit_h}
+        \end{figure}
+
+        Com base no ajuste, obteve-se como resultado para a constante de Planck, $A'=h_{\text{exp.}}=6.7759\cdot10^{-34}\text{ J}\cdot\text{s}$ e $B'=-\frac{A}{e}=-1.5821\text{ V}$.
+
+        Dessa forma, o erro na medida pode ser facilmente calculado a partir da relação percentual:
+        \begin{equation}\label{eq:Atv9f-2}
+            |\text{Erro}|=\left|\left(1-\frac{h_{\text{exp.}}}{h_{\text{teo.}}}\right)\cdot100\%\right|\quad\therefore\quad\boxed{|\text{Erro}|=2.261\%}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+
+        Uma vez que $|\text{Erro}|<5\%$, temos que os nossos dados experimentais apresentam baixa dispersão e com isso nos dados apresentam uma boa precisão.
+
+
+
+        \item Analisando novamente a Equação (\ref{eq:Atv9f-1}), note que a função trabalho do elemento em análise pode ser determinada a partir do coeficiente linear $B'$ do ajuste linear dos dados experimentais. Em símbolos:
+        \begin{equation}\label{eq:Atv9g-1}
+            B'=-\frac{A}{e}\implies A=-B'\cdot e.
+        \end{equation}
+
+        Substituindo $B'=-1.5821\text{ V}$ e $e=-1.602\cdot10^{-19}\text{ C}$ em (\ref{eq:Atv9g-1}) obtemos:
+        \begin{equation}\label{eq:Atv9g-2}
+            A=-\left(-1.5821\text{ V}\right)\cdot\left(-1.602\cdot10^{-19}\text{ C}\right)\quad\therefore\quad\boxed{A=-2.5347\text{ eV}}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+
+        Com base no valor obtido em (\ref{eq:Atv9g-2}), temos que o material no qual o cátodo é feito é provavelmente de bário (Ba) cuja função trabalho é de $A_{\text{Ba}}=2.5\text{ eV}$.
+        
+    \end{enumerate}
+
+
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+
+
+\end{document}
