@@ -1,0 +1,297 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{amsmath}  
+\usepackage{physics}
+\usepackage{graphicx} 
+\usepackage[portuguese]{babel}
+\usepackage[margin=1in,letterpaper]{geometry} 
+\usepackage{cite} 
+\usepackage[final]{hyperref} 
+\hypersetup{
+	colorlinks=true,       
+	linkcolor=blue,        
+	citecolor=blue,        
+	filecolor=magenta,     
+	urlcolor=blue         
+}
+
+\begin{document}
+
+\title{\bf Filtros ativos}
+\author{Gabriel Wendell Celestino Rocha\footnote{\href{mailto:gabrielwendell@fisica.ufrn.br}{gabrielwendell@fisica.ufrn.br}}}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+Resumo do experimento abordado neste relatório. Deve conter uma descrição bastante breve e geral dos \textbf{objetivos} do experimento, os \textbf{métodos} utilizados para a coleta dos dados e posterior tratamento dos mesmos, os \textbf{resultados} obtidos e a \textbf{conclusão} do relatório.
+\end{abstract}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introdução}\label{Sec 1 - Introdução}
+Um filtro passivo passa-faixa é um circuito que permite a passagem de sinais de tensão e corrente com frequências situadas numa \textbf{faixa intermediária}, atenuando os sinais com frequências abaixo ou acima dessa faixa. 
+Essa faixa intermediária é delimitada por uma frequência de corte inferior ($\omega_{CI}$) e uma frequência de corte superior ($\omega_{CS}$).
+
+Por outro lado, um filtro passivo rejeita-faixa é um circuito que atenua, ou seja, "impede" a passagem de sinais de tensão e corrente com frequências situadas numa faixa intermediária, “permitindo” a passagem de sinais com \textbf{frequências acima ou abaixo dessa faixa}. Essa faixa intermediária é delimitada por uma frequência de corte inferior ($\omega_{CI}$) e uma frequência de corte superior ($\omega_{CS}$). 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Embasamento teórico}\label{Sec 2 - Teoria}
+\subsection{Filtro passa-faixa}\label{SubSec - Passa-faixa}
+Para avaliar sinais de frequência intermediária, ou seja, acima da frequência de corte inferior e abaixo da frequência de corte superior do filtro, o ganho é unitário, portanto, o módulo do sinal de saída é igual ao de entrada. Para sinais de frequência abaixo da frequência de corte inferior ou acima da frequência de corte superior o ganho do filtro é nulo, ou seja, o módulo do sinal de saída é totalmente atenuado.
+
+Um circuito RLC como apresentado na Fig. \ref{fig:RLC Circuit} pode comportar-se como um filtro passivo passa-faixa real.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/Band-pass_filter.png}
+    \label{fig:RLC Circuit}
+    \caption{Circuito de um filtro passivo passa-faixa em série}
+\end{figure}
+
+Um filtro passa-faixa é baseado na \textbf{ressonância} que ocorre entre indutores e capacitores em circuitos CA. Para \textit{sinais de frequências baixas} o indutor do circuito da Fig. \ref{fig:RLC Circuit} apresenta baixa reatância indutiva e tende a comportar-se como um curto-circuito, porém, o capacitor apresenta alta reatância capacitiva e tende a comportar-se como um circuito aberto. Desta forma, a maior
+parcela da tensão de entrada estará sobre o capacitor e a tensão sobre o resistor de saída será muito baixa, ou seja, o sinal será atenuado. Podemos dizer que o circuito “impede a passagem” de sinais de baixa frequência.
+
+Para \textit{sinais de frequências altas} o capacitor apresenta baixa reatância capacitiva e tende a comportar-se como um curto-circuito, porém, o indutor apresenta alta reatância indutiva e tende a comportar-se como um circuito aberto. Desta forma, a maior parcela de tensão de entrada estará sobre o indutor e a tensão sobre o resistor de saída será muito baixa, ou seja, o sinal será atenuado. Podemos dizer que o circuito “impede a passagem” de sinais de alta frequência.
+
+Para \textit{sinais de frequências intermediárias}, ou seja, sinais cujas frequências estiverem numa faixa próxima à frequência de ressonância do circuito, o indutor e o capacitor juntos apresentarão baixa reatância e tenderão a comportarem-se como um curto circuito. Desta forma, a maior parcela da tensão de entrada estará sobre o resistor de saída. Podemos dizer, então, que o circuito “deixa passar” sinais dentro de uma determinada faixa de frequência
+
+
+\subsubsection{Ganho e fase}\label{SubSubSec - Ganho e fase 1}
+Para o circuito da Fig. \ref{fig:RLC Circuit}, a tensão de saída em função da tensão de entrada pode ser dada pela expressão:
+\begin{equation}\label{V_s}
+    V_{s}=\frac{R\cdot V_{c}}{R+X_{L}+X_{C}}=\frac{R}{R+j\omega L+\frac{1}{j\omega C}}\cdot V_{c}
+\end{equation}
+
+ou ainda
+\begin{equation}\label{V_s/V_c}
+    \frac{V_{s}}{V_{c}}=\frac{R}{R+j\omega L+\frac{1}{j\omega C}}=\frac{1}{1-j\cdot\frac{1-\omega^{2}LC}{\omega RC}}
+\end{equation}
+
+Portanto, a \textbf{função de transferência} para um filtro passa-faixa, na forma fatorada é:
+\begin{equation}\label{H(omega)}
+    H(\omega)=\frac{1}{1-j\Big(\frac{1-\omega^{2}LC}{\omega RC}\Big)}
+\end{equation}
+
+Sabemos que a função de transferência é um número complexo e que o ganho de tensão é o módulo da função de transferência e a fase é o ângulo, na forma polar. Portanto, a expressão para o ganho de tensão para um filtro passa-faixa série é:
+\begin{equation}\label{eq: Ganho de tensão}
+    GV=\frac{1}{\sqrt{1+\Big(\frac{1-\omega^{2}LC}{\omega RC}\Big)^{2}}}
+\end{equation}
+
+A expressão para a fase do filtro passa-faixa será:
+\begin{equation}\label{eq: Fase de um filtro}
+    \alpha=\arctan{\Bigg(\frac{1-\omega^{2}LC}{\omega RC}\Bigg)}
+\end{equation}
+
+
+\subsection{Filtro rejeita-faixa}\label{SubSec - Rejeita-Faixa}
+Sinais de frequências intermediárias, ou seja acima da frequência de corte inferior e abaixo da frequência de corte superior do filtro, o ganho é nulo, portanto, o módulo do sinal de saída é totalmente atenuado (nulo). Para sinais de frequências abaixo da frequência de corte inferior ou acima da frequência de corte superior, o ganho do filtro é unitário, ou seja, o módulo do sinal de saída é igual ao de entrada. Na prática, porém, não é possível obter a resposta em frequência de um filtro rejeita-faixa ideal.
+
+Um circuito RLC como o apresentado na Fig. \ref{fig:Band-stop_filter} pode comporta-se como um filtro passivo rejeita-faixa ideal.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/Band-stop_filter.png}
+    \label{fig:Band-stop_filter}
+    \caption{Circuito de um filtro passivo rejeita-faixa em série}
+\end{figure}
+
+Um filtro rejeita-faixa é baseado na \textbf{ressonância} que ocorre entre indutores e capacitores em circuitos CA.
+
+Para \textit{sinais de frequências baixas} o indutor do circuito da Fig. \ref{fig:Band-stop_filter} apresenta baixa reatância (tende a um curto-circuito), porém, o capacitor apresenta alta reatância e tende a comportar-se como um circuito aberto. Desta forma, a maior parcela da tensão de entrada estará sobre o capacitor e a tensão sobre o resistor será muito baixa, ou seja, a tensão de saída será praticamente igual à tensão de entrada. Podemos dizer que o circuito “permite a passagem” de sinais de baixa frequência.
+
+Para \textit{sinais de frequências altas} o capacitor apresenta baixa reatância e tende a comportar-se como um curto-circuito, porém o indutor apresenta alta reatância e tende a comportar-se como um circuito aberto. Desta forma, a maior parcela da tensão de entrada estará sobre o indutor e a tensão sobre o resistor será muito pequena, ou seja, a tensão de saída será praticamente igual à tensão de entrada. Podemos dizer que o circuito “permite a passagem” de sinais de alta frequência.
+
+Porém, para \textit{sinais de frequências intermediárias}, ou seja, sinais cujas frequências estiverem numa faixa próxima à frequência de ressonância do circuito, o indutor e o capacitor juntos apresentarão baixa reatância e tenderão a comportar-se como um curto-circuito. Desta forma, a maior parcela da tensão de entrada estará sobre o resistor e a tensão de saída será praticamente nula, ou seja, o sinal será atenuado. Podemos dizer, então, que o circuito “impede a passagem” (rejeita) sinais dentro de uma determinada faixa de frequências. 
+
+
+\subsubsection{Ganho e fase}\label{SubSubSec - Ganho e fase 2}
+Para o circuito da Fig. \ref{fig:Band-stop_filter}, a tensão de saída em função da tensão de entrada pode ser dada pela expressão:
+\begin{equation}\label{V_e - 02}
+    V_{s}=\frac{(X_{L}+X_{C})\cdot V_{e}}{R+(X_{L}+X_{C})}
+\end{equation}
+
+ou ainda
+\begin{equation}\label{V_s/V_e}
+    \frac{V_{s}}{V_{e}}=\frac{j\omega L+\frac{1}{j\omega C}}{R+j\omega L+\frac{1}{j\omega C}}=\frac{1}{1+\frac{j\omega RC}{\omega^{2}LC}}
+\end{equation}
+
+Portanto, a \textbf{função de transferência} para um filtro passa-faixa, na forma fatorada é:
+\begin{equation}\label{H(omega)}
+    H(\omega)=\frac{1}{1+j\Big(\frac{\omega RC}{1-\omega^{2}LC}\Big)}
+\end{equation}
+
+Sabemos que a função de transferência é um número complexo e que o ganho de tensão é o módulo da função de transferência e a fase é o ângulo, na forma polar. Portanto, a expressão para o ganho de tensão para um filtro rejeita-faixa em série é:
+\begin{equation}\label{eq: Ganho de tensão}
+    GV=\frac{1}{\sqrt{1+\Big(\frac{\omega RC}{1-\omega^{2}LC}\Big)^{2}}}
+\end{equation}
+
+A expressão para a fase do filtro passa-faixa será:
+\begin{equation}\label{eq: Fase de um filtro}
+    \alpha=\arctan{\Bigg(\frac{\omega RC}{1-\omega^{2}LC}\Bigg)}
+\end{equation}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Procedimento experimental}\label{Sec 3 - Experimento}
+O experimento como um todo foi realizado em três etapas. Na primeira foi-se investigado o comportamento do circuito como um filtro passa-baixa. Já na segunda se investigou o comportamento do mesmo como um filtro passa-alta. Por fim, na terceira etapa foi realizada uma simulação usando o programa \href{https://docente.ifrn.edu.br/leonardoteixeira/links/instalador-do-circuitmaker-student/view}{\texttt{CircuitMaker}} utilizando os mesmos componentes e instrumentos utilizados na experiência no laboratório. A comparação entre os dados experimentais e a simulação se encontra na seção \ref{Sec 4 - Resultados}. 
+
+Abaixo está listado os materiais utilizados nas duas etapas do experimento:
+\begin{enumerate}
+    \item 1 gerador de funções AGF1022 da Tektronix;
+    \item 1 osciloscópio digital TDS11002B da Tektronix;
+    \item 1 protoboard de duas seções;
+    \item 1 capacitor de $1\mu$F;
+    \item 1 resistor de 68 $\Omega$;
+    \item 1 indutor de 0.4 mH.
+\end{enumerate}
+
+Vamos agora descrever o procedimento experimental em cada etapa.
+\subsection{Etapa 1: Filtro passa-faixa}\label{Etapa 1}
+\begin{enumerate}
+    \item Primeiramente, montou-se um circuito RLC de acordo com a Fig. (\ref{fig:RLC Circuit}) e usamos um $V_{i}$ como sendo uma onda senoidal cuja $\omega$ variava dentro do intervalo $[1,4\times10^{4}]$ Hz e $400\text{m}V_{pp}$, onde $V_{pp}$ representa a tensão de pico a pico da onda senoidal.
+    
+    \item Em seguida, por meio do osciloscópio, captou-se o sinal direto do gerador de funções. O sinal capturado pelo osciloscópio encontra-se abaixo. O canal utilizado foi o 1.
+    
+    \begin{itemize}
+        \item Captura do sinal de entrada no circuito durante a Etapa 1:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Input_signal.jpeg}
+            \caption{Sinal capturado direto do gerador de funções para uma onda senoidal cuja frequência varia de 1 Hz até 40 kHz.}
+            \label{fig:Input_signal}
+        \end{figure}
+    \end{itemize}
+    
+    O valor de referência do eixo horizontal (tempo) é de 50.0 ms enquanto o valor de referência do eixo vertical (tensão) é de 5.00 V.
+    
+    \item Em seguida, captou-se o sinal entre os terminais do capacitor para avaliar o sinal do filtro passa-baixa. O gráfico gerado pelo osciloscópio foi o que se segue.
+    \begin{itemize}
+        \item Captura do sinal de saída do capacitor (filtro passa-baixa):
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Band-pass_filter.jpeg}
+            \caption{Sinal capturado entre os terminais do indutor para um filtro passa-baixa.}
+            \label{fig:Band-pass Filter}
+        \end{figure}
+    \end{itemize}
+\end{enumerate}
+
+
+\subsection{Etapa 2: Filtro passa-alta}\label{Etapa 2}
+\begin{enumerate}
+    \item Analogamente ao que foi feito na etapa 1, montou-se um circuito RLC e selecionou-se $V_{i}$ como sendo uma onda senoidal cujo intervalo de variação da frequência é o mesmo exposto na etapa 1.
+    
+    \item Em seguida, capturou-se então o sinal direto do gerador de funções.
+    \begin{itemize}
+        \item Captura do sinal de entrada no circuito durante a Etapa 2:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Input_signal.jpeg}
+             \caption{Sinal capturado direto do gerador de funções para uma onda senoidal cuja frequência varia de 1 Hz até 40 kHz.}
+            \label{fig:Input_signal-2}
+        \end{figure}
+    \end{itemize}
+    
+    Note que o resultado foi basicamente o mesmo obtido na etapa anterior.
+    
+    \item Por fim, avaliou-se o sinal de saída direto dos terminais do resistor.
+    \begin{itemize}
+        \item Captura do sinal de saída do resistor:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Band-stop_filter.jpeg}
+            \caption{Sinal capturado entre os terminais do capacitor para um filtro passa-alta.}
+            \label{fig:Band-stop Filter}
+        \end{figure}
+    \end{itemize}
+    
+    Note que os sinais de saída do indutor (Fig. \ref{fig:Band-pass Filter}) e em (Fig. \ref{fig:Band-stop Filter}) são complementares, ou seja, uma função é a inversa da outra.
+\end{enumerate}
+
+
+\subsection{Etapa 3: Simulação da Etapa 1 usando o \texttt{CircuitMaker}}
+\begin{enumerate}
+    \item Inicialmente, criou-se um arquivo na extensão \texttt{.CKT} intitulado \texttt{Band\_Pass\_Filter.ckt} onde se montou um circuito como descrito na etapa 1, subseção \ref{Etapa 1}.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/Band_pass_schematic.png}
+        \caption{{\it Schematic} de um filtro passa-faixa montado no \texttt{CircuitMaker} seguindo a descrição exposta na Etapa 1, Seção \ref{Etapa 1}.}
+        \label{Low_pass}
+    \end{figure}
+    
+    \item O sinal de entrada foi definido de forma a ser semelhante ao utilizado durante a prática em laboratório.
+    
+    \item Dessa forma, avaliou-se o sinal de saída do circuito e obteve-se o seguinte gráfico:
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/Band_pass_Graph.png}
+        \caption{Sinal de saída capturado no filtro passa-faixa.}
+        \label{fig:Band_pass}
+    \end{figure}
+\end{enumerate}
+
+
+\subsection{Etapa 4: Simulação da Etapa 2 usando o \texttt{CircuitMaker}}
+\begin{enumerate}
+    \item Semelhantemente ao que foi feito na etapa anterior, foi criado um arquivo na extensão \texttt{.CKT} intitulado \texttt{Pass\_Stop\_Filter.ckt} onde foi montado um circuito como descrito na etapa 2, subseção \ref{Etapa 2}.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/Band_stop_schematic.png}
+        \caption{{\it Schematic} de um filtro rejeita-faixa montado no \texttt{CircuitMaker} seguindo a descrição exposta na Etapa 2, Seção \ref{Etapa 2}.}
+        \label{High_pass}
+    \end{figure}
+    
+    \item E da mesma forma como foi feito na etapa anterior, avaliou-se o sinal de saída do resistor:
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/Band_stop_Graph.png}
+        \caption{Sinal de saída capturado no filtro rejeita-faixa.}
+        \label{fig:Band_stop}
+    \end{figure}
+\end{enumerate}
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Análise dos resultados}\label{Sec 4 - Resultados}
+Nesta seção iremos discutir os resultados obtidos ao longo das etapas experimentais descritas anteriormente.
+
+Como descrito na seção \ref{Sec 2 - Teoria}, a ideia dos filtro passa-faixa e rejeita-faixa é limitar a passagem de frequência em um dado intervalo e rejeitar a passagem de frequências em outro intervalo, respectivamente. Dessa forma, para o filtro passa-faixa, teremos um gráfico decrescente que só permite a passagem de um certo intervalo de frequências, como pode ser observado na Fig. (\ref{fig:Band_pass}). Com relação ao filtro rejeita-faixa, o mesmo deve impedir a passagem de um certo intervalo de frequência mostrando assim um caráter crescente com o tempo, como ilustrado na Fig. (\ref{fig:Band_stop}). 
+
+
+Com relação ao modelo teórico obtido por meio de uma simulação através do programa \texttt{CircuitMaker}, temos algumas semelhanças. Primeiramente, note que como o \texttt{CircuitMaker} é um programa que simula a parte teórica dos componentes eletrônicos, ele irá simular apenas o funcionamento dos filtros tendo como sinal de entrada uma onda senoidal com uma frequência específica constante e não um conjunto de frequências variadas. Dessa forma, vemos que o modelo teórico exprime muito bem o caráter esperado para os filtros passa-faixa e rejeita-faixa, respectivamente.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusões}\label{Sec 5 - Conclusão}
+Dado o exposto ao longo deste relatório, temos que os resultados experimentais expostos na seção \ref{Sec 3 - Experimento} condizem com o modelo matemático exposto na seção \ref{Sec 2 - Teoria}. Portanto, temos que os resultados experimentais estão dentro do esperado do modelo teórico a menos de alguns ruídos experimentais, mostrando assim que os modelos teóricos tanto para um filtro passa-baixa quanto para um filtro passa-alta exprimem razoavelmente bem os filtros passa-faixa e rejeita-faixa reais.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{100}
+
+\bibitem{Spitzer}
+Spitzer, Frank; Howarth (1973). \textit{Principles of Modern Instrumentation}. Nova York: [s.n.] p. Ch. 11
+
+\bibitem{Sedra}
+SEDRA, Adel S., \textit{Microeletrônica} 5º ed. volume único, Prentice Hall, 1997
+
+\bibitem{Bakshi}
+Bakshi, U.A.; Bakshi, A.V., \textit{Circuit Analysis - II}, Technical Publications, 2009 \texttt{ISBN 9788184315974}.
+
+\bibitem{Horowitz}
+Horowitz, Paul; Hill, Winfield, \textit{The Art of Electronics} (3rd edition), Cambridge University Press, 2015 \texttt{ISBN 0521809266}.
+
+\end{thebibliography}
+
+\end{document}
