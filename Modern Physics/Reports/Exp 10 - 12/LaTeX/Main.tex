@@ -1,0 +1,329 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{times}              
+% Use Times New Roman
+\usepackage{graphicx}           
+% Enhanced support for images
+\usepackage{float}              
+% Improved interface for floating objects
+\usepackage{booktabs}           
+% Publication quality tables
+\usepackage{xcolor}             
+% Driver-independent color extensions
+\usepackage{geometry}           
+% Customize document dimensions
+\usepackage{fullpage}           
+% all 4 margins to be either 1 inch or 1.5 cm
+\usepackage{comment}            
+% Commenting
+\usepackage{minted}             
+% Highlighted source code. Syntax highlighting
+\usepackage{listings}           
+% Typeset programs (programming code) within LaTeX
+\usepackage{lastpage}           
+% Reference last page for Page N of M type footers.
+\usepackage{fancyhdr}           
+% Control of page headers and footers
+\usepackage{hyperref}           
+% Cross-referencing 
+\usepackage[small,bf]{caption}  
+% Captions
+\usepackage{multicol}
+\usepackage{tikz}               
+% Creating graphic elements
+\usepackage{circuitikz}         
+% Creating circuits
+\usepackage{verbatim}          
+% Print exactly what you type in
+\usepackage{cite}               
+% Citation
+\usepackage[us]{datetime} 
+% Various time format
+\usepackage{blindtext}
+% Generate blind text
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[brazil]{babel}
+
+\input{defs.tex}
+
+
+
+\begin{document}
+
+\textcolor{UM_Brown}{
+\begin{minipage}{0.1\textwidth}
+    \begin{flushleft}
+        \includegraphics[height=3.5cm]{Figures/UFRN_Brasao.png}
+    \end{flushleft}
+\end{minipage}
+\begin{minipage}{0.8\textwidth}
+    \begin{center}
+        \textbf{\Large Laboratório de Física Moderna}\\
+        \vspace{5pt}
+        Relatórios 10 - 11 \\
+        \vspace{20pt}
+        \textit{Gabriel Wendell Celestino Rocha} \\
+        \vspace{5pt}
+        \textit{Vinícius Câmara Filgueira}
+    \end{center}
+\end{minipage}
+\vspace{10pt}
+\hrule
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section*{Atividade 10 - Difração de elétrons}
+\begin{enumerate}
+    \item Com base no experimento em sala, mediu-se os valores dos diâmetros $D_1$ e $D_2$ (em mm) dos anéis para cada valor de tensão $V$ (em kV). Com base nisso, foi possível obter os valores dos raios dos anéis como sendo metade do valor dos diâmetros, ou seja, $r_1=D_1/2$ e $r_2=D_2/2$. Para obter o valor do comprimento de onda em cada etapa do experimento, utilizou-se a conservação da energia e calculou-se a velocidade de escape dos elétrons e a partir desta calculou-se o comprimento de onda $\lambda$ da seguinte forma:
+    \begin{equation} \label{eq:10a}
+        E=eV=\frac{1}{2}mv^2_e\implies v_e=\sqrt{\frac{2meV}{m}}\quad\therefore\quad\boxed{\lambda=\frac{h}{mv_e}}
+    \end{equation}
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+
+    Por fim, sendo $R=65\text{ mm}$ uma constante do nosso experimento, calculou-se o parâmetro $2\lambda R$ para cada comprimento de onda utilizado ao longo do experimento. Com base nessas considerações, foi possível realizar a construção da Tabela \ref{tab:Atv10a}.
+    
+    \begin{table}[htp!]
+            \centering
+            \caption{Parâmetros relevantes para o experimento sobre difração de elétrons.}
+            \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            $V$ (kV) & $\lambda$ ($\times10^{-9}$ m) & $D_1$ (m) & $r_1$ (m) & $D_2$ (m) & $r_2$ (m) & $2\lambda R$ ($m^2$) \\
+            \hline
+                $3.5$ & $207.304$ & $46.35\cdot10^{-3}$ & $23.175\cdot10^{-3}$ & $27.050\cdot10^{-3}$ & $13.525\cdot10^{-3}$ & $2.695\cdot10^{-12}$ \\
+                
+                $4.0$ & $193.915$ & $44.4\cdot10^{-3}$ & $22.2\cdot10^{-3}$ & $25.825\cdot10^{-3}$ & $12.9125\cdot10^{-3}$ & $2.521\cdot10^{-12}$ \\
+
+                $4.5$ & $182.824$ & $42.125\cdot10^{-3}$ & $21.0625\cdot10^{-3}$ & $24.575\cdot10^{-3}$ & $12.2875\cdot10^{-3}$ & $2.377\cdot10^{-12}$ \\
+
+                $5.0$ & $173.443$ & $40.575\cdot10^{-3}$ & $20.2875\cdot10^{-3}$ & $23.325\cdot10^{-3}$ & $20.2875\cdot10^{-3}$ & $2.255\cdot10^{-12}$ \\
+
+                $5.5$ & $165.371$ & $38.4\cdot10^{-3}$ & $19.2\cdot10^{-3}$ & $21.7\cdot10^{-3}$ & $10.85\cdot10^{-3}$ & $2.15\cdot10^{-12}$ \\
+
+                $6.0$ & $158.331$ & $36.925\cdot10^{-3}$ & $18.4625\cdot10^{-3}$ & $21.225\cdot10^{-3}$ & $10.6125\cdot10^{-3}$ & $2.05\cdot10^{-12}$ \\
+                \hline
+            \end{tabular}
+            \label{tab:Atv10a}
+        \end{table}
+
+
+        \item Com base na teoria abordada em sala, temos que
+        \begin{equation} \label{eq:10b}
+            2\lambda R=d\cdot r\iff d=\frac{2\lambda R}{r}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+
+        É fácil ver que a Equação (\ref{eq:10b}) é claramente linear. Em particular, a distância interplanar $d$ é justamente o coeficiente angular da reta gerada pelo gráfico $2\lambda R\times r$. Dessa forma, vamos plotar os gráficos $2\lambda R\times r_1$ e $2\lambda R\times r_2$ e em seguida usar uma curva de ajuste linear para extrais os parâmetros $d_1$ e $d_2$. Os resultados dos ajustes bem como os resultados das distâncias interplanares se encontram nas Figuras \ref{fig:Fit_d1} e \ref{fig:Fit_d2}.
+
+        \begin{figure}[htp!]
+            \centering
+            \includegraphics[width=1.00\linewidth]{Figures/Fit_d1.png}
+            \caption{Ajuste linear (reta) para os dados experimentais (pontos). A região hachurada indica o intervalo de confiança padrão de $95\%$.}
+            \label{fig:Fit_d1}
+        \end{figure}
+
+        \begin{figure}[htp!]
+            \centering
+            \includegraphics[width=1.00\linewidth]{Figures/Fit_d2.png}
+            \caption{Ajuste linear (reta) para os dados experimentais (pontos). A região hachurada indica o intervalo de confiança padrão de $95\%$.}
+            \label{fig:Fit_d2}
+        \end{figure}
+
+
+        \item Considerando a relação demonstrada no item 5., vamos isolar o termo de comprimento de onda, relacionar com a equação de De Broglie e resolver a equação resultante com relação à velocidade de ejeção do elétron:
+        \begin{equation}
+            2\lambda R=d\cdot r\implies\lambda=\frac{dr}{2R}=\frac{h}{p_e}=\frac{h}{m_e v_e}\text{ }\therefore\text{ }v_e=\frac{2Rh}{drm_e}.
+        \end{equation}
+
+        Escrevendo agora a conservação da energia para esse sistema, obtemos:
+        \begin{equation} \label{eq:main}
+            eV=\frac{1}{2}m_e v_e^2=\frac{1}{2}m_e\frac{4R^2h^2}{d^2r^2m_e^2}\quad\therefore\quad\boxed{V=2\left(\frac{R}{r}\right)^2\frac{h^2}{d^2em_e}}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+
+        O raio máximo do anel de difração ocorre quando $r=R$ (vide Fig. \ref{fig:Diagram}), logo $R/r=1$. Substituindo $d_1=213\text{ pm}$ na Equação (\ref{eq:main}) obtemos:
+        \begin{equation} \label{eq:final}
+            \boxed{V=132.61\text{ Volts}}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+        
+
+        \item Considerando agora o caso em que $d_3=80.5\text{ pm}$, $r_3=25\text{ mm}$ e $R=65\text{ mm}$, ao substituirmos tais valores na Equação (\ref{eq:main}) obtemos:
+        \begin{equation}
+            \boxed{V=6276.212\text{ Volts}=6.26\text{ kV}}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+
+
+        \item O setup experimental utilizado em sala é baseado no seguinte diagrama:
+        \begin{figure}[htb!]
+            \centering
+            \includegraphics[width=0.5\linewidth]{Figures/Diagram.png}
+            \caption{Diagrama experimental.}
+            \label{fig:Diagram}
+        \end{figure}
+
+        Considerando o diagrama apresentado na Figura \ref{fig:Diagram}, podemos escrever:
+        \begin{equation} \label{eq:sin(2alpha)}
+            \sin{(2\alpha)}=\frac{r}{R},
+        \end{equation}
+
+        Lembrando da identidade trigonométrica $\sin{(2\alpha)}=2\sin{(\alpha)}\cos{(\alpha)}$, se considerarmos uma aproximação para ângulos diminutos, temos $\cos{(\alpha)}\approxeq1$, logo
+        \begin{equation}
+            \sin{(2\alpha)\approxeq2\sin{(\alpha)}}
+        \end{equation}
+
+        Analogamente para $\alpha=2\theta$ diminuto, podemos escrever
+        \begin{equation}
+            \sin{(\alpha)}=\sin{(2\theta)}\approxeq2\sin{(\theta)}\implies\sin{(2\alpha)}=4\sin{(\theta)}.
+        \end{equation}
+
+        Partindo da lei de Bragg, escrevemos
+        \begin{equation} \label{eq:Bragg_law}
+            n\lambda=2d\sin{(\theta)}\implies\sin{(2\alpha)}=4\frac{n\lambda}{2d}.
+        \end{equation}
+
+        Substituindo a Equação (\ref{eq:Bragg_law}) na Equação (\ref{eq:sin(2alpha)}) e fazendo $n=1$ obtemos finalmente:
+        \begin{equation*}
+            \frac{2n\lambda}{d}=\frac{r}{R}\implies r=(2n\lambda R)\cdot\frac{1}{d}\quad\therefore\quad\boxed{2\lambda R=d\cdot r}
+        \end{equation*}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+        
+
+        \item Considere agora um caso em que temos uma tela fluorescente de $95\text{ mm}$ de diâmetro, ou seja, $R=47.5\text{ mm}$ de raio, um anel de difração de $r=45\text{ mm}$ e uma distância interplanar de $d_5=46.5\text{ pm}$. Substituindo tais valores na Equação (\ref{eq:main}) obtemos:
+        \begin{equation}
+            \boxed{V=3100.265\text{ Volts}=3.1\text{ kV}}
+        \end{equation}
+        \begin{flushright}
+            $\blacksquare$
+        \end{flushright}
+        Com base nas equações apresentadas anteriormente, nota-se que a tensão medida depende inversamente do raio do anel de difração gerado. Portanto, a medida que aumentamos a tensão, o raio do anel diminui cada vez mais.
+
+\end{enumerate}
+
+
+
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+\newpage
+
+
+ 
+\section*{Atividade 11 - Lei de Stefan-Boltzmann}
+
+\begin{enumerate}
+    \item  Considere a equação:
+    \begin{equation} \label{eq:Temperatura t}
+        t=\frac{1}{2\beta}\left\{-\alpha+\sqrt{\alpha^{2}-4\beta\left[1-\frac{R\left(t\right)}{R_{0}}\right]}\right\}.
+    \end{equation}
+
+    Com base na equação acima podemos calcular a temperatura $t$ considerando os valores de $\alpha=2.0\cdot10^{-3}\text{ }^{\circ}\text{C}^{-1}$ e $\beta=1.11\cdot10^{-7}\text{ }^{\circ}\text{C}^{-1}$. Uma vez que valores de temperatura menores que $273\text{ K}$ não fazem sentido físico, desprezamos a solução com sinal negativo. Além disso, podemos determinar os termos $R(t)$ e $R_0$ a partir do seguinte conjunto de equações:
+    \begin{equation} \label{eq:R(t) e R_0}
+        \begin{cases}
+            R(t)=\frac{V_L}{I\cdot L}\text{ }, \\
+            R_0=\frac{R(27\text{ }^{\circ}\text{C})}{1+\alpha(27)+\beta(27)}\text{ }. 
+        \end{cases}
+    \end{equation}
+
+    Substituindo os dados do enunciado do problema nas Equações (\ref{eq:R(t) e R_0}) e (\ref{eq:Temperatura t}), obtemos:
+    \begin{equation}
+        t=1451.95\text{ }^{\circ}\text{C}\approxeq1452\text{ }^{\circ}\text{C}\quad\therefore\quad\boxed{T=1725\text{ K}}
+    \end{equation}
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+
+
+    \item A lei de Stefan-Boltzmann pode ser modelada seguindo uma dependência da tensão medida pelo sensor e a partir desta pode-se extrair um relação linear entre a tensão $V_d$ medida pelo sensor e a temperatura $T$ da lâmpada a partir do processo de linearização:
+    \begin{equation}
+        V_d=S\cdot T^4\implies \log_{10}{(V_d)}=\log_{10}{(ST^4)}\quad\therefore\quad\boxed{\log_{10}{(V_d)}=\log_{10}{(S)}+4\log_{10}{(T)}}
+    \end{equation}
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+
+    Com base nos dados obtidos em laboratório e inferidos presentes na Tabela \ref{tab:Atv11c}, foi possível construir-se um gráfico do tipo $\log_{10}{(V_d)}\times\log_{10}{(T)}$ e realizar um ajuste linear para assim obter o coeficiente angular da reta de melhor ajuste que representa justamente o expoente do fator temperatura na lei de Stefan-Boltzmann.
+    \begin{figure}[htp!]
+            \centering
+            \includegraphics[width=1.00\linewidth]{Figures/Fit_logVdxlogT.png}
+            \caption{Ajuste linear (reta) para os dados experimentais (pontos). A região hachurada indica o intervalo de confiança padrão de $95\%$. Ajuste feito utilizando todas as medidas.}
+            \label{fig:Fit_logVdxlogT}
+    \end{figure}
+
+    O valor encontrado para o expoente neste primeiro caso foi $b\approxeq2.76$. Uma vez que o valor teórico previsto é de $b\approxeq4$, nota-se que nossas medições não foram boas. Uma forma de tentar melhorar a precisão do nosso ajuste é excluir a primeira medição de nosso conjunto de medidas uma vez que houve problemas com o medidor de tensão durante o experimento. Ao fazer isso obtemos uma nova curva de ajuste linear com $b\approxeq3.34$. Claramente não está bom o suficiente, entretanto, dadas as complicações experimentais, esse valor provavelmente é o mais preciso que podemos encontrar para o experimento sobre a lei de Stefan-Boltzmann.
+
+    \begin{figure}[htp!]
+            \centering
+            \includegraphics[width=1.00\linewidth]{Figures/Fit_logVdxlogT_f.png}
+            \caption{Ajuste linear (reta) para os dados experimentais (pontos). A região hachurada indica o intervalo de confiança padrão de $95\%$. Ajuste feito descartando a primeira medida.}
+            \label{fig:Fit_logVdxlogT_f}
+    \end{figure}
+    
+    
+
+
+    \item Durante a atividade em laboratório, foi possível medir experimentalmente os valores da tensão do detector $V_D$, a tensão $V_L$ e a corrente $I_L$ aplicadas na lâmpada, respectivamente. Com auxílio da primeira Equação apresentada em (\ref{eq:R(t) e R_0}) foi possível obter os valores da resistência elétrica como função da temperatura $R(t)$. Por fim, obteve-se os valores da temperatura (em Kelvin) da lâmpada através da Equação (\ref{eq:final'}). De posse desses dados, foi possível construir a Tabela \ref{tab:Atv11c} abaixo:
+    \begin{table}[htp!]
+            \centering
+            \caption{Parâmetros relevantes para o experimento sobre a lei de Stefan-Boltzmann.}
+            \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            $V_d$ (mVolts) & $V_L$ (Volts) & $I_L$ ($\text{A}$) & $R(t)$ ($\Omega$) & $T$ ($\text{K}$) \\
+            \hline
+            $24.7$ & $1.85$ & $1.505$ & $1.229$ & $859.47$  \\
+            $51.8$ & $3.74$ & $2.168$ & $1.725$ & $1269.42$ \\
+            $96.7$ & $5.60$ & $2.716$ & $2.062$ & $1538.52$ \\
+            $151.2$ & $7.40$ & $3.163$ & $2.340$ & $1755.23$ \\
+            $217.9$ & $9.26$ & $3,678$ & $2.588$ & $1945.41$ \\
+            $301.$ & $11.18$ & $3.890$ & $2.874$ & $2160.20$ \\
+                \hline
+            \end{tabular}
+            \label{tab:Atv11c}
+        \end{table}
+    
+
+
+    \item Considere a equação geral que exprime a relação quadrática da resistência de um material com relação à temperatura na qual este se encontra:
+    \begin{equation} \label{eq:R(t)}
+        R(t)=R_0\left(1+\alpha t+\beta t^2\right)\iff 1+\alpha t+\beta t^2+\frac{R(t)}{R_0}=0.
+    \end{equation}
+
+    Note que obtemos uma equação do 2º grau solúvel nos números reais. Resolvendo a Equação (\ref{eq:R(t)}) obtemos então:
+    \begin{equation} \label{eq:final'}
+        t=\frac{1}{2\beta}\cdot\left\{-\alpha\pm\sqrt{\alpha^2-4\beta\left(1-\frac{R(t)}{R_0}\right)}\right\}\quad\therefore\quad\boxed{T=(t+273)\text{ K}}
+    \end{equation}
+    \begin{flushright}
+        $\blacksquare$
+    \end{flushright}
+    
+    
+\end{enumerate}
+
+
+
+
+
+\noindent\makebox[\linewidth]{\rule{\paperwidth}{0.4pt}}
+
+
+
+
+\end{document}
