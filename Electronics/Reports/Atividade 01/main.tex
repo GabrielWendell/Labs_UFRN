@@ -1,0 +1,367 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{amsmath}  
+\usepackage{physics}
+\usepackage{graphicx} 
+\usepackage[portuguese]{babel}
+\usepackage[margin=1in,letterpaper]{geometry} 
+\usepackage{cite} 
+\usepackage[final]{hyperref} 
+\hypersetup{
+	colorlinks=true,       
+	linkcolor=blue,        
+	citecolor=blue,        
+	filecolor=magenta,     
+	urlcolor=blue         
+}
+
+
+\begin{document}
+\title{\bf Circuitos RC como integradores e diferenciadores}
+\author{Gabriel Wendell Celestino Rocha\footnote{\href{mailto:gabrielwendell@fisica.ufrn.br}{gabrielwendell@fisica.ufrn.br}}}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+Circuitos eletrônicos são uma parte básica de todos os aparelhos eletrônicos existentes. Diante desse fato, é importante que se tenha um conhecimento básico sobre o funcionamento e a montagem dos circuitos mais básicos, em particular o circuito RC que é o mais simples circuito elétrico existente. Neste experimento foi estudado os procedimentos experimentais necessários para a montagem e análise de um circuito RC que se comporte como um integrador e como um diferenciador.
+\end{abstract}
+
+
+\section{Introdução}
+Existem três componentes básicos de circuitos analógicos: o resistor (R), o capacitor (C) e o indutor (L). Estes componentes podem ser combinados em quatro importantes circuitos conhecidos como {\it circuito RC}, {\it circuito RL}, {\it circuito LC} e {\it circuito RLC}, onde cada abreviação indica a componente eletrônica usada no circuito. Neste experimento, vamos estudar o comportamento circuito RC, que por sua vez é o mais simples dos quatro mencionados anteriormente. Em particular, vamos avaliar as condições necessárias para que este circuito atue como um integrador ou como um diferenciador no sistema como um todo.
+
+
+\section{Embasamento teórico}\label{Sec 2}
+Nesta seção iremos abordar os fundamentos teóricos necessários para a análise dos dados e posterior compreendimento dos mesmos, bem como a física envolvida durante todo o processo. 
+
+\subsection{Circuito RC}
+Considere um circuito composto por um capacitor $R$ que está sendo carregado por uma fonte do tipo DC (do inglês, {\it direct current}) cuja tensão vale $V_{i}$ e que por sua vez está associado em série com um resistor $R$, conforme ilustra a Fig. \ref{RC-001}. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/RC-001.png}
+    \caption{Circuito RC com a chave aberta.}
+    \label{RC-001}
+\end{figure}
+
+Ao fecharmos a chave a corrente passará a fluir no circuito e com isso irá carregar o capacitor, polarizando as suas placas com cargas iguais a $+Q$ e $-Q$, respectivamente, como ilustrado na Fig. \ref{RC-002}. A corrente $I$ no capacitor será 
+\begin{equation}\label{Corrente capacitor}
+    I=C\frac{dV}{dt}
+\end{equation}
+onde $C$ é a capacitância do capacitor, $V$ é a DDP (diferença de potencial) no qual o capacitor está submetido e $t$ o tempo necessário para que o mesmo seja carregado.
+
+A corrente que passa pelo resistor será dada pela primeira lei de Ohm:
+\begin{equation}
+    V_{R}=IR\implies I=\frac{V_{R}}{R}
+\end{equation}
+
+Pela lei das malhas, temos que $V_{i}-V_{R}-V=0$. Como a corrente deve ser a mesma ao longo da malha, então
+\begin{equation}
+    C\frac{dV}{dt}=\frac{V_{i}-V}{R}
+\end{equation}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/RC-002.png}
+    \caption{Circuito RC com a chave fechada. Note que temos aqui o processo de carregamento do capacitor.}
+    \label{RC-002}
+\end{figure}
+
+Reagrupando os termos semelhantes e integrando ambos os lados da equação obtemos a equação abaixo, onde $A$ é uma constante a ser determinada pelas condições iniciais do sistema.
+\begin{equation}\label{V=V_i+Ae^(-t/RC)}
+    V=V_{i}+A\exp\Bigg(\frac{-t}{RC}\Bigg)
+\end{equation}
+
+Se impormos como condições iniciais que em $t=0$, $V=0$, obtemos $A=-V_{i}$. Portanto, obtemos finalmente uma função que relaciona a tensão $V$ durante o processo de carga com o $t$ necessário para carregar o capacitor
+\begin{equation}\label{V(t) - Carga}
+    V_{C}(t)=V_{i}\cdot\Bigg[1-\exp\Bigg(-\frac{t}{RC}\Bigg)\Bigg]
+\end{equation}
+
+Podemos relacionar ainda a carga $Q$ armazenada no capacitor durante esse processo em função do tempo $t$ através da definição de capacitância
+\begin{equation}\label{Def. capacitância}
+    C=\frac{Q}{V}\implies V=\frac{Q}{C}
+\end{equation}
+
+Combinando as equações (\ref{V(t) - Carga}) e (\ref{Def. capacitância}), podemos construir o gráfico do processo de carga de um capacitor:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/RC-003.png}
+    \caption{Carga em função do tempo para um circuito RC durante o processo de carregamento.}
+    \label{RC-003}
+\end{figure}
+
+Para o processo de descarga podemos usar um raciocínio análogo. Igualamos a corrente no capacitor e no resistor, agrupamos os termos semelhantes e os integramos em ambos os lados da equação resultando assim na função
+\begin{equation}\label{V(t) - Descarga}
+    V_{R}(t)=V_{i}\cdot\exp\Bigg(-\frac{t}{RC}\Bigg)
+\end{equation}
+
+O gráfico que irá descrever o processo de descarga será então
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/RC-004.png}
+    \caption{Carga em função do tempo para um circuito RC durante o processo de descarregamento.}
+    \label{RC-004}
+\end{figure}
+
+Desse modo, a tensão sobre o capacitor tende a $V_{i}$ conforme o tempo passa, enquanto a tensão sobre o resistor tende a zero, como ilustrado nos gráficos \ref{RC-003} e \ref{RC-004}. Isto está de acordo com o conceito intuitivo de que o capacitor estará sendo carregado pela fonte de tensão conforme o tempo decorre, e estará eventualmente totalmente carregado, formando assim um circuito aberto.
+
+As equações (\ref{V(t) - Carga}) e (\ref{V(t) - Descarga}) mostram que um circuito RC possui uma constante de tempo característico usualmente representada por $\tau=RC$. Essa constante representa o tempo característico necessário para que a tensão se eleve (sobre $C$) ou se reduza (sobre $R$) até $1/e$ do seu valor final. Desta forma, $\tau$ é o tempo necessário para que $V_{C}$ atinja $V_{i}(1-1/e)$ e o tempo para que $V_{R}$ atinja $V(1/e)$.
+
+Note que indo de $t=N\tau$ até $t=(N+1)\tau$, a tensão irá atingir cerca de 63\% do seu valor quando $t=N\tau$, que será justamente quando a mesma estará próxima de seu valor final. Dessa forma, o capacitor irá se carregar em cerca de 63\% após $\tau$, e estará quase totalmente carregado após $5\tau$ (cerca de 99.3\%). Quando a fonte de tensão é substituída por um curto-circuito, desde que o capacitor esteja totalmente carregado, a tensão através do mesmo irá sendo reduzida exponencialmente em $t$ com $V\rightarrow0$. Com isso, após um tempo igual a $\tau$ o capacitor estará cerca de 37\% descarregado, e quase completamente descarregado após $5\tau$ (cerca de 0.7\%). 
+
+
+% -------------------------------
+% SUB-SEÇÃO 2.2
+\subsection{Integradores e diferenciadores}\label{subseção 2.2}
+Vamos estudar agora o comportamento do circuito como um integrador e como um diferenciador. De maneira resumida, um {\bf integrador} é um sistema onde para um dado sinal de entrada $x(t)$ o sinal de saída é a sua integral, ou seja
+\begin{equation}\label{Integrador}
+    y(t)=\int_{-\infty}^{t}x(\tau)d\tau
+\end{equation}
+
+Já para um diferenciador, o sinal de saída $y(t)$ é a derivada do sinal de entrada $x(t)$, ou seja
+\begin{equation}\label{Diferenciador}
+    y(t)=x'(t)=\frac{d}{d\tau}x(t)
+\end{equation}
+
+Sabe-se que a frequência de corte (o ponto no qual um dado filtro atenua um certo sinal para $1/\sqrt{2}$) de um circuito RC é justamente o inverso do tempo característico deste mesmo circuito. Dessa forma, vamos considerar a saída sobre o capacitor em uma alta frequência
+\begin{equation}\label{omega - Integrador}
+    \omega>>\frac{1}{\tau}
+\end{equation}
+
+Considere agora a expressão da corrente abaixo
+\begin{equation}\label{I - integrador}
+    I=\frac{V_{in}}{R+\frac{1}{j\omega C}}
+\end{equation}
+
+onde $j=\sqrt{-1}$ representa a unidade complexa. A condição para a frequência imposta em (\ref{omega>>1/RC}) implica que
+\begin{equation}
+    \omega C>>\frac{1}{R}\implies I\approx\frac{V_{in}}{R}
+\end{equation}
+que é justamente a lei de Ohm.
+
+Considere agora
+\begin{equation}\label{Integrador}
+    V_{C}=\frac{1}{C}\int_{0}^{t}Idt\implies V_{C}\approx\frac{1}{\tau}\int_{0}^{t}V_{in}dt
+\end{equation}
+que por sua vez é um {\bf integrador} "através do capacitor".
+
+Isto implica que no caso de um integrador o capacitor não possui tempo suficiente para se carregar, o que implica que a sua tensão é muito pequena. Dessa forma, a tensão na entrada é aproximadamente igual à tensão no resistor
+
+Para estudar o circuito atuando como um diferenciador, basta considerarmos as saídas através do resistor a uma frequência baixa, de modo que
+\begin{equation}\label{omega - Diferenciador}
+    \omega<<\frac{1}{\tau}
+\end{equation}
+
+Considere agora a expressão para $I$ dada a condição abaixo
+\begin{equation*}
+    R<<\frac{1}{\omega C}\implies I\approx\frac{V_{in}}{\frac{1}{j\omega C}}\implies V_{in}\approx\frac{I}{j\omega C}\approx V_{C}
+\end{equation*}
+
+Donde concluímos que
+\begin{equation}
+    V_{R}=IR=C\frac{dV_{C}}{dt}R\implies V_{R}\approx \tau\frac{dV_{in}}{dt}
+\end{equation}
+que por sua vez é um {\bf diferenciador} "através do resistor".
+
+Isto significa que o capacitor necessita de um período de tempo para se carregar até que sua tensão esteja aproximadamente igual à tensão da fonte.
+
+Ou seja, para que o nosso circuito RC atue como um integrador usamos a tensão no capacitor e para que o mesmo atue como um diferenciador usamos a tensão no resistor. Isso significa que, quando um certo sinal de entrada $x(t)$
+
+
+\subsection{Análise de sinais no domínio da frequência}\label{subseção 2.3 - Análise de sinais}
+No domínio da frequência um sinal é representado apenas pelos seus parâmetros, ficando subentendida a função temporal (senoidal) escolhida como referência na decomposição:
+\begin{equation}
+    x(f)\rightarrow[A,f,\phi]
+\end{equation}
+
+Uma vez que a função periódica de referência já está implícita no domínio da frequência, a caracterização do sinal decomposto em termos dessa referência necessita apenas dos parâmetros resultantes da decomposição.
+
+Jean B. J. Fourier publicou um estudo em 1822 no qual mostrava que um sinal periódico pode ser expresso como uma série de senos e cossenos. Partindo desse ponto, vamos estudar o comportamento de uma onda quadrada de amplitude unitária:
+\begin{equation}\label{Onda quadrada}
+    f(t)=\frac{4}{\pi}\Bigg[\cos{(\omega t)}-\frac{1}{3}\cos{(3\omega t)}+\frac{1}{5}\cos{(5\omega t)}-\ldots\Bigg]
+\end{equation}
+
+ou de maneira mais geral
+\begin{equation}\label{Onda quadrada - geral}
+    f(t)=\frac{4}{\pi}\sum_{k=1}^{\infty}\frac{\sin{[2\pi(2k-1)t]}}{2k-1}
+\end{equation}
+
+Dessa forma, se aplicarmos um sinal de entrada $x(t)$ como exposto em (\ref{Onda quadrada}), o sinal de saída $y(t)$ será, como exposto na equação (\ref{Integrador}), a integral dessa função, logo
+\begin{equation}\label{Onda triangular}
+    y(t)=\frac{4}{\pi}\Bigg[\sin{(\omega t)}-\frac{1}{9}\sin{(3\omega)}+\frac{1}{25}\sin{(5\omega t)}-\ldots\Bigg]
+\end{equation}
+
+Ou de maneira mais geral, ao integrar a função (\ref{Onda quadrada - geral}), obteremos
+\begin{equation}\label{Onda triangular - geral}
+    y(t)=-\frac{8}{\pi^{2}}\sum_{k=1}^{\infty}\frac{(-1)^{k}}{(2k-1)^{2}}\sin{[2\pi(2k-1)t]}
+\end{equation}
+
+que é justamente a equação que descreve uma onda triangular.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Procedimentos experimentais}\label{Seção 3 - Experimento}
+O experimento como um todo foi realizado em três etapas. Na primeira foi-se investigado o comportamento do circuito como um integrador. Já na segunda se investigou o comportamento do mesmo como um diferenciador. Por fim, na terceira etapa foi realizada uma simulação usando o programa \href{https://docente.ifrn.edu.br/leonardoteixeira/links/instalador-do-circuitmaker-student/view}{\texttt{CircuitMaker}} utilizando os mesmos componentes e instrumentos utilizados na experiência no laboratório. A comparação entre os dados experimentais e a simulação se encontra na seção \ref{Sec 4}. 
+
+Abaixo está listado os materiais utilizados nas duas etapas do experimento:
+\begin{enumerate}
+    \item 1 gerador de funções AGF1022 da Tektronix;
+    \item 1 osciloscópio digital TDS11002B da Tektronix;
+    \item 1 protoboard de duas seções;
+    \item 1 capacitor de $1\mu$F;
+    \item 1 resistor de 1k$\Omega$.
+\end{enumerate}
+
+Vamos agora descrever o procedimento experimental em cada etapa.
+\subsection{Etapa 1: Circuito como integrador}\label{Etapa 1}
+\begin{enumerate}
+    \item Primeiramente, montou-se um circuito RC de acordo com a Fig. (\ref{RC-002}) e usamos um $V_{i}$ como sendo uma onda quadrada de $\omega=5$ kHz e $10V_{pp}$, onde $V_{pp}$ representa a tensão de pico a pico da nossa onda quadrada. 
+
+    \item Em seguida, por meio do osciloscópio, captou-se o sinal direto do gerador de funções. O sinal capturado pelo osciloscópio encontra-se abaixo. O canal utilizado foi o 1. \\
+    \begin{itemize}
+        \item Captura do sinal de entrada no circuito durante a Etapa 1:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Gerador de funções.png}
+            \caption{Sinal capturado direto do gerador de funções para uma onda quadrada.}
+            \label{Sinal - Gerador de funções}
+        \end{figure}
+    \end{itemize}
+     
+     O valor de referência do eixo horizontal (tempo) é de 50.0 ms enquanto o valor de referência do eixo vertical (tensão) é de 5.00 V.
+     
+     \item Em seguida, captou-se o sinal entre os terminais do capacitor. O gráfico gerado pelo osciloscópio foi o que se segue. \\
+    \begin{itemize}
+        \item Captura do sinal de saída do capacitor:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Sinal-Capacitor.png}
+            \caption{Sinal capturado entre os terminais do capacitor.}
+            \label{Sinal - Capacitor}
+        \end{figure}
+    \end{itemize}
+    
+    Ou seja, temos que apesar de o sinal de entrada ser uma onda quadrada, quando captamos o sinal no capacitor obtemos uma onda triangular.
+\end{enumerate}
+
+\subsection{Etapa 2: Circuito como diferenciador}\label{Etapa 2}
+\begin{enumerate}
+    \item Analogamente ao que foi feito na etapa 1, montou-se um circuito RC e selecionou-se $V_{i}$ como sendo uma onda quadrada, porém utilizamos 10 Hz de frequência e $10V_{pp}$.
+    
+    \item Em seguida, capturou-se então o sinal direto do gerador de funções. 
+    \begin{itemize}
+        \item Captura do sinal de entrada no circuito durante a Etapa 2:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Gerador de funções.png}
+             \caption{Sinal capturado direto do gerador de funções para uma onda quadrada.}
+            \label{Sinal - Gerador de funções 2}
+        \end{figure}
+    \end{itemize}
+    
+    Note que o resultado foi basicamente o mesmo obtido na etapa anterior.
+    
+    \item Por fim, avaliou-se o sinal direto dos terminais do resistor.
+    \begin{itemize}
+        \item Captura do sinal de saída do resistor:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Sinal-Resistor.png}
+            \caption{Sinal capturado entre os terminais do resistor.}
+            \label{Sinal - Resistor}
+        \end{figure}
+    \end{itemize}
+    
+    Note que o sinal capturado nos terminais do resistor atinge um pico mínimo, cresce exponencialmente, assume um pico máximo, decai exponencialmente e então atinge outro pico mínimo.
+\end{enumerate}
+
+\subsection{Etapa 3: Simulação da Etapa 1 usando o \texttt{CircuitMaker}}
+\begin{enumerate}
+    \item Inicialmente, criou-se um arquivo na extensão \texttt{.CKT} intitulado \texttt{RC\_Circuit\_Integrator.ckt} onde se montou um circuito como descrito na etapa 1, subseção \ref{Etapa 1}.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/CircuitMaker_Integrator.png}
+        \caption{{\it Schematic} de um circuito RC montado no \texttt{CircuitMaker} seguindo a descrição exposta na Etapa 1, Seção \ref{Etapa 1}.}
+        \label{RC_Circuit_Integrator}
+    \end{figure}
+    
+    \item O sinal de entrada foi definido de forma a ser semelhante ao utilizado durante a prática em laboratório.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/CircuitMaker_Signal.png}
+        \caption{Sinal aplicado ao circuito montado no \texttt{CircuitMaker}.}
+        \label{RC_Circuit_Integrator}
+    \end{figure}
+    
+    \item Dessa forma, avaliou-se o sinal de saída no terminal do capacitor e obteve-se o seguinte gráfico:
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/RC_Circuit_Capacitor.png}
+        \caption{Sinal de saída capturado nos terminais do capacitor.}
+        \label{RC_Circuit_Capacitor}
+    \end{figure}
+    
+\end{enumerate}
+
+\subsection{Etapa 4: Simulação da Etapa 2 usando o \texttt{CircuitMaker}}
+\begin{enumerate}
+
+    \item Semelhantemente ao que foi feito na etapa anterior, foi criado um arquivo na extensão \texttt{.CKT} intitulado \texttt{RC\_Circuit\_Differentiator.ckt} onde foi montado um circuito como descrito na etapa 2, subseção \ref{Etapa 2}.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/RC_Circuit_Diff.png}
+        \caption{{\it Schematic} de um circuito RC montado no \texttt{CircuitMaker} seguindo a descrição exposta na Etapa 2, Seção \ref{Etapa 2}.}
+        \label{RC_Circuit_Integrator}
+    \end{figure}
+    
+    \item E da mesma forma como foi feito na etapa anterior, avaliou-se o sinal de saída do resistor:
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/RC_Circuit_Resistor.png}
+        \caption{Sinal de saída capturado nos terminais do resistor.}
+        \label{RC_Circuit_Resistor}
+    \end{figure}
+    
+\end{enumerate}
+
+
+\section{Análise dos resultados}\label{Sec 4}
+Nesta seção iremos discutir os resultados obtidos ao longo das etapas experimentais descritas anteriormente. 
+
+Como descrito na seção \ref{subseção 2.2}, o sinal de saída de um integrador deve ser a integral do sinal de entrada e no caso do diferenciador o sinal de saída deve ser a derivada do sinal de entrada. Como o capacitor e o resistor atuam como um integrador e um diferenciador através do circuito, respectivamente (vide seção \ref{subseção 2.2}), o sinal medido no capacitor deve ser a integral de uma onda quadrada (equação \ref{Onda quadrada - geral}), que por sua vez resulta numa onda triangular (equação \ref{Onda triangular - geral}), como descrito na seção \ref{subseção 2.3 - Análise de sinais}. Com relação ao sinal de saída do resistor, espera-se que o mesmo seja a derivada da onda quadrada, ou seja, que o mesmo atinja um pico de mínimo seguido de uma tendência modulada como uma função exponencial crescente do tipo (\ref{V(t) - Carga}) semelhante à ilustrada na Fig. \ref{RC-003} e ao tocar o eixo horizontal (tempo) atinja de forma súbita um pico de máximo seguido de uma tendência modulada como uma função exponencial decrescente do tipo (\ref{V(t) - Descarga}) semelhante à ilustrada na Fig. \ref{RC-004}.
+
+Os sinais de saída do capacitor e do diferenciador expostos nas figuras \ref{Sinal - Capacitor} e \ref{Sinal - Resistor}, respectivamente, ilustram muito bem as tendências esperadas para a integral e a derivada de um sinal de entrada como uma onda quadrada.
+
+Com relação ao modelo teórico obtido por meio de uma simulação através do programa \texttt{CircuitMaker}, temos algumas discrepâncias. Primeiramente, devido a limitações do próprio programa que não permite gerar outros tipos de sinais que não seja senoides perfeitos, é necessário modular o mesmo para que este assuma a tendência desejada, a de uma onda quadrada neste caso. Isso faz com que o sinal de entrada não seja uma onda quadrada perfeita causando discrepâncias consideráveis com o modelo teórico esperado. Entretanto, mesmo diante de tais limitações, ainda assim é possível notar nas figuras \ref{RC_Circuit_Capacitor} e \ref{RC_Circuit_Resistor} uma tendência razoavelmente semelhante à esperada segundo o modelo matemático ideal. 
+
+
+\section{Conclusões}
+Dado o exposto ao longo deste relatório, temos que os resultados experimentais expostos na seção \ref{Seção 3 - Experimento} condizem com o modelo matemático exposto na seção \ref{Sec 2}. Portanto, temos que os resultados experimentais estão dentro do esperado do modelo teórico a menos de alguns ruídos experimentais, mostrando assim que o modelo teórico para um circuito RC exprime muito bem um circuito RC real.
+
+5  ,
+
+
+\begin{thebibliography}{100}
+
+\bibitem{Spitzer}
+Spitzer, Frank; Howarth (1973). \textit{Principles of Modern Instrumentation}. Nova York: [s.n.] p. Ch. 11
+
+\bibitem{Sedra}
+SEDRA, Adel S., \textit{Microeletrônica} 5º ed. volume único, Prentice Hall, 1997
+
+\bibitem{Bakshi}
+Bakshi, U.A.; Bakshi, A.V., \textit{Circuit Analysis - II}, Technical Publications, 2009 \texttt{ISBN 9788184315974}.
+
+\bibitem{Horowitz}
+Horowitz, Paul; Hill, Winfield, \textit{The Art of Electronics} (3rd edition), Cambridge University Press, 2015 \texttt{ISBN 0521809266}.
+
+\end{thebibliography}
+
+
+\end{document}
