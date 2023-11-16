@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<!-- saved from url=(0094)https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/ -->
+<html lang="en-GB"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<title>Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="alternate" href="https://www.meccanismocomplesso.org/contatore-geiger-misuriamo-i-livelli-di-radiazione-con-arduino/" hreflang="it">
+<link rel="alternate" href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/" hreflang="en">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Meccanismo Complesso » Feed" href="https://www.meccanismocomplesso.org/en/feed/">
+<link rel="alternate" type="application/rss+xml" title="Meccanismo Complesso » Comments Feed" href="https://www.meccanismocomplesso.org/en/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Meccanismo Complesso » Geiger Counter – Measuring Radiation Levels with Arduino Comments Feed" href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/feed/">
+<script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f.txt"></script><script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f(1).txt"></script><script async="" type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/cmp2.js.download"></script><script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f(2).txt" id="google_shimpl"></script><script async="" type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/choice.js.download"></script><script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.meccanismocomplesso.org\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.0.1"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script><script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-quicklatex-format-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/quicklatex-format.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/style.min.css" type="text/css" media="all">
+<style id="global-styles-inline-css" type="text/css">
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel="stylesheet" id="dashicons-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/dashicons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="post-views-counter-frontend-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/frontend.css" type="text/css" media="all">
+<link rel="stylesheet" id="thickbox-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/thickbox.css" type="text/css" media="all">
+<link rel="stylesheet" id="mycred-badge-front-style-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/front.css" type="text/css" media="all">
+<link rel="stylesheet" id="onepress-fonts-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="onepress-animate-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/animate.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="onepress-fa-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/font-awesome.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="onepress-bootstrap-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="onepress-style-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/style.css" type="text/css" media="all">
+<style id="onepress-style-inline-css" type="text/css">
+#main .video-section section.hero-slideshow-wrapper{background:transparent}.hero-slideshow-wrapper:after{position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:rgba(0,0,0,0.3);display:block;content:""}.body-desktop .parallax-hero .hero-slideshow-wrapper:after{display:none!important}#parallax-hero>.parallax-bg::before{background-color:rgba(0,0,0,0.3);opacity:1}.body-desktop .parallax-hero .hero-slideshow-wrapper:after{display:none!important}#footer-widgets{}.gallery-carousel .g-item{padding:0px 10px}.gallery-carousel{margin-left:-10px;margin-right:-10px}.gallery-grid .g-item,.gallery-masonry .g-item .inner{padding:10px}.gallery-grid,.gallery-masonry{margin:-10px}
+</style>
+<link rel="stylesheet" id="onepress-gallery-lightgallery-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/lightgallery.css" type="text/css" media="all">
+<link rel="stylesheet" id="mycred-front-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/mycred-front.css" type="text/css" media="all">
+<link rel="stylesheet" id="mycred-social-share-icons-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/mycred-social-icons.css" type="text/css" media="all">
+<link rel="stylesheet" id="mycred-social-share-style-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/mycred-social-share.css" type="text/css" media="all">
+<link rel="stylesheet" id="cookie-notice-front-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/front.min.css" type="text/css" media="all">
+<script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/jquery.min.js.download" id="jquery-core-js"></script>
+<script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/jquery-migrate.min.js.download" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/front.js.download" id="mycred-badge-front-js"></script>
+<script type="text/javascript" id="cookie-notice-front-js-extra">
+/* <![CDATA[ */
+var cnArgs = {"ajaxUrl":"https:\/\/www.meccanismocomplesso.org\/wp-admin\/admin-ajax.php","nonce":"f8594ca168","hideEffect":"fade","position":"bottom","onScroll":"0","onScrollOffset":"100","onClick":"0","cookieName":"cookie_notice_accepted","cookieTime":"2592000","cookieTimeRejected":"2592000","cookiePath":"\/","cookieDomain":"","redirection":"0","cache":"1","refuse":"1","revokeCookies":"1","revokeCookiesOpt":"automatic","secure":"1"};
+/* ]]> */
+</script>
+<script async="" type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/front.min.js.download" id="cookie-notice-front-js"></script>
+<script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/wp-quicklatex-frontend.js.download" id="wp-quicklatex-frontend-js"></script>
+<link rel="https://api.w.org/" href="https://www.meccanismocomplesso.org/wp-json/"><link rel="alternate" type="application/json" href="https://www.meccanismocomplesso.org/wp-json/wp/v2/posts/14666"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.meccanismocomplesso.org/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.meccanismocomplesso.org/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 6.0.1">
+<link rel="canonical" href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/">
+<link rel="shortlink" href="https://www.meccanismocomplesso.org/?p=14666">
+<link rel="alternate" type="application/json+oembed" href="https://www.meccanismocomplesso.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.meccanismocomplesso.org%2Fen%2Fgeiger-counter-measuring-radiation-levels-with-arduino%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.meccanismocomplesso.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.meccanismocomplesso.org%2Fen%2Fgeiger-counter-measuring-radiation-levels-with-arduino%2F&amp;format=xml">
+                <!-- auto ad code generated with Easy Google AdSense plugin v1.0.4 -->
+                <script async="" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f(3).txt" crossorigin="anonymous" data-checked-head="true"></script>      
+                <!-- / Easy Google AdSense plugin --><link rel="stylesheet" type="text/css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/linkBox_dflb.css">
+<script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/gen.js.download"></script><script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/requestform.js.download"></script><link rel="pingback" href="https://www.meccanismocomplesso.org/xmlrpc.php">
+		<style>
+			#wp-admin-bar-pvc-post-views .pvc-graph-container { padding-top: 6px; padding-bottom: 6px; position: relative; display: block; height: 100%; box-sizing: border-box; }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph {
+				display: inline-block;
+				width: 1px;
+				margin-right: 1px;
+				background-color: #ccc;
+				vertical-align: baseline;
+			}
+			#wp-admin-bar-pvc-post-views .pvc-line-graph:hover { background-color: #eee; }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-0 { height: 1% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-1 { height: 5% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-2 { height: 10% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-3 { height: 15% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-4 { height: 20% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-5 { height: 25% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-6 { height: 30% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-7 { height: 35% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-8 { height: 40% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-9 { height: 45% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-10 { height: 50% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-11 { height: 55% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-12 { height: 60% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-13 { height: 65% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-14 { height: 70% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-15 { height: 75% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-16 { height: 80% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-17 { height: 85% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-18 { height: 90% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-19 { height: 95% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-20 { height: 100% }
+		</style><link rel="icon" href="https://www.meccanismocomplesso.org/wp-content/uploads/2013/12/cropped-icona-sito3-32x32.jpg" sizes="32x32">
+<link rel="icon" href="https://www.meccanismocomplesso.org/wp-content/uploads/2013/12/cropped-icona-sito3-192x192.jpg" sizes="192x192">
+<link rel="apple-touch-icon" href="https://www.meccanismocomplesso.org/wp-content/uploads/2013/12/cropped-icona-sito3-180x180.jpg">
+<meta name="msapplication-TileImage" content="https://www.meccanismocomplesso.org/wp-content/uploads/2013/12/cropped-icona-sito3-270x270.jpg">
+		<style type="text/css" id="wp-custom-css">
+			.elenco {
+    font-family: "Raleway", Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.elenco a {
+	 color: #333333;
+}
+
+.wp-block-media-text {
+	margin-bottom: 10px;
+}
+
+		</style>
+		<!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+<script type="text/javascript" async="true">
+(function() {
+    var host = 'www.themoneytizer.com';
+    var element = document.createElement('script');
+    var firstScript = document.getElementsByTagName('script')[0];
+    var url = 'https://quantcast.mgr.consensu.org'
+        .concat('/choice/', '6Fv0cGNfc_bw8', '/', host, '/choice.js');
+    var uspTries = 0;
+    var uspTriesLimit = 3;
+    element.async = true;
+    element.type = 'text/javascript';
+    element.src = url;
+
+    firstScript.parentNode.insertBefore(element, firstScript);
+
+    function makeStub() {
+        var TCF_LOCATOR_NAME = '__tcfapiLocator';
+        var queue = [];
+        var win = window;
+        var cmpFrame;
+
+        function addFrame() {
+            var doc = win.document;
+            var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+            if (!otherCMP) {
+                if (doc.body) {
+                    var iframe = doc.createElement('iframe');
+
+                    iframe.style.cssText = 'display:none';
+                    iframe.name = TCF_LOCATOR_NAME;
+                    doc.body.appendChild(iframe);
+                } else {
+                    setTimeout(addFrame, 5);
+                }
+            }
+            return !otherCMP;
+        }
+
+        function tcfAPIHandler() {
+            var gdprApplies;
+            var args = arguments;
+
+            if (!args.length) {
+                return queue;
+            } else if (args[0] === 'setGdprApplies') {
+                if (
+                    args.length > 3 &&
+                    args[2] === 2 &&
+                    typeof args[3] === 'boolean'
+                ) {
+                    gdprApplies = args[3];
+                    if (typeof args[2] === 'function') {
+                        args[2]('set', true);
+                    }
+                }
+            } else if (args[0] === 'ping') {
+                var retr = {
+                    gdprApplies: gdprApplies,
+                    cmpLoaded: false,
+                    cmpStatus: 'stub'
+                };
+
+                if (typeof args[2] === 'function') {
+                    args[2](retr);
+                }
+            } else {
+                queue.push(args);
+            }
+        }
+
+        function postMessageEventHandler(event) {
+            var msgIsString = typeof event.data === 'string';
+            var json = {};
+
+            try {
+                if (msgIsString) {
+                    json = JSON.parse(event.data);
+                } else {
+                    json = event.data;
+                }
+            } catch (ignore) {}
+
+            var payload = json.__tcfapiCall;
+
+            if (payload) {
+                window.__tcfapi(
+                    payload.command,
+                    payload.version,
+                    function(retValue, success) {
+                        var returnMsg = {
+                            __tcfapiReturn: {
+                                returnValue: retValue,
+                                success: success,
+                                callId: payload.callId
+                            }
+                        };
+                        if (msgIsString) {
+                            returnMsg = JSON.stringify(returnMsg);
+                        }
+                        event.source.postMessage(returnMsg, '*');
+                    },
+                    payload.parameter
+                );
+            }
+        }
+
+        while (win) {
+            try {
+                if (win.frames[TCF_LOCATOR_NAME]) {
+                    cmpFrame = win;
+                    break;
+                }
+            } catch (ignore) {}
+
+            if (win === window.top) {
+                break;
+            }
+            win = win.parent;
+        }
+        if (!cmpFrame) {
+            addFrame();
+            win.__tcfapi = tcfAPIHandler;
+            win.addEventListener('message', postMessageEventHandler, false);
+        }
+    };
+
+    if (typeof module !== 'undefined') {
+        module.exports = makeStub;
+    } else {
+        makeStub();
+    }
+
+    var uspStubFunction = function() {
+        var arg = arguments;
+        if (typeof window.__uspapi !== uspStubFunction) {
+            setTimeout(function() {
+                if (typeof window.__uspapi !== 'undefined') {
+                    window.__uspapi.apply(window.__uspapi, arg);
+                }
+            }, 500);
+        }
+    };
+
+    var checkIfUspIsReady = function() {
+        uspTries++;
+        if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+            console.warn('USP is not accessible');
+        } else {
+            clearInterval(uspInterval);
+        }
+    };
+
+    if (typeof window.__uspapi === 'undefined') {
+        window.__uspapi = uspStubFunction;
+        var uspInterval = setInterval(checkIfUspIsReady, 6000);
+    }
+})();
+</script>
+<!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+<meta http-equiv="origin-trial" content="AzoawhTRDevLR66Y6MROu167EDncFPBvcKOaQispTo9ouEt5LvcBjnRFqiAByRT+2cDHG1Yj4dXwpLeIhc98/gIAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjYxMjk5MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A6+nc62kbJgC46ypOwRsNW6RkDn2x7tgRh0wp7jb3DtFF7oEhu1hhm4rdZHZ6zXvnKZLlYcBlQUImC4d3kKihAcAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjYxMjk5MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A/9La288e7MDEU2ifusFnMg1C2Ij6uoa/Z/ylwJIXSsWfK37oESIPbxbt4IU86OGqDEPnNVruUiMjfKo65H/CQwAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjYxMjk5MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><style type="text/css">:root topadblock, :root span[id^="ezoic-pub-ad-placeholder-"], :root mq-programmatic-ad, :root iframe[src^="http://www.adpeepshosted.com/adpeeps.php?"], :root div[id^="zergnet-widget"], :root div[id^="traffective-ad-"], :root div[id^="taboola-stream-"], :root div[id^="sticky_ad_"], :root div[id^="rc-widget-"], :root div[id^="proadszone-"], :root div[id^="lazyad-"], :root div[id^="js-dfp-"], :root div[id^="gtm-ad-"], :root div[id^="google_dfp_"], :root div[id^="ezoic-pub-ad-"], :root div[id^="div-adtech-ad-"], :root div[id^="dfp-slot-"], :root div[id^="dfp-ad-"], :root div[id^="banner-ad-"], :root div[id^="advt-"], :root div[id^="advads_"], :root div[id^="advads-"], :root div[id^="adspot-"], :root div[id^="ads300_100-widget-"], :root div[id^="ads250_250-widget-"], :root div[id^="adrotate_widgets-"], :root div[id^="adngin-"], :root div[id^="adfox_"], :root div[id^="ad_script_"], :root div[id^="ad_rect_"], :root div[id^="ad_position_"], :root div[id^="ad-server-"], :root div[id^="ad-inserter-"], :root div[id^="ad-cid-"], :root div[id^="_vdo_ads_player_ai_"], :root div[data-test-id="AdDisplayWrapper"], :root div[data-subscript="Advertising"], :root div[data-spotim-slot], :root div[data-role="sidebarAd"], :root div[data-native_ad], :root div[data-mediatype="advertising"], :root div[data-insertion], :root div[data-id-advertdfpconf], :root div[data-dfp-id], :root div[data-content="Advertisement"], :root div[data-alias="300x250 Ad 2"], :root div[data-alias="300x250 Ad 1"], :root div[data-adunit], :root div[data-adunit-path], :root div[data-before-content="advertisement"], :root div[data-adservice-param-tagid="contentad"], :root div[data-adname], :root div[data-ad-wrapper], :root div[data-ad-underplayer], :root div[data-ad-placeholder], :root div[class^="sp-adslot-"], :root div[class^="s-dfp-"], :root div[class^="proadszone-"], :root div[class^="pane-google-admanager-"], :root div[class^="native-ad-"], :root div[class^="lifeOnwerAd"], :root div[class^="largeRectangleAd_"], :root div[class^="kiwiad-popup"], :root div[class^="kiwiad-desktop"], :root div[class^="index_adBeforeContent_"], :root div[class^="index_adAfterContent_"], :root div[class^="index__adWrapper"], :root div[class^="block-openx-"], :root div[class^="backfill-taboola-home-slot-"], :root div[class^="articleAdUnitMPU_"], :root div[class^="advertisement-desktop"], :root div[class^="adunit_"], :root div[class^="adsbutt_wrapper_"], :root div[class^="ads-partner-"], :root div[class^="adpubs-"], :root div[class^="adbanner_"], :root div[class^="ad_position_"], :root div[class^="SponsoredAds"], :root div[class^="ResponsiveAd-"], :root div[class^="PreAd_"], :root div[class^="Display_displayAd"], :root div[class^="Directory__footerAds"], :root div[class^="Component-dfp-"], :root div[class^="BlockAdvert-"], :root div[class^="BannerAd_"], :root div[class^="AdhesionAd_"], :root div[class^="Ad__bigBox"], :root div[class^="Ad__adContainer"], :root div[class^="AdSlot__container"], :root div[class^="ad_border_"], :root div[class^="AdItem-"], :root div[class^="AdEmbeded__AddWrapper"], :root span[data-component-type="s-ads-metrics"], :root div[class^="AdBannerWrapper-"], :root div[id^="code_ads_"], :root div.fadeInDown[id$="____equal"][class$="____equal"], :root display-ads, :root display-ad-component, :root bottomadblock, :root aside[id^="tn_ads_widget-"], :root aside[id^="adrotate_widgets-"], :root app-large-ad, :root amp-fx-flying-carpet, :root amp-embed[type="taboola"], :root aa[href^="https://itubego.com/video-downloader/?affid="], :root a[target="_blank"][onmousedown="this.href^='http://paid.outbrain.com/network/redir?"], :root a[onmousedown^="this.href='http://paid.outbrain.com/network/redir?"][target="_blank"], :root a[href^="https://x.trafficandoffers.com/"], :root a[href^="https://www.xvinlink.com/?a_fid="], :root a[href^="https://www.what-sexdating.com/"], :root a[href^="https://www.vfreecams.com/in/?track="], :root a[href^="https://www.sweetdeals.com"], :root a[href^="https://www.sugarinstant.com/?partner_id="], :root a[href^="https://www.sheetmusicplus.com/"][href*="?aff_id="], :root a[href^="https://www.share-online.biz/affiliate/"], :root a[href^="https://www.securegfm.com/"], :root a[href^="https://www.rcbopt.com:8080/offer/"] > img, :root a[href^="https://www.rabbits.webcam/?id="], :root a[href^="https://www.purevpn.com/"][href*="&utm_source=aff-"], :root a[href^="https://www.privateinternetaccess.com/"] > img, :root a[href^="https://www.passeura.com/"], :root div[id^="amzn-assoc-ad"], :root a[href^="https://www.oboom.com/ref/"], :root a[href^="https://www.oboom.com/ad/"], :root a[href^="https://www.nudeidols.com/cams/"], :root a[href^="https://www.mypornstarcams.com/landing/click/"], :root a[href^="https://www.mrskin.com/account/"], :root a[href^="https://www.kingsoffetish.com/tour?partner_id="], :root a[href^="https://www.jackery.com?aff="] > img, :root div[data-adzone], :root a[href^="https://www.iyalc.com/"], :root a[onmousedown^="this.href='http://paid.outbrain.com/network/redir?"][target="_blank"] + .ob_source, :root a[href^="https://www.infowarsstore.com/"] > img, :root div[id^="yandex_ad"], :root a[href^="https://www.pornhat.com/"][rel="nofollow"], :root a[href^="https://www.hotgirls4fuck.com/"], :root a[href^="https://www.healthrangerstore.com/"] > img, :root a[href^="https://www.get-express-vpn.com/offer/"], :root a[href^="https://www.gambling-affiliation.com/cpc/"], :root a[href^="https://www.dollps.com/?track="], :root a[href^="https://www.clicktraceclick.com/"], :root a[href^="https://www.camsoda.com/enter.php?id="], :root a[href^="https://www.brazzersnetwork.com/landing/"], :root a[href^="https://www.bebi.com"], :root .card-captioned.crd > .crd--cnt > .s2nPlayer, :root a[href^="https://www.arthrozene.com/"][href*="?tid="], :root a[href^="https://www.adskeeper.co.uk/"], :root a[href^="https://t.grtyi.com/"], :root a[href^="https://wittered-mainging.com/"], :root a[href^="http://farm.plista.com/pets"], :root a[href^="https://windscribe.com/promo/"], :root [href^="/ucdownload.php"], :root a[href^="https://wantopticalfreelance.com/"], :root a[href^="http://c43a3cd8f99413891.com/"], :root a[href^="https://trust.zone/go/r.php?RID="], :root div[data-ad-targeting], :root a[href^="https://trk.moviesflix4k.xyz/"], :root a[href^="https://trf.bannerator.com/"], :root a[href^="https://bestcond1tions.com/"], :root a[href^="http://go.247traffic.com/"], :root a[href^="https://trappist-1d.com/"], :root a[href^="https://tragency-clesburg.icu/"], :root a[href^="https://tracking.gitads.io/"], :root [href^="https://turtlebids.irauctions.com/"] img, :root [href*="incentrev.com/"] img, :root a[href^="https://tracking.avapartner.com/"], :root a[href^="https://track.ultravpn.com/"], :root a[href^="https://track.interactivegf.com/"], :root a[href^="https://vlnk.me/"], :root a[href^="https://www.adultempire.com/"][href*="?partner_id="], :root a[href^="https://track.healthtrader.com/"], :root a[href^="http://greensmoke.com/"], :root a[href^="https://track.effiliation.com/servlet/effi.click?"] > img, :root a[href^="https://track.clickmoi.xyz/"], :root a[href^="https://track.afcpatrk.com/"], :root a[href^="https://control.trafficfabrik.com/"], :root a[href^="https://track.52zxzh.com/"], :root a[href^="http://www.greenmangaming.com/?tap_a="], :root a[href^="https://go.cmtaffiliates.com/"], :root a[href^="https://tm-offers.gamingadult.com/"], :root a[href^="https://t.hrtyj.com/"], :root a[href^="https://t.adating.link/"], :root a[href^="https://streamate.com/landing/click/"], :root a[href^="https://squren.com/rotator/?atomid="], :root div[id^="ad-div-"], :root a[href^="https://secure.eveonline.com/ft/?aid="], :root div[class^="pane-adsense-managed-"], :root a[href^="https://www.bang.com/?aff="], :root a[href^="https://secure.bstlnk.com/"], :root div[class^="index_displayAd_"], :root a[href^="http://adultgames.xxx/"], :root a[href^="http://semi-cod.com/clicks/"], :root a[href^="https://s.zlink2.com/"], :root div[class^="kiwi-ad-wrapper"], :root a[href^="https://rev.adsession.com/"], :root a[href^="https://someperceptionparade.com/"], :root a[href^="https://refpasrasw.world/"], :root div[data-google-query-id], :root a[href^="https://mediaserver.entainpartners.com/renderBanner.do?"], :root a[href^="https://refpaexhil.top/"], :root a[href^="https://reachtrgt.com/"], :root a[href^="https://queersodadults.com/"], :root AD-SLOT, :root a[href^="https://pubads.g.doubleclick.net/"], :root a[href^="https://prf.hn/click/"][href*="/camref:"] > img, :root a[href^="http://www.my-dirty-hobby.com/?sub="], :root a[href^="https://porndeals.com/?track="], :root a[href^="https://pcm.bannerator.com/"], :root a[href^="https://offerforge.net/"], :root a[href^="https://track.wg-aff.com"], :root a[href^="https://nutrientassumptionclaims.com/"], :root a[href^="https://ndt5.net/"], :root a[href^="https://natour.naughtyamerica.com/track/"], :root a[href^="https://myusenet.xyz/"], :root a[href^="https://my-movie.club/"], :root a[href^="https://msecure117.com/"], :root [href^="https://detachedbates.com/"], :root a[href^="https://mk-cdn.net/"], :root a[href^="https://mk-ads.com/"], :root a[href^="https://meet-sex-here.com/?u="], :root a[href^="https://medleyads.com/"], :root a[href^="https://mediaserver.gvcaffiliates.com/renderBanner.do?"], :root a[href^="https://lead1.pl/"], :root iframe[src^="https://tpc.googlesyndication.com/"], :root a[href^="https://a.bestcontentoperation.top/"], :root a[href^="https://landing1.brazzersnetwork.com"], :root a[href^="https://refpazkjixes.top/"], :root a[href^="http://adrunnr.com/"], :root a[href^="https://landing.brazzersplus.com/"], :root a[href^="https://land.rk.com/landing/"], :root a[href^="http://ad.au.doubleclick.net/"], :root a[href^="https://k2s.cc/pr/"], :root a[href^="https://juicyads.in/"], :root a[href^="https://join.virtuallust3d.com/"], :root [href="https://ourgoldguy.com/contact/"] img, :root a[href^="http://www.uniblue.com/cm/"], :root a[href^="https://join.sexworld3d.com/track/"], :root a[href^="https://join.dreamsexworld.com/"], :root a[href^="https://trusted-click-host.com/"], :root a[href^="https://members.linkifier.com/public/affiliateLanding?refCode="], :root a[href^="https://jmp.awempire.com/"], :root a[href^="https://intenseaffiliates.com/redirect/"], :root [id^="ad_sky"], :root [href^="http://join.shemalepornstar.com/"], :root a[href^="https://incisivetrk.cvtr.io/click?"], :root a[href^="https://iactrivago.ampxdirect.com/"], :root a[href^="https://iac.ampxdirect.com/"], :root a[href^="https://horny-pussies.com/tds"], :root a[href^="https://graizoah.com/"], :root a[href^="https://goraps.com/"], :root a[href^="http://feedads.g.doubleclick.net/"], :root a[href^="https://redsittalvetoft.pro/"], :root a[href^="https://googleads.g.doubleclick.net/pcs/click"], :root a[href^="//thaudray.com/"], :root a[href^="http://cdn.adstract.com/"], :root a[href^="https://gogoman.me/"], :root a[href^="https://go.xxxjmp.com"], :root a[href^="https://go.xtbaffiliates.com/"], :root a[href^="https://torrentsafeguard.com/?aid="], :root [href^="https://v.investologic.co.uk/"], :root a[href^="https://offers.refchamp.com/"], :root a[href^="https://go.trkclick2.com/"], :root a[href^="https://go.strpjmp.com/"], :root a[href^="https://go.markets.com/visit/?bta="], :root a[href^="https://landing.brazzersnetwork.com/"], :root a[href^="https://go.hpyjmp.com/"], :root a[href^="https://go.goasrv.com/"], :root a[href^="https://adnetwrk.com/"], :root a[href^="https://go.gldrdr.com/"], :root a[href^="https://fleshlight.sjv.io/"], :root a[href^="https://go.etoro.com/"] > img, :root a[href^="https://go.currency.com/"], :root a[href^="https://track.afftck.com/"], :root a[href^="https://gohere.pl/"], :root a[href^="http://guideways.info/"], :root a[href^="https://go.cmrdr.com/"], :root [href^="http://www.pingperfect.com/aff.php"], :root a[href^="http://www.easydownloadnow.com/"], :root a[href^="https://go.alxbgo.com/"], :root a[href^="https://go.admjmp.com/"], :root a[href^="https://go.ad2up.com/"], :root a[href^="https://giftsale.co.uk/?utm_"], :root a[href^="http://www.terraclicks.com/"], :root a[href^="https://gghf.mobi/"], :root a[href^="https://get.surfshark.net/aff_c?"][href*="&aff_id="] > img, :root a[href^="https://fonts.fontplace9.com/"], :root a[href^="http://clkmon.com/adServe/"], :root a[href^="https://flirtaescopa.com/"], :root a[href^="https://fertilitycommand.com/"], :root a[href^="https://axdsz.pro/"], :root a[href^="https://tour.mrskin.com/"], :root a[href^="https://www.goldenfrog.com/vyprvpn?offer_id="][href*="&aff_id="], :root a[href^="https://fastestvpn.com/lifetime-special-deal?a_aid="], :root a[href^="https://fakelay.com/"], :root a[href^="https://earandmarketing.com/"], :root [lazy-ad="leftthin_banner"], :root a[href^="https://dynamicadx.com/"], :root div[id^="div-gpt-"], :root a[href^="https://dooloust.net/"], :root a[href^="https://tc.tradetracker.net/"] > img, :root a[href^="//srv.buysellads.com/"], :root a[href^="https://dianches-inchor.com/"], :root a[href^="http://adf.ly/?id="], :root a[href^="https://uncensored3d.com/"], :root a[href^="https://creacdn.top-convert.com/"], :root a[href^="https://www.chngtrack.com/"], :root iframe[src^="https://pagead2.googlesyndication.com/"], :root a[href^="https://retiremely.com/"], :root a[href^="https://cpmspace.com/"], :root [onclick*="content.ad/"], :root a[href^="https://clixtrac.com/"], :root a[href^="https://clicks.pipaffiliates.com/"], :root .commercial-unit-mobile-top > .v7hl4d, :root a[href^="https://click.plista.com/pets"], :root a[href^="https://claring-loccelkin.com/"], :root a[href^="https://chaturbate.xyz/"], :root a[href^="https://chaturbate.com/in/?track="], :root a[href^="https://chaturbate.com/in/?tour="], :root a[href^="https://go.xlviirdr.com"], :root a[href^="https://chaturbate.com/affiliates/"], :root #kt_player > a[target="_blank"], :root a[href^="https://camfapr.com/landing/click/"], :root a[href^="https://avtub.click/assets/link.php"], :root a[href^="https://cagothie.net/"], :root a[href^="https://burpee.xyz/"], :root a[href^="https://mcdlks.com/"], :root a[href^="https://bs.serving-sys.com"], :root a[href^="https://blackorange.go2cloud.org/"], :root [data-dynamic-ads], :root a[href^="https://banners.livepartners.com/"], :root a[href^="https://awptjmp.com/"], :root a[href^="http://www.fleshlight.com/"], :root a[href^="https://aweptjmp.com/"], :root a[href^="https://awentw.com/"], :root [href^="/ucdownloader.php"], :root a[href^="https://awejmp.com/"], :root a[href^="https://ausoafab.net/"], :root a[href^="https://as.sexad.net/"], :root a[href^="https://playuhd.host/"], :root a[href^="https://as.conjectwatson.com/"], :root ark-top-ad, :root a[href^="http://bestorican.com/"], :root [data-name="adaptiveConstructorAd"], :root a[href^="https://galaxyroms.net/?scr="], :root a[href^="https://albionsoftwares.com/"], :root a[href^="https://www.mrskin.com/tour"], :root a[href^="http://adserver.adtech.de/"], :root a[href^="https://frameworkdeserve.com/"], :root zeus-ad, :root a[href^="https://aj1070.online/"], :root a[href^="http://cdn3.adexprts.com/"], :root a[href^="https://spygasm.com/track?"], :root a[href^="https://agacelebir.com/"], :root a[href^="https://geniusdexchange.com/"], :root a[href^="//postlnk.com/"], :root a[href^="https://affiliate.rusvpn.com/click.php?"], :root [data-role="tile-ads-module"], :root a[href^="https://affiliate.geekbuying.com/gkbaffiliate.php?"], :root [href^="https://www.reimageplus.com/"], :root a[href^="https://bongacams2.com/track?"], :root a[href^="http://www.twinplan.com/AF_"], :root a[href^="https://affcpatrk.com/"], :root a[href^="https://adultfriendfinder.com/go/page/landing"], :root a[href^="https://adswick.com/"], :root ADS-RIGHT, :root a[href^="https://tracking.trackcasino.co/"], :root a[href^="https://adserver.adreactor.com/"], :root a[href^="https://land.brazzersnetwork.com/landing/"], :root a[href^="https://ads.leovegas.com/redirect.aspx?"], :root a[href^="https://t.hrtye.com/"], :root a[href^="https://ads.cdn.live/"], :root a[href^="https://ads.betfair.com/redirect.aspx?"], :root a[href^="https://refpaano.host/"], :root a[href^="https://meet-to-fuck.com/tds"], :root a[href^="https://adhealers.com/"], :root a[href^="http://servicegetbook.net/"], :root a[href^="https://bngpt.com/"], :root a[href^="http://clickandjoinyourgirl.com/"], :root a[href^="https://ad13.adfarm1.adition.com/"], :root a[href^="https://ad.kubiccomps.icu/"], :root a[href^="https://static.fleshlight.com/images/banners/"], :root app-advertisement, :root a[href^="https://ad.doubleclick.net/"], :root a[href^="http://zevera.com/afi.html"], :root a[href^="http://go.oclaserver.com/"], :root a[href^="https://ad.atdmt.com/"], :root div[id^="gpt_ad_"], :root a[href^="https://cams.imagetwist.com/in/?track="], :root .trc_rbox .syndicatedItem, :root a[href^="https://a.bestcontentweb.top/"], :root a[href^="https://aaucwbe.com/"], :root a[href^="https://a.montangop.top/"], :root a[href^="http://campaign.bharatmatrimony.com/track/"], :root a[href^="https://a-ads.com/campaigns/"], :root .commercial-unit-mobile-top .jackpot-main-content-container > .UpgKEd + .nZZLFc > .vci, :root a[href^="https://syndication.exoclick.com/"], :root a[href^="https://financeads.net/tc.php?"], :root a[href^="https://a-ads.com/?partner="], :root a[href^="http://hyperlinksecure.com/go/"], :root a[href^="https://track.themadtrcker.com/"], :root a[href^="https://bullads.net/get/"], :root a[href^="http://down1oads.com/"], :root a[href^="http://yads.zedo.com/"], :root a[href^="https://ads.trafficpoizon.com/"], :root div[class^="local-feed-banner-ads"], :root a[href^="http://wxdownloadmanager.com/dl/"], :root a[href^="http://www.webtrackerplus.com/"], :root a[href^="http://www.usearchmedia.com/signup?"], :root a[href^="https://twinrdsyn.com/"], :root a[href^="http://www.torntv-downloader.com/"], :root a[href^="http://www.tirerack.com/affiliates/"], :root a[href^="http://www.text-link-ads.com/"], :root a[href^="https://weedzy.co.uk/"][href*="&utm_"], :root a[href^="http://chaturbate.com/affiliates/"], :root a[href^="https://waisheph.com/"], :root a[href^="http://www.streamtunerhd.com/signup?"], :root a[href^="http://www.streamate.com/exports/"], :root a[href^="https://ads-for-free.com/click.php?"], :root a[href^="https://syndication.optimizesrv.com/"], :root a[href^="http://www.socialsex.com/"], :root a[href^="https://join.virtualtaboo.com/track/"], :root a[onmousedown^="this.href='https://paid.outbrain.com/network/redir?"][target="_blank"], :root [href^="https://awbbjmp.com/"], :root a[href^="http://www.sfippa.com/"], :root a[href^="http://secure.signup-page.com/"], :root a[href^="http://www.quick-torrent.com/download.html?aff"], :root a[href^="http://www.plus500.com/?id="], :root [href*=".zlinkm.com/"], :root a[href^="http://www.pinkvisualgames.com/?revid="], :root a[href^="https://trklvs.com/"], :root a[href^="http://www.paddypower.com/?AFF_ID="], :root a[href^="http://www.onwebcam.com/random?t_link="], :root a[href^="http://www.onclickmega.com/jump/next.php?"], :root a[href^="http://www.myfreepaysite.com/sfw.php?aid"], :root a[href^="http://www.mrskin.com/tour"], :root a[href^="http://bcntrack.com/"], :root a[href^="http://www.securegfm.com/"], :root a[href^="http://www.liversely.net/"], :root a[href^="https://partners.fxoro.com/click.php?"], :root a[href^="https://azpresearch.club/"], :root a[href^="http://www.linkbucks.com/referral/"], :root a[href^="http://www.idownloadplay.com/"], :root a[href^="http://www.hitcpm.com/"], :root a[href^="http://fusionads.net"], :root a[href^="http://www.hibids10.com/"], :root div[class^="awpcp-random-ads"], :root a[href^="http://www.graboid.com/affiliates/"], :root a[href^="http://www.getyourguide.com/?partner_id="], :root a[href^="http://www.gamebookers.com/cgi-bin/intro.cgi?"], :root a[href^="http://www.friendlyquacks.com/"], :root a[href^="https://www.financeads.net/tc.php?"], :root a[href^="http://www.friendlyduck.com/AF_"], :root a[href^="http://www.firstload.com/affiliate/"], :root a[href^="http://www.friendlyadvertisements.com/"], :root a[href^="https://content.oneindia.com/www/delivery/"], :root a[href^="http://www.fpcTraffic2.com/blind/in.cgi?"], :root a[href^="http://www.fonts.com/BannerScript/"], :root [href^="https://www.restoro.com/"], :root a[href^="https://americafirstpolls.com/"], :root a[href^="http://clickserv.sitescout.com/"], :root a[href^="http://www.firstload.de/affiliate/"], :root a[href^="http://go.seomojo.com/tracking202/"], :root a[href^="http://www.downloadweb.org/"], :root a[href^="http://www.download-provider.org/"], :root a[href^="http://www.down1oads.com/"], :root a[href^="https://scurewall.co/"], :root a[href^="https://pb-track.com/"], :root [href^="https://www.avantlink.com/click.php"] img, :root a[href^="http://www.dealcent.com/register.php?affid="], :root a[href^="https://click.a-ads.com/"], :root a[href^="http://www.clkads.com/adServe/"], :root a[href^="https://aff-ads.stickywilds.com/"], :root a[href^="http://www.bitlord.me/share/"], :root .grid > .container > #aside-promotion, :root a[href^="http://www.babylon.com/welcome/index?affID"], :root a[href^="https://fast-redirecting.com/"], :root a[href^="https://bluedelivery.pro/"], :root [href^="http://join.michelle-austin.com/"], :root a[href^="http://www.sexgangsters.com/?pid="], :root a[href^="http://www.amazon.co.uk/exec/obidos/external-search?"], :root a[href^="http://www.afgr3.com/"], :root a[href^="http://c.jumia.io/"], :root a[href^="http://www.affiliates1128.com/processing/"], :root a[href^="http://go.ad2up.com/"], :root a[href^="https://badoinkvr.com/"], :root a[href^="http://www.adxpansion.com"], :root a[href^="https://prf.hn/click/"][href*="/creativeref:"] > img, :root a[href^="http://www.adultempire.com/unlimited/promo?"][href*="&partner_id="], :root a[href^="http://www.ragazzeinvendita.com/?rcid="], :root a[href^="http://www.adultdvdempire.com/?partner_id="][href*="&utm_"], :root .plistaList > .itemLinkPET, :root a[href^="http://www.adbrite.com/mb/commerce/purchase_form.php?"], :root a[href^="http://www.FriendlyDuck.com/"], :root a[href^="https://www.googleadservices.com/pagead/aclk?"], :root a[href^="http://www.1clickdownloader.com/"], :root a[href^="http://webtrackerplus.com/"], :root a[href^="http://web.adblade.com/"], :root [href^="https://stvkr.com/"], :root a[href^="http://engine.newsmaxfeednetwork.com/"], :root a[href^="https://pl.premium4kflix.website/"], :root a[href^="http://vo2.qrlsx.com/"], :root a[href^="https://www.nutaku.net/signup/landing/"], :root a[href^="http://s9kkremkr0.com/"], :root aside[id^="advads_ad_widget-"], :root a[href^="http://lp.ezdownloadpro.info/"], :root a[href^="http://uploaded.net/ref/"], :root a[href^="http://www.mysuperpharm.com/"], :root a[href^="http://www.freefilesdownloader.com/"], :root a[href^="http://ul.to/ref/"], :root a[href^="//chrif8kdstie.com/"], :root a[href^="https://traffdaq.com/"], :root a[href^="http://ucam.xxx/?utm_"], :root a[href^="http://traffic.tc-clicks.com/"], :root a[href^="https://dediseedbox.com/clients/aff.php?"], :root [href^="/ucmini.php"], :root a[href^="http://www.wantstraffic.com/"], :root [href^="https://trackfin.asia/"], :root a[href^="http://databass.info/"], :root a[href^="http://track.afcpatrk.com/"], :root div[class^="Ad__container"], :root a[href^="http://adprovider.adlure.net/"], :root a[href^="http://t.wowtrk.com/"], :root a[href^="http://tezfiles.com/pr/"], :root a[href^="http://tracking.deltamediallc.com/"], :root a[href^="http://tc.tradetracker.net/"] > img, :root div[class^="adUnit_"], :root a[href^="https://deliver.tf2www.com/"], :root .ob_dual_right > .ob_ads_header ~ .odb_div, :root a[href^="http://spygasm.com/track?"], :root a[href^="http://sharesuper.info/"], :root a[href^="https://awecrptjmp.com/"], :root [data-ez-name], :root a[href^="http://server.cpmstar.com/click.aspx?poolid="], :root .trc_related_container div[data-item-syndicated="true"], :root a[href^="https://www.firstload.com/affiliate/"], :root a[href^="http://see.kmisln.com/"], :root a[href^="http://secure.hostgator.com/~affiliat/"], :root a[href^="http://rs-stripe.wsj.com/stripe/redirect"], :root a[href^="http://refpaano.host/"], :root a[data-oburl^="http://paid.outbrain.com/network/redir?"], :root a[href^="https://engine.phn.doublepimp.com/"], :root a[href^="http://refpa.top/"], :root a[href^="https://easygamepromo.com/ef/custom_affiliate/"], :root a[href^="http://record.betsafe.com/"], :root a[href^="https://iqbroker.com/"][href*="?aff="], :root a[href*=".medgoodfood.com/"], :root a[href^="http://buysellads.com/"], :root a[href^="http://reallygoodlink.freehookupaffair.com/"], :root a[href^="https://keep2share.cc/pr/"], :root a[href^="http://pityhostngco2.xyz/"], :root a[href^="http://adlev.neodatagroup.com/"], :root a[href^="http://reallygoodlink.extremefreegames.com/"], :root a[href^="https://bnsjb1ab1e.com/"], :root a[href^="http://pwrads.net/"], :root a[href^="http://promos.bwin.com/"], :root a[href^="http://z1.zedo.com/"], :root a[href^="http://pokershibes.com/index.php?ref="], :root [id^="google_ads_iframe"], :root a[href^="http://partners.etoro.com/"], :root a[href^="http://searchtabnew.com/"], :root [href^="https://istlnkcl.com/"], :root div[id^="ad-gpt-"], :root a[href^="http://pan.adraccoon.com?"], :root a[href^="http://online.ladbrokes.com/promoRedirect?"], :root a[href^="https://dltags.com/"], :root a[href^="http://onclickads.net/"], :root a[href^="http://mmo123.co/"], :root a[href^="https://fileboom.me/pr/"], :root a[href^="http://marketgid.com"], :root a[href^="//pubads.g.doubleclick.net/"], :root a[href^="http://lp.ncdownloader.com/"], :root a[href^="https://moneynow.one/"], :root a[href^="http://look.djfiln.com/"], :root a[href^="http://keep2share.cc/pr/"], :root a[href^="http://www.liutilities.com/"], :root a[href^="http://www.dl-provider.com/search/"], :root [href^="http://join.shemalesfromhell.com/"], :root .pubexchange_module .pe-external, :root a[data-widget-outbrain-redirect^="http://paid.outbrain.com/network/redir?"], :root a[href^="http://join3.bannedsextapes.com/track/"], :root a[href^="https://gamescarousel.com/"], :root a[href^="http://istri.it/?"], :root a[href^="http://mob1ledev1ces.com/"], :root a[href^="http://www.fbooksluts.com/"], :root a[href^="http://www.cdjapan.co.jp/aff/click.cgi/"], :root a[href^="http://c.actiondesk.com/"], :root [href^="https://www.mypatriotsupply.com/"] > img, :root a[href^="http://intent.bingads.com/"], :root a[href^="//voyeurhit.com/cs/"], :root a[href^="http://hd-plugins.com/download/"], :root [data-desktop-ad-id], :root a[href^="https://look.utndln.com/"], :root a[href^="http://googleads.g.doubleclick.net/pcs/click"], :root a[href^="https://ovb.im/"], :root a[href^="https://watchmygirlfriend.tv/"], :root .nrelate .nr_partner, :root a[href^="http://go.xtbaffiliates.com/"], :root a[href^="https://dialling-abutory.com/"], :root a[href^="https://oackoubs.com/"], :root a[href^="http://install.securewebsiteaccess.com/"], :root a[href^="http://www.revenuehits.com/"], :root a[href^="http://go.mobisla.com/"], :root a[href^="http://go.fpmarkets.com/"], :root a[href^="http://findersocket.com/"], :root a[href^="https://porngames.adult/?SID="], :root a[href^="https://ads.planetwin365affiliate.com/redirect.aspx?"], :root a[href^="//go.xlviiirdr.com"], :root a[href*=".incontro-veloce.com/"], :root a[href^="http://g1.v.fwmrm.net/ad/"], :root a[href^="http://us.marketgid.com"], :root a[href^="http://imads.integral-marketing.com/"], :root a[href^="http://freesoftwarelive.com/"], :root a[href^="http://adtrackone.eu/"], :root span[title="Ads by Google"], :root a[href^="http://finaljuyu.com/"], :root a[href^="https://www.im88trk.com/"], :root a[href^="http://ffxitrack.com/"], :root a[href^="http://ethfw0370q.com/"], :root [href^="http://go.cm-trk2.com/"], :root a[href^="https://maymooth-stopic.com/"], :root a[href^="https://tracking.comfortclick.eu/"], :root [id^="bunyad_ads_"], :root a[href^="http://elitefuckbook.com/"], :root a[href^="https://www.g4mz.com/"], :root a[href^="http://webgirlz.online/landing/"], :root a[href^="http://eclkmpsa.com/"], :root a[href^="http://wopertific.info/"], :root a[href^="http://earandmarketing.com/"], :root div[class^="hp-ad-rect-"], :root a[href^="http://dwn.pushtraffic.net/"], :root a[href^="http://deloplen.com/"], :root a[href^="//edgar2al2larngpoer.com/"], :root #content > #center > .dose > .dosesingle, :root a[href^="http://d2.zedo.com/"], :root a[href^="http://czotra-32.com/"], :root a[href^="https://www.travelzoo.com/oascampaignclick/"], :root a[href^="https://see.kmisln.com/"], :root [href^="https://routewebtk.com/"], :root a[href^="http://refer.webhostingbuzz.com/"], :root a[href^="https://paid.outbrain.com/network/redir?"], :root a[href^="http://www.downloadplayer1.com/"], :root a[href^="http://clicks.binarypromos.com/"], :root [id^="ad_slider"], :root a[href^="https://track.bruceads.com/"], :root a[href^="https://t.aslnk.link/"], :root [href^="https://zstacklife.com/"] img, :root a[href^="https://m.do.co/c/"] > img, :root a[href^="http://track.trkvluum.com/"], :root [href^="https://secure.bmtmicro.com/servlets/"], :root a[href^="http://amzn.to/"] > img[src^="data"], :root a[href^="http://bs.serving-sys.com/"], :root a[href^="http://cpaway.afftrack.com/"], :root a[href^="http://cdn.adsrvmedia.net/"], :root [href^="https://infinitytrk.com/"], :root [lazy-ad="top_banner"], :root a[href^="http://360ads.go2cloud.org/"], :root [onclick^="location.href='http://www.reimageplus.com"], :root a[href^="http://dftrck.com/"], :root a[href^="http://casino-x.com/?partner"], :root a[href^="https://meet-sexhere.com/"], :root a[href^="http://record.sportsbetaffiliates.com.au/"], :root a[href^="http://campeeks.com/"][href*="&utm_"], :root a[href^="http://download-performance.com/"], :root a[href^="http://www.on2url.com/app/adtrack.asp"], :root [href^="https://affect3dnetwork.com/track/"], :root a[href^="http://campaign.bharatmatrimony.com/cbstrack/"], :root a[href^="https://go.goaserv.com/"], :root a[href^="http://serve.williamhill.com/promoRedirect?"], :root a[href^="https://uncensored.game/"], :root a[href^="http://www.seekbang.com/cs/"], :root a[href^="http://syndication.exoclick.com/"], :root a[href^="http://bluehost.com/track/"], :root a[href^="https://bongacams10.com/track?"], :root a[href^="http://www.123-reg.co.uk/affiliate2.cgi"], :root [href^="https://www.dcpodj3k5.com/"], :root a[href^="https://serve.awmdelivery.com/"], :root a[href^="http://enter.anabolic.com/track/"], :root a[href^="https://prf.hn/click/"][href*="/adref:"] > img, :root a[href^="http://banners.victor.com/processing/"], :root a[href^="https://zononi.com/"], :root a[href*="//lkstrck2.com/"], :root div[aria-label="Ads"], :root a[href^="https://go.ebrokerserve.com/"], :root a[href^="http://axdsz.pro/"], :root a[href^="http://api.content.ad/"], :root a[href^="https://leg.xyz/?track="], :root a[href^="http://affiliate.glbtracker.com/"], :root a[href^="https://transfer.xe.com/signup/track/redirect?"], :root a[href^="http://anonymous-net.com/"], :root a[href^="http://hotcandyland.com/partner/"], :root a[href^="https://www.popads.net/users/"], :root a[href^="http://adultfriendfinder.com/p/register.cgi?pid="], :root a[href^="http://www.advcashpro.com/aff/"], :root a[href^="http://aflrm.com/"], :root a[href^="http://affiliates.thrixxx.com/"], :root #atvcap + #tvcap > .mnr-c > .commercial-unit-mobile-top, :root a[href^="http://affiliates.lifeselector.com/"], :root a[href^="http://aff.ironsocket.com/"], :root a[href^="http://tour.mrskin.com/"], :root [href^="http://www.mypillow.com/"] > img, :root a[href^="http://linksnappy.com/?ref="], :root ad-desktop-sidebar, :root [data-ad-width], :root [id*="MGWrap"], :root a[href^="http://adtrack123.pl/"], :root a[href^="http://adsrv.keycaptcha.com"], :root a[href^="http://adserving.unibet.com/"], :root a[href^="https://secure.adnxs.com/clktrb?"], :root div[data-mpu1], :root a[href^="http://adserver.adtechus.com/"], :root a[href^="http://galleries.securewebsiteaccess.com/"], :root a[href^="http://stateresolver.link/"], :root guj-ad, :root AMP-AD, :root a[href^="https://go.xxxiijmp.com"], :root div[class^="StickyHeroAdWrapper-"], :root a[href^="http://cwcams.com/landing/click/"], :root a[href^="http://ads.betfair.com/redirect.aspx?"], :root a[href^="http://adserver.adreactor.com/"], :root a[href^="http://ads.sprintrade.com/"], :root .section-subheader > .section-hotel-prices-header, :root a[href^="http://landingpagegenius.com/"], :root [href^="https://click2cvs.com/"], :root a[href^="http://ads.expekt.com/affiliates/"], :root a[href^="http://adclick.g.doubleclick.net/"], :root a[href^="http://ad.yieldmanager.com/"], :root [href^="http://homemoviestube.com/"], :root a[href^="http://ad.doubleclick.net/"], :root [href^="https://wct.link/"], :root a[href^="https://track.totalav.com/"], :root a[href^="http://ad-apac.doubleclick.net/"], :root a[href^="http://srvpub.com/"], :root a[href^="https://go.nordvpn.net/aff"] > img, :root a[href^="http://secure.vivid.com/track/"], :root a[href^="https://clickadilla.com/"], :root a[href^="http://www.adskeeper.co.uk/"], :root .ob_container .item-container-obpd, :root a[href^="http://websitedhoome.com/"], :root a[href^="http://see-work.info/"], :root a[href^="https://www.friendlyduck.com/AF_"], :root [href^="http://advertisesimple.info/"], :root a[href^="http://www.pinkvisualpad.com/?revid="], :root a[href^="https://www.oneclickroot.com/?tap_a="] > img, :root DFP-AD, :root a[href^="//porngames.adult/?SID="], :root a[href^="https://go.hpyrdr.com/"], :root a[href^="https://billing.purevpn.com/aff.php"] > img, :root a[href^="//lambingsyddir.com/"], :root a[href^="https://go.julrdr.com/"], :root [id^="chp_ads_block"], :root .trc_rbox_div .syndicatedItemUB, :root [href^="https://totlnkcl.com/"], :root a[href^="//agacelebir.com/"], :root a[href^="http://play4k.co/"], :root a[data-redirect^="https://paid.outbrain.com/network/redir?"], :root a[href^="http://www.roboform.com/php/land.php"], :root a[href="//rufflycouncil.com/"], :root a[href^="http://xads.zedo.com/"], :root a[href^="https://adsrv4k.com/"], :root a[href^="http://trk.mdrtrck.com/"], :root a[href*="https://www.sweetdeals.com/"] img, :root a[href*=".zlink9.com/"], :root a[href^="http://bodelen.com/"], :root a[href^="http://wgpartner.com/"], :root a[href^="https://trackjs.com/?utm_source"], :root AFS-AD, :root a[href^="https://ads.ad4game.com/"], :root a[href^="https://affiliates.bet-at-home.com/processing/"], :root a[href^="https://betway.com/"][href*="&a="], :root a[href^="http://www.mobileandinternetadvertising.com/"], :root a[href^="http://www.downloadthesefiles.com/"], :root a[href^="http://secure.cbdpure.com/aff/"], :root [href^="https://join.playboyplus.com/track/"], :root a[data-url^="http://paid.outbrain.com/network/redir?"] + .author, :root a[href^="http://affiliates.score-affiliates.com/"], :root a[data-oburl^="https://paid.outbrain.com/network/redir?"], :root a[href^="https://ttf.trmobc.com/"], :root a[href^="http://n.admagnet.net/"], :root a[data-obtrack^="http://paid.outbrain.com/network/redir?"], :root a[href^="https://go.onclasrv.com/"], :root a[href^="http://wct.link/"], :root a[href^="http://www.TwinPlan.com/AF_"], :root div[id^="ad-position-"], :root a[href^="http://liversely.com/"], :root a[data-redirect^="this.href='http://paid.outbrain.com/network/redir?"], :root [href^="https://goldforyourfuture.com/clk.trk"] img, :root [href="https://masstortfinancing.com"] img, :root [href^="https://bulletprofitsmartlink.com/"], :root [href^="https://join3.bannedsextapes.com"], :root a[href^="//benoopto.com/"], :root [lazy-ad="leftbottom_banner"], :root [id^="div-gpt-ad"], :root a[href^="http://espn.zlbu.net/"], :root a[href^="http://admrotate.iplayer.org/"], :root [href^="http://join.rodneymoore.com/"], :root [id*="MarketGid"], :root a[href^="http://c.ketads.com/"], :root a[href^="http://www.badoink.com/go.php?"], :root .commercial-unit-mobile-top > div[data-pla="1"], :root a[href^="https://secure.starsaffiliateclub.com/C.ashx?"], :root [href^="https://zone.gotrackier.com/"], :root a[href^="http://ad-emea.doubleclick.net/"], :root [href^="https://www.mypillow.com/"] > img, :root [href^="https://www.herbanomic.com/"] > img, :root [href^="https://freecourseweb.com/"] > .sitefriend, :root [href^="https://www.hostg.xyz/aff_c"] > img, :root [href*=".engine.adglare.net/"], :root a[href^="http://allaptair.club/"], :root a[href^="https://ptapjmp.com/"], :root a[href^="http://xtgem.com/click?"], :root a[href^="http://bc.vc/?r="], :root [href^="https://www.brighteonstore.com/products/"] img, :root a[href^="https://topoffers.com/"][href*="/?pid="], :root a[href^="https://syndication.dynsrvtbg.com/"], :root a[href^="http://vinfdv6b4j.com/"], :root div[data-test-id="AdBannerWrapper"], :root div[class^="AdCard_"], :root a[href^="http://www.urmediazone.com/signup"], :root a[href^="http://click.plista.com/pets"], :root a[href^="https://www.awin1.com/cread.php?awinaffid="], :root a[href^="https://servedbyadbutler.com/"], :root a[href^="https://www.bet365.com/"][href*="affiliate="], :root a[href^="https://mob1ledev1ces.com/"], :root a[href^="https://promo-bc.com/"], :root a[data-redirect^="http://paid.outbrain.com/network/redir?"], :root a[href^="https://explore.findanswersnow.net/"], :root [id^="adframe_wrap_"], :root div[jsdata*="CarouselPLA-"][data-id^="CarouselPLA-"], :root a[href^="https://go.trackitalltheway.com/"], :root [data-template-type="nativead"], :root [href^="https://track.fiverr.com/visit/"] > img, :root [href^="http://globsads.com/"], :root [href^="https://shrugartisticelder.com"], :root a[href^="//eurogirls.live/track?"], :root a[href^="http://affiliate.coral.co.uk/processing/"], :root [href^="https://t.ajrkm.link/"], :root [data-ad-manager-id], :root a[href^="http://www.firstclass-download.com/"], :root [id*="ScriptRoot"], :root a[href^="http://fileboom.me/pr/"], :root a[href^="//coarsewary.com/"], :root a[href*=".trust.zone"], :root a[href^="https://traffic.bannerator.com/"], :root [href^="https://shiftnetwork.infusionsoft.com/go/"] > img, :root a[href^="https://vo2.qrlsx.com/"], :root a[href^="https://tracking.truthfinder.com/?a="], :root .scroll-fixable.rail-right > .deals-rail, :root a[href*=".flndmyiove.net/"], :root a[href^="http://www.xmediaserve.com/"], :root [href^="https://mypatriotsupply.com/"] > img, :root [href^="https://mylead.global/stl/"] > img, :root a[href^="http://affiliates.pinnaclesports.com/processing/"], :root .vid-present > .van_vid_carousel__padding, :root #header + #content > #left > #rlblock_left, :root [href^="https://ilovemyfreedoms.com/landing-"], :root [href^="http://join.ts-dominopresley.com/"], :root [href^="https://go.affiliatexe.com/"], :root [href^="https://go.4rabettraff.com/"], :root a[href^="https://a.bestcontentfood.top/"], :root #ads > .dose > .dosesingle, :root a[data-url^="http://paid.outbrain.com/network/redir?"], :root [href^="https://cpa.10kfreesilver.com/"], :root a[href^="https://mmwebhandler.aff-online.com/"], :root [href^="https://r.kraken.com/"], :root a[href^="https://freeadult.games/"], :root a[href^="http://liversely.net/"], :root a[href^="http://www.coiwqe.site/"], :root iframe[id^="google_ads_frame"], :root a[href^="http://www.bet365.com/"][href*="affiliate="], :root a[href^="http://www.bluehost.com/track/"] > img, :root a[href^="http://mgid.com/"], :root [href^="http://join.trannies-fuck.com/"], :root a[href^="http://www.menaon.com/installs/"], :root [href^="http://www.fleshlightgirls.com/"], :root a[href^="http://k2s.cc/pr/"], :root [href^="/admdownload.php"], :root [href^="http://join.hardcoreshemalevideo.com/"], :root a[href^="http://ads2.williamhill.com/redirect.aspx?"], :root div[data-native-ad], :root a[href^="https://click.hoolig.app/"], :root AD-TRIPLE-BOX, :root a[href^="//www.mgid.com/"], :root [href^="https://go.astutelinks.com/"], :root [href^="http://join.shemale.xxx/"], :root div[id^="vuukle-ad-"], :root a[href^="http://betahit.click/"], :root [class^="chp_ads_block"], :root iframe[src^="http://ad.yieldmanager.com/"], :root a[href^="http://pubads.g.doubleclick.net/"], :root a[href^="https://porntubemate.com/"], :root a[href^="http://www.gfrevenge.com/landing/"], :root a[href^="http://hpn.houzz.com/"], :root [name^="google_ads_iframe"], :root a[href^="http://www.afgr2.com/"], :root #slashboxes > .deals-rail, :root a[href^="https://deliver.ptgncdn.com/"], :root [href^="https://www.targetingpartner.com/"], :root a[href^="http://latestdownloads.net/download.php?"], :root #taw > .med + div > #tvcap > .mnr-c:not(.qs-ic) > .commercial-unit-mobile-top, :root .plista_widget_belowArticleRelaunch_item[data-type="pet"], :root a[href^="https://ak.hetaruwg.com/"], :root a[href^="http://click.payserve.com/"], :root a[href^="http://s5prou7ulr.com/"], :root a[href^="http://azmobilestore.co/"], :root a[href^="https://sexsimulator.game/tab/?SID="], :root .rc-cta[data-target], :root a[href^="//syndication.dynsrvtbg.com/"], :root a[href^="http://k2s.cc/code/"], :root a[href^="https://webroutetrk.com/"], :root [href^="//mage98rquewz.com/"], :root #leader-companion > a[href], :root [href^="https://traffserve.com/"], :root a[href^="http://media.paddypower.com/redirect.aspx?"], :root a[href^="https://cpartner.bdswiss.com/"], :root a[href^="http://www.flashx.tv/downloadthis"], :root a[href^="https://www.spyoff.com/"], :root [href^="http://mypillow.com/"] > img, :root a[href^="https://a.adtng.com/"], :root a[href^="http://static.fleshlight.com/images/banners/"], :root a[href^="http://codec.codecm.com/"], :root a[href^="https://delivery.porn.com/"], :root [href^="https://rapidgator.net/article/premium/ref/"], :root div[id^="crt-"][style], :root a[href^="http://igromir.info/"], :root div[id^="div-ads-"], :root a[onmousedown^="this.href='https://paid.outbrain.com/network/redir?"][target="_blank"] + .ob_source, :root a[href^="http://at.atwola.com/"], :root a[href^="https://farm.plista.com/pets"], :root LEADERBOARD-AD, :root [data-mobile-ad-id], :root [class^="Ad-adContainer"], :root a[href^="https://adclick.g.doubleclick.net/"], :root app-ad, :root [href^="http://misslinkvocation.com/"], :root [id^="ad-wrap-"], :root a[href^="https://go.tmrjmp.com"], :root [data-css-class="dfp-inarticle"], :root a[href^="http://papi.mynativeplatform.com:80/pub2/"], :root a[href^="http://1phads.com/"], :root a[href^="http://cam4com.go2cloud.org/aff_c?"], :root a[href^="http://get.slickvpn.com/"], :root [data-ad-module], :root a[href^="http://bcp.crwdcntrl.net/"], :root [data-ad-cls], :root a[href^="https://chaturbate.jjgirls.com/?track="], :root [class^="s2nPlayer"], :root [class*="__adv-block"], :root a[href^="https://www.adxtro.com/"], :root .commercial-unit-mobile-top .jackpot-main-content-container > .UpgKEd + .nZZLFc > div > .vci, :root a[href^="http://paid.outbrain.com/network/redir?"], :root a[href^="https://track.trkinator.com/"], :root [href^="http://residenceseeingstanding.com/"], :root .trc_rbox_border_elm .syndicatedItem, :root a[href^="http://www.myfreepaysite.com/sfw_int.php?aid"], :root [href^="https://glersakr.com/"], :root a[href^="https://t.mobtya.com/"], :root [href^="https://join.girlsoutwest.com/"], :root [lazy-ad="lefttop_banner"], :root a[href^="https://torguard.net/aff.php"] > img, :root a[href^="https://go.247traffic.com/"], :root amp-ad-custom, :root [href^="https://antiagingbed.com/discount/"] > img, :root [class^="AdvertisingSlot_"], :root [href^="http://trafficare.net/"], :root FBS-AD, :root .trc_rbox_div .syndicatedItem, :root a[href^="//www.pd-news.com/"], :root a-ad, :root hl-adsense, :root div[data-contentexchange-widget], :root [id^="bunyad-widget-ads-"], :root [href^="https://clk.right-wing-health.com/"], :root a[href^="https://secure.cbdpure.com/aff/"], :root a[href^="http://goldmoney.com/?gmrefcode="], :root .plistaList > .plista_widget_underArticle_item[data-type="pet"], :root a[href^="http://fsoft4down.com/"], :root div[id^="ad_bigbox_"], :root #content > #right > .dose > .dosesingle, :root [href^="https://affiliate.fastcomet.com/"] > img, :root a[href^="https://intrev.co/"], :root a[href^="http://https://www.get-express-vpn.com/offer/"], :root a[href^="https://misspkl.com/"], :root a[href^="https://ad.zanox.com/ppc/"] > img, :root [href^="http://clicks.totemcash.com/"], :root a[href^="https://black77854.com/"], :root #topstuff > #tads, :root a[href^="https://ismlks.com/"], :root [data-freestar-ad], :root [class*="__adspot-title-container"], :root a[href^="https://www.sheetmusicplus.com/?aff_id="], :root [href^="https://mypillow.com/"] > img, :root [class^="div-gpt-ad"] { display: none !important; }</style><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style><style type="text/css"> .qc-cmp-button.qc-cmp-secondary-button:hover {    background-color: #368bd6 !important;    border-color: transparent !important;  }  .qc-cmp-button.qc-cmp-secondary-button:hover {    color: #ffffff !important;  }  .qc-cmp-button.qc-cmp-secondary-button {    color: #368bd6 !important;  }  .qc-cmp-button.qc-cmp-secondary-button {    background-color: #eee !important;    border-color: transparent !important;  } </style><link rel="preload" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f(4).txt" as="script"><script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f(4).txt"></script><link rel="preload" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f(5).txt" as="script"><script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f(5).txt"></script><link rel="preload" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f(4).txt" as="script"><script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f(4).txt"></script><link rel="preload" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f(5).txt" as="script"><script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/f(5).txt"></script></head>
+
+<body class="post-template-default single single-post postid-14666 single-format-standard group-blog body-desktop cookies-not-set" aria-hidden="false">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-dark-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0 0.49803921568627"></fefuncr><fefuncg type="table" tableValues="0 0.49803921568627"></fefuncg><fefuncb type="table" tableValues="0 0.49803921568627"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-grayscale"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0 1"></fefuncr><fefuncg type="table" tableValues="0 1"></fefuncg><fefuncb type="table" tableValues="0 1"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0.54901960784314 0.98823529411765"></fefuncr><fefuncg type="table" tableValues="0 1"></fefuncg><fefuncb type="table" tableValues="0.71764705882353 0.25490196078431"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-red"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0 1"></fefuncr><fefuncg type="table" tableValues="0 0.27843137254902"></fefuncg><fefuncb type="table" tableValues="0.5921568627451 0.27843137254902"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-midnight"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0 0"></fefuncr><fefuncg type="table" tableValues="0 0.64705882352941"></fefuncg><fefuncb type="table" tableValues="0 1"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-magenta-yellow"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0.78039215686275 1"></fefuncr><fefuncg type="table" tableValues="0 0.94901960784314"></fefuncg><fefuncb type="table" tableValues="0.35294117647059 0.47058823529412"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-green"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0.65098039215686 0.40392156862745"></fefuncr><fefuncg type="table" tableValues="0 1"></fefuncg><fefuncb type="table" tableValues="0.44705882352941 0.4"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-orange"><fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></fecolormatrix><fecomponenttransfer color-interpolation-filters="sRGB"><fefuncr type="table" tableValues="0.098039215686275 1"></fefuncr><fefuncg type="table" tableValues="0 0.66274509803922"></fefuncg><fefuncb type="table" tableValues="0.84705882352941 0.41960784313725"></fefuncb><fefunca type="table" tableValues="1 1"></fefunca></fecomponenttransfer><fecomposite in2="SourceGraphic" operator="in"></fecomposite></filter></defs></svg><div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/#content">Skip to content</a>
+	<div id="header-section" class="h-on-top no-transparent">		<div class="followWrap" style="height: 149px;"><header id="masthead" class="site-header header-contained is-sticky no-t h-on-top header-fixed no-scroll" role="banner" style="top: 0px;">
+			<div class="container">
+				<div class="site-branding">
+				<div class="site-brand-inner no-logo-img has-title has-desc"><p class="site-title"><a class="site-text-logo" href="https://www.meccanismocomplesso.org/en/" rel="home">Meccanismo Complesso</a></p><p class="site-description">Never in the same shape</p></div>				</div>
+				<div class="header-right-wrapper">
+					<a href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/#0" id="nav-toggle">Menu<span></span></a>
+					<nav id="site-navigation" class="main-navigation" role="navigation">
+						<ul class="onepress-menu">
+							<li id="menu-item-13374" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-13374"><a href="https://www.meccanismocomplesso.org/en">HOME</a></li>
+<li id="menu-item-13375-it" class="lang-item lang-item-920 lang-item-it lang-item-first menu-item menu-item-type-custom menu-item-object-custom menu-item-13375-it"><a href="https://www.meccanismocomplesso.org/contatore-geiger-misuriamo-i-livelli-di-radiazione-con-arduino/" hreflang="it-IT" lang="it-IT"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAUVBMVEUAiQAAgADk5OTe3t7vAAB3yXf9/f36+vr5Vlb3RkZjwWNYvVj4+Pj1MzP1KChQuFD1GxviAABHtUf19fXzDw4/sT8AcAA2qzYAWgDLy8vDw8ObXclsAAAAVElEQVR4AQXBSwoCQRQEsNT70CC69P5XdCUMA2ISSAiBWAQScg8bN7GJWxFDrCivwhCLMipGx3LKUOi2HAZluy2HgXprxQGfGL6G63B5MJ5FCD/4A3DaCLvbBle5AAAAAElFTkSuQmCC" alt="Italiano" width="16" height="11" style="width: 16px; height: 11px;"></a></li>
+<li id="menu-item-13375-en" class="lang-item lang-item-923 lang-item-en current-lang menu-item menu-item-type-custom menu-item-object-custom menu-item-13375-en"><a href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/" hreflang="en-GB" lang="en-GB"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAt1BMVEWSmb66z+18msdig8La3u+tYX9IaLc7W7BagbmcUW+kqMr/q6n+//+hsNv/lIr/jIGMnNLJyOP9/fyQttT/wb3/////aWn+YWF5kNT0oqz0i4ueqtIZNJjhvt/8gn//WVr/6+rN1+o9RKZwgcMPJpX/VFT9UEn+RUX8Ozv2Ly+FGzdYZrfU1e/8LS/lQkG/mbVUX60AE231hHtcdMb0mp3qYFTFwNu3w9prcqSURGNDaaIUMX5FNW5wYt7AAAAAjklEQVR4AR3HNUJEMQCGwf+L8RR36ajR+1+CEuvRdd8kK9MNAiRQNgJmVDAt1yM6kSzYVJUsPNssAk5N7ZFKjVNFAY4co6TAOI+kyQm+LFUEBEKKzuWUNB7rSH/rSnvOulOGk+QlXTBqMIrfYX4tSe2nP3iRa/KNK7uTmWJ5a9+erZ3d+18od4ytiZdvZyuKWy8o3UpTVAAAAABJRU5ErkJggg==" alt="English" width="16" height="11" style="width: 16px; height: 11px;"></a></li>
+<li id="menu-item-13376" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-13376"><div class="nav-toggle-subarrow"><i class="fa fa-angle-down"></i></div><a href="https://www.meccanismocomplesso.org/en/the-site/">The site</a>
+<ul class="sub-menu">
+	<li id="menu-item-13377" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13377"><a href="https://www.meccanismocomplesso.org/en/welcome/">Welcome</a></li>
+	<li id="menu-item-13378" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13378"><a href="https://www.meccanismocomplesso.org/privacy-policy/">Privacy Policy</a></li>
+	<li id="menu-item-13379" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13379"><a href="https://www.meccanismocomplesso.org/en/history/">History</a></li>
+	<li id="menu-item-13380" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13380"><a href="https://www.meccanismocomplesso.org/en/the-project/">The project</a></li>
+	<li id="menu-item-13381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13381"><a href="https://www.meccanismocomplesso.org/en/guidelines/">Guidelines</a></li>
+	<li id="menu-item-14598" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14598"><a href="https://www.meccanismocomplesso.org/leaderboard/">Leaderboard</a></li>
+	<li id="menu-item-13388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13388"><a href="https://www.meccanismocomplesso.org/en/authors/">Authors</a></li>
+	<li id="menu-item-13387" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13387"><a href="https://www.meccanismocomplesso.org/en/suggestions/">Suggestions</a></li>
+	<li id="menu-item-13386" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13386"><a href="https://www.meccanismocomplesso.org/en/requests-for-subjects-articles/">Requests for subjects/articles</a></li>
+	<li id="menu-item-13384" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13384"><a href="https://www.meccanismocomplesso.org/en/propose-your-article/">Propose your article</a></li>
+</ul>
+</li>
+<li id="menu-item-13389" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-13389"><div class="nav-toggle-subarrow"><i class="fa fa-angle-down"></i></div><a href="https://www.meccanismocomplesso.org/en/python-section-news-events-posts-and-courses/">Python</a>
+<ul class="sub-menu">
+	<li id="menu-item-13391" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13391"><a href="https://www.meccanismocomplesso.org/en/python-section-news-events-posts-and-courses/">Python section</a></li>
+	<li id="menu-item-13390" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13390"><a href="https://www.meccanismocomplesso.org/en/python-lessons-the-course-to-learn-how-to-program-in-python/">Python Lessons</a></li>
+</ul>
+</li>
+<li id="menu-item-13392" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-13392"><div class="nav-toggle-subarrow"><i class="fa fa-angle-down"></i></div><a href="https://www.meccanismocomplesso.org/en/raspberry-section-news-events-posts-and-courses/">Raspberry</a>
+<ul class="sub-menu">
+	<li id="menu-item-14545" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14545"><a href="https://www.meccanismocomplesso.org/en/raspberry-section-news-events-posts-and-courses/">Raspberry section</a></li>
+	<li id="menu-item-13393" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13393"><a href="https://www.meccanismocomplesso.org/the-pi-volution/">The Pi-volution</a></li>
+	<li id="menu-item-13394" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13394"><a href="https://www.meccanismocomplesso.org/en/how-to-faq-tips-and-procedures-for-working-with-raspberry-pi/">HOW TO &amp; FAQ</a></li>
+</ul>
+</li>
+<li id="menu-item-13655" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13655"><a href="https://www.meccanismocomplesso.org/en/the-arduino-section/">Arduino</a></li>
+<li id="menu-item-15824" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15824"><a href="https://www.meccanismocomplesso.org/en/data-science-section/">Data Science</a></li>
+<li id="menu-item-15119" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15119"><a href="https://www.meccanismocomplesso.org/en/robotics-2/">Robotics</a></li>
+<li id="menu-item-13395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13395"><a href="https://www.meccanismocomplesso.org/github-social-coding/">GitHub</a></li>
+						</ul>
+					</nav>
+					<!-- #site-navigation -->
+				</div>
+			</div>
+		</header></div><!-- #masthead -->
+		</div>
+	<div id="content" class="site-content">
+
+		
+		<div id="content-inside" class="container right-sidebar">
+			<div id="primary" class="content-area">
+				<main id="main" class="site-main" role="main">
+
+				
+					<article id="post-14666" class="post-14666 post type-post status-publish format-standard has-post-thumbnail hentry category-arduino-eng">
+	<header class="entry-header">
+		<h1 class="entry-title">Geiger Counter – Measuring Radiation Levels with Arduino</h1>        		<div class="entry-meta">
+			<span class="posted-on">Posted on <a href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/" rel="bookmark"><time class="entry-date published" datetime="2019-12-23T23:32:18+01:00">23 December 2019</time><time class="updated hide" datetime="2019-12-23T23:32:22+01:00">23 December 2019</time></a></span><span class="byline"> by <span class="author vcard"><a rel="author" class="url fn n" href="https://www.meccanismocomplesso.org/en/author/webmaster/">webmaster</a></span></span>		</div><!-- .entry-meta -->
+        	</header><!-- .entry-header -->
+
+    
+	<div class="entry-content">
+		<div class="pdf24Plugin-cp"> 	<form name="pdf24Form0" method="post" target="pdf24PopWin" action="https://doc2pdf.pdf24.org/wordpress.php"><input type="hidden" name="blogCharset" value="Cw1x07UAAA=="><input type="hidden" name="blogPosts" value="MwQA"><input type="hidden" name="blogUrl" value="yygpKSi20tcvLy/Xy01NTk7MyyzOzU/Ozy3ISS0uztfLL0oHAA=="><input type="hidden" name="blogName" value="801NTk7MyyzOzVdwzs8tyEktLs4HAA=="><input type="hidden" name="blogValueEncoding" value="gzdeflate base64"><input type="hidden" name="blogDocTpl" value="hVNRb5swEH7OpP2HG3voSx2HaJsqMEhT99KHSdPU/gADDngymNlu0gzlv89nnDZpphUExnf3fff5uGOd61X5/h3rBG/8umAVtwI6IzZFMuH3g1GHBGjwOemUKCeMVXIQB0ZnC/p64Th0zo1E/H6U2yKp9eDE4IjbjyKBuCsSJ54cxaw51B03Vrhiih8hzwLJrNsrAYiMgNraJKT5QIhfFpVu9tfQyO01uAYmNC02PgWx8o/IIE1Hl8OLdcN7qfYZfDWSq+iotdImg4+rcOXgTcGO+Ugjam24k3qADAY9iHzxwrYTsu1ccJje86HnMKN51BLJB77d52/THvDVpREbIrmS7ZBB7WsmTH4axC+Pu175477Wl0GlVXMCXUdgz00rB1Jp53Sfwefx6Szogt9LTb/8IwG8zrAMPXCh7uaIPVb8doX3c8VnLJ76XKDTo8+8OpW3xP/+g5sYOdusGLkvqjYnRnwm3zS4ISR0Dg1Nhb1OY7MzZPMrzBdzvPIB7P6nf76VwGTfgjV1cYVtnVG62+38EeuaD9L2utb9qIS1eqlNS3cjiS1OH0eleWPpepV+omlKlW71evlrFO1VyahnRnbWpeX3Zy64PZIBYXflfxIxeueVUY+eqSiqpfdBOZ4SHfw4v8dBDTN8Nre8DByI8ENUTlG79+AWaxRrw8Ksln8B"><input type="hidden" name="postId_0" value="MzQxMzMDAA=="><input type="hidden" name="postTitle_0" value="c0/NTE8tUnDOL80rAdJqyhZGhobWCr6picWlRZl56QpBiSmZiSWZ+XkKPqllqTnFCuWZJRkKjkUppZl5+QA="><input type="hidden" name="postLink_0" value="DcXBDcAgCADAiZB/tyFKlETBANb12/vcyNzxIN57y+JaSSWWVVt7coQV846s2Fk6O1Q7mv+LKY6LdnBqQimmMPnlGXAlB5C3I2r4AQ=="><input type="hidden" name="postAuthor_0" value="K09Nyk0sLkktAgA="><input type="hidden" name="postDateTime_0" value="MzIwtNQ1NNI1MlYwMrYyNLIytAAA"><input type="hidden" name="postContent_0" value="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"></form> 	<div class="pdf24Plugin-cp-link"> 		<a href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/#" onclick="var pdf24Win = window.open(&#39;about:blank&#39;, &#39;pdf24PopWin&#39;, &#39;resizable=yes,scrollbars=yes,width=600,height=250,left=&#39;+(screen.width/2-300)+&#39;,top=&#39;+(screen.height/3-125)+&#39;&#39;); pdf24Win.focus(); document.pdf24Form0.submit(); if(typeof pdf24OnCreatePDF === &#39;function&#39;){void(pdf24OnCreatePDF(this,pdf24Win));} return false;">Scarica l'articolo in formato PDF</a> 	</div> </div>
+<!--?xml encoding="utf-8" ?--><div class="post-views post-14666 entry-meta">
+				<span class="post-views-icon dashicons dashicons-chart-bar"></span>
+				<span class="post-views-label">Post Views:</span>
+				<span class="post-views-count">8,638</span>
+			</div>
+<figure class="wp-block-image size-large"><img width="1024" height="220" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Geiger-Counter-Measuring-radiation-levels-wi.jpg" alt="Geiger Counter - Measuring radiation levels with Arduino h" class="wp-image-14668" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Measuring-radiation-levels-with-Arduino-h-1024x220.jpg 1024w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Measuring-radiation-levels-with-Arduino-h-300x64.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Measuring-radiation-levels-with-Arduino-h-768x165.jpg 768w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Measuring-radiation-levels-with-Arduino-h-640x137.jpg 640w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Measuring-radiation-levels-with-Arduino-h-150x32.jpg 150w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Measuring-radiation-levels-with-Arduino-h.jpg 1271w" sizes="(max-width: 1024px) 100vw, 1024px"></figure><p>Going back to the old boards that I found in a box, I found this <strong>Geiger counter</strong> perfectly functional to be interfaced as a <strong>shield to Arduino</strong>. In this article we will see its features together, and at the same time better understanding what a Geiger counter, or radiation sensor, is and how it works.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img loading="lazy" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Geiger-Counter-Measuring-radiation-lev(1).jpg" alt="Geiger Counter - Measuring radiation levels with Arduino" class="wp-image-14669" width="403" height="197" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Measuring-radiation-levels-with-Arduino.jpg 805w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Measuring-radiation-levels-with-Arduino-300x147.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Measuring-radiation-levels-with-Arduino-768x376.jpg 768w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Measuring-radiation-levels-with-Arduino-640x313.jpg 640w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Measuring-radiation-levels-with-Arduino-150x73.jpg 150w" sizes="(max-width: 403px) 100vw, 403px"></figure></div>
+
+
+
+<h2>The shield board of Libelium</h2>
+
+
+
+<p>The shield board to be interfaced to Arduino is distributed by Libelium. The structure of the card is divided into two different parts:</p>
+
+
+
+<ul><li><strong>signal circuit</strong></li><li><strong>power circuit</strong></li></ul><figure class="wp-block-image size-large"><img loading="lazy" width="769" height="511" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Geiger-Counter-Shield-Board-for-Arduino-Libe.jpg" alt="Geiger Counter Shield Board for Arduino Libelium" class="wp-image-14655" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-Board-for-Arduino-Libelium.jpg 769w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-Board-for-Arduino-Libelium-300x199.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-Board-for-Arduino-Libelium-640x425.jpg 640w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-Board-for-Arduino-Libelium-150x100.jpg 150w" sizes="(max-width: 769px) 100vw, 769px"></figure><p>The part dedicated to the <strong>power circuit</strong> is able to provide a high voltage (400V-1000V) absolutely necessary for the operation of the Geiger tube. To obtain such a high voltage, several Zener diodes connected in series are used.</p>
+
+
+
+<p>The part dedicated to the <strong>signal circuit</strong> has the task of receiving the impulses coming out of the Geiger tube, adapting them and sending them to the microcontroller which will in turn have the task of counting them.</p>
+
+
+
+<h2>Arduino’s task</h2>
+
+
+
+<p>Once connected to the board, Arduino must be programmed in order to receive the signals received by the Geiger counter, count them and produce a measurement that can then be used to evaluate the degree of radioactivity present in the measurement site.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="569" height="413" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Arduino-UNO.jpg" alt="Arduino UNO" class="wp-image-14654" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Arduino-UNO.jpg 569w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Arduino-UNO-300x218.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Arduino-UNO-150x109.jpg 150w" sizes="(max-width: 569px) 100vw, 569px"></figure><p>The impulses will be collected for a period of 10 seconds, which will then be multiplied by 6 in order to simulate the number of impulses per minute (cpm – counts per minute). Once this value is obtained, the cpm will be divided by a unique conversion factor for each type of Geiger tube used. This value can be found on the datasheets supplied by the manufacturer of the Geiger tube. We will thus obtain the value of the radiation which is measured in µSV / h (micro Sievert per hour) by means of the following calculation.</p>
+
+
+
+<p> cpm * conversion factor =  μSv/h  </p>
+
+
+
+<h2>LCD Screen</h2>
+
+
+
+<p>A liquid crystal screen (LCD screen) is supplied with the shield card to which it will be connected via a 4bit line (4 data lines, in addition to the RS, Enable and RW control lines). On this screen we will display the CPM values and the reading of the radiation present in<strong> µSV / h</strong>.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="700" height="384" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Geiger-Counter-Shield-on-Arduino-LCD-Screen.jpg" alt="Geiger Counter Shield on Arduino - LCD Screen" class="wp-image-14653" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-on-Arduino-LCD-Screen.jpg 700w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-on-Arduino-LCD-Screen-300x165.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-on-Arduino-LCD-Screen-640x351.jpg 640w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-on-Arduino-LCD-Screen-150x82.jpg 150w" sizes="(max-width: 700px) 100vw, 700px"></figure><h2>What is a Geiger tube and how it works</h2>
+
+
+
+<p>But the real heart of it all is the Geiger-Muller tube connected to one side of the board. This glass (or even metal) tube is filled with an inert gas such as helium, neon or argon and brought to low pressures (about 0.1 atm). Inside the tube there are two electrodes between which a potential difference of several hundred volts is placed. One of the electrodes is made up of a wire that passes through the center of the tube (anode), while the other electrode is made up of the internal surface of the tube, often covered with a conductive material (cathode). The internal structure of the tube is created so as not to allow any flow of current.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="292" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Geiger-Tube-meccanismo-Complesso-1024x292.jpg" alt="Geiger Tube - meccanismo Complesso" class="wp-image-14670" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Tube-meccanismo-Complesso-1024x292.jpg 1024w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Tube-meccanismo-Complesso-300x85.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Tube-meccanismo-Complesso-768x219.jpg 768w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Tube-meccanismo-Complesso-640x182.jpg 640w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Tube-meccanismo-Complesso-150x43.jpg 150w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Tube-meccanismo-Complesso-1150x328.jpg 1150w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Tube-meccanismo-Complesso.jpg 1152w" sizes="(max-width: 1024px) 100vw, 1024px"></figure><p>The radiation present in the environment passes through the surface of the tube and thanks to its ionizing power, some molecules or atoms of the inert gas are ionized creating positively charged ions and electrons. The large difference in potential between the two electrodes constitutes a very strong magnetic field which accelerates the ions towards one of the electrodes (depending on its charge). Along the way, the ions collide with other molecules, ionizing them in turn, creating a cascade of ions. This flow in contact with the electrodes will produce a current pulse which will be detected by the board and then transformed into a count.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="700" height="466" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Meccanismo-Complesso-Contatore-Geiger-con-Ar.jpg" alt="Meccanismo Complesso - Contatore Geiger con Arduino" class="wp-image-14650" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Meccanismo-Complesso-Contatore-Geiger-con-Arduino.jpg 700w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Meccanismo-Complesso-Contatore-Geiger-con-Arduino-300x200.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Meccanismo-Complesso-Contatore-Geiger-con-Arduino-640x426.jpg 640w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Meccanismo-Complesso-Contatore-Geiger-con-Arduino-150x100.jpg 150w" sizes="(max-width: 700px) 100vw, 700px"></figure><p>The Geiger tube used for this particular shield is the J305ß model, designed to be sensitive to both beta and gamma radiation. It is also chosen precisely for its low price and its small size (11 cm in length). To calculate the radioactivity value, the <strong>conversion factor is 0.008120</strong>.</p>
+
+
+
+<h2>Other components on the shield board</h2>
+
+
+
+<p>We all know the geiger counters from TV, which can be recognized by that crackle that indicates the counts made. The higher the rattle, the higher the level of radiation detected by the environment. To obtain this sound, a Piezo speaker has been inserted on the board which will emit a sound for each pulse detected, regardless of Arduino control.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="848" height="595" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Geiger-Counter-Shield-components-on-board.jpg" alt="Geiger Counter Shield components on board" class="wp-image-14652" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-components-on-board.jpg 848w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-components-on-board-300x210.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-components-on-board-768x539.jpg 768w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-components-on-board-640x449.jpg 640w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-components-on-board-150x105.jpg 150w" sizes="(max-width: 848px) 100vw, 848px"></figure><p>In addition, there is always a <strong>LED bar</strong> on the board consisting of 5 standard LEDs, 3 green and 2 red. These LEDs are controlled directly by Arduino to which they are connected by a series of resistors. Here is the scheme:</p>
+
+
+
+<figure class="wp-block-table"><table class=""><tbody><tr><td>LED green 0</td><td>PIN 9 digital</td></tr><tr><td>LED green 1</td><td>PIN 13 digital</td></tr><tr><td>LED green 2</td><td>PIN 12 digital</td></tr><tr><td>LED red 0</td><td>PIN 11 digital</td></tr><tr><td>LED red 1</td><td>PIN 10 digital</td></tr></tbody></table></figure><p>There is also a switch on the edge of the shield board with two ON and OFF positions.</p>
+
+
+
+<h2>Types of radiation</h2>
+
+
+
+<p><strong>Alpha rays</strong></p>
+
+
+
+<p><strong>Alpha radiation</strong> consists of positively charged particles (+2) emitted directly from the nucleus of a decaying radioactive atom. These particles are very dense and heavy and therefore are able to propagate in the environment for only a few centimeters (in the presence of air) and they cannot overcome even the simplest barriers. Generally this type of radiation is not very worrying, as long as the radioactive substance that generates them is not ingested or injected into the human body.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="771" height="503" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Types-of-radiation-Meccanismo-Complesso.jpg" alt="Types of radiation - Meccanismo Complesso" class="wp-image-14671" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Types-of-radiation-Meccanismo-Complesso.jpg 771w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Types-of-radiation-Meccanismo-Complesso-300x196.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Types-of-radiation-Meccanismo-Complesso-768x501.jpg 768w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Types-of-radiation-Meccanismo-Complesso-640x418.jpg 640w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Types-of-radiation-Meccanismo-Complesso-150x98.jpg 150w" sizes="(max-width: 771px) 100vw, 771px"><figcaption>Types of radiation</figcaption></figure><p><strong>Beta rays</strong></p>
+
+
+
+<p>Beta radiation consists of negatively charged particles (-1) emitted by a decaying radioactive atom. These particles are smaller and lighter and are able to penetrate a few millimeters inside metals. They are therefore very harmful to the living tissues to which they are exposed.</p>
+
+
+
+<p><strong>Gamma rays</strong></p>
+
+
+
+<p><strong>Gamma radiation</strong> represents the highest energy part of the electromagnetic spectrum (the same as radio waves, the visible, infrared, etc.). These high energy rays are capable of penetrating anything. Only heavier and denser metals are able to shield or at least attenuate them, such as lead. Gamma rays are naturally produced by the sun to arrive on the earth’s crust as “cosmic rays”. This radiation is very dangerous.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="827" height="176" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Electromagnetic-spectrum-Meccanismo-Compless.jpg" alt="Electromagnetic spectrum - Meccanismo Complesso" class="wp-image-14672" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Electromagnetic-spectrum-Meccanismo-Complesso.jpg 827w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Electromagnetic-spectrum-Meccanismo-Complesso-300x64.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Electromagnetic-spectrum-Meccanismo-Complesso-768x163.jpg 768w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Electromagnetic-spectrum-Meccanismo-Complesso-640x136.jpg 640w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Electromagnetic-spectrum-Meccanismo-Complesso-150x32.jpg 150w" sizes="(max-width: 827px) 100vw, 827px"></figure><h2>Environmental radiation</h2>
+
+
+
+<p>We have seen how radiation can arrive in our atmosphere in the form of cosmic rays. But this is not the only form of natural radiation to which we are subjected daily. In fact, there are many radioactive materials in the soil that produce one of the three types of radiation seen previously, during the decay process of atoms. The radioactive minerals best known to all are those based on Uranium, but there are many other elements, and radioactive isotopes present in the minerals of the earth’s crust.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="570" height="399" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Raggi-cosmici.jpg" alt="Raggi cosmici" class="wp-image-14659" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Raggi-cosmici.jpg 570w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Raggi-cosmici-300x210.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Raggi-cosmici-150x105.jpg 150w" sizes="(max-width: 570px) 100vw, 570px"></figure></div>
+
+
+
+<p>We are therefore always subjected to background radiation. This will vary according to our geographical area, altitude and many other factors. Common background or ambient radiation ranges from about 3650 – 7200 μSv per year.</p>
+
+
+
+<p>But what are the values that can produce health problems? First of all, it is important to specify that it is necessary to take into account not only the intensity of the radiation, but above all the time of exposure to it. For this reason it has been established that the limit value of radiation absorbed in a year must be less than 50000 μSv (about 10 times higher than the level of environmental radiation). So if not exposed to radioactive substances, we have nothing to worry about. Consider that an X-ray plate does not exceed 100μSv.</p>
+
+
+
+<h2>Connect it all together</h2>
+
+
+
+<p>Take the cathode tube supplied and solder the two connectors at the ends to the two empty perforated positions on the board. Once well welded, secure the Geiger tube to the board with two clamps to keep it locked. In this regard there are two holes in correspondence on the shield card.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="800" height="305" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/Geiger-Counter-Shield-connected-to-Arduino.jpg" alt="Geiger Counter Shield connected to Arduino" class="wp-image-14651" srcset="https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-connected-to-Arduino.jpg 800w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-connected-to-Arduino-300x114.jpg 300w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-connected-to-Arduino-768x293.jpg 768w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-connected-to-Arduino-640x244.jpg 640w, https://www.meccanismocomplesso.org/wp-content/uploads/2019/12/Geiger-Counter-Shield-connected-to-Arduino-150x57.jpg 150w" sizes="(max-width: 800px) 100vw, 800px"></figure><p>The Arduino board will act as a base for the shield (Radiation board) which will be inserted occupying almost all the pins. To power the entire Geiger counter, simply use the 5V pin on the Arduino. While the pulses output from the card will be received as interrupt 0 on digital PIN 2. Then above the shield we insert the card with the integrated LCD screen, using the pins already set in the upper side.</p>
+
+
+
+<h2>Source Code for sketch</h2>
+
+
+
+<p>Here is the source code:</p>
+
+
+
+<pre class="wp-block-preformatted"> /*
+ &nbsp;*&nbsp; ------Geiger Tube board (Arduino Code) Example--------
+ &nbsp;*
+ &nbsp;*&nbsp; Explanation: This example shows how to get the signal from the Geiger Tube
+ &nbsp;*&nbsp; in Arduino, we use one of the Arduino interrupt pins (PIN2).
+ &nbsp;*&nbsp; We count the time (ms) between two pulses of the Geiger tube.
+ &nbsp;*
+ &nbsp;*&nbsp; Copyright (C) 2011 Libelium Comunicaciones Distribuidas S.L.
+ &nbsp;*&nbsp; http://www.libelium.com
+ &nbsp;*
+ &nbsp;*&nbsp; This program is free software: you can redistribute it and/or modify
+ &nbsp;*&nbsp; it under the terms of the GNU General Public License as published by
+ &nbsp;*&nbsp; the Free Software Foundation, either version 2 of the License, or
+ &nbsp;*&nbsp; (at your option) any later version.
+ &nbsp;* 
+ &nbsp;*&nbsp; This program is distributed in the hope that it will be useful,
+ &nbsp;*&nbsp; but WITHOUT ANY WARRANTY; without even the implied warranty of
+ &nbsp;*&nbsp; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.&nbsp; See the
+ &nbsp;*&nbsp; GNU General Public License for more details.
+ &nbsp;* 
+ &nbsp;*&nbsp; You should have received a copy of the GNU General Public License
+ &nbsp;*&nbsp; along with this program.&nbsp; If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ &nbsp;*
+ &nbsp;*&nbsp; Version:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.3
+ &nbsp;*&nbsp; Design:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Marcos Yarza, David Gascon
+ &nbsp;*&nbsp; Implementation:&nbsp;&nbsp; Marcos Yarza
+ &nbsp;*/
+ &nbsp;
+ // include the library code:
+ #include &lt;LiquidCrystal.h&gt;
+ &nbsp;
+ // initialize the library with the numbers of the interface pins
+ LiquidCrystal lcd(3,4,5,6,7,8);
+ &nbsp;
+ &nbsp;
+ // Threshold values for the led bar
+ #define TH1 45
+ #define TH2 95
+ #define TH3 200
+ #define TH4 400
+ #define TH5 600
+ &nbsp;
+ // Conversion factor - CPM to uSV/h
+ #define CONV_FACTOR 0.00812
+ &nbsp;
+ // Variables
+ int ledArray [] = {10,11,12,13,9};
+ int geiger_input = 2;
+ long count = 0;
+ long countPerMinute = 0;
+ long timePrevious = 0;
+ long timePreviousMeassure = 0;
+ long time = 0;
+ long countPrevious = 0;
+ float radiationValue = 0.0;
+ &nbsp;
+ void setup(){
+ &nbsp; pinMode(geiger_input, INPUT);
+ &nbsp; digitalWrite(geiger_input,HIGH);
+ &nbsp; for (int i=0;i&lt;5;i++){
+ &nbsp;&nbsp;&nbsp; pinMode(ledArray[i],OUTPUT);
+ &nbsp; }
+ &nbsp;
+ &nbsp; Serial.begin(19200);
+ &nbsp;
+ &nbsp; //set up the LCD\'s number of columns and rows:
+ &nbsp; lcd.begin(16, 2);
+ &nbsp; lcd.clear();
+ &nbsp; lcd.setCursor(0, 0);
+ &nbsp; lcd.print("Radiation Sensor");
+ &nbsp; lcd.setCursor(0,1);
+ &nbsp; lcd.print("Board - Arduino");&nbsp; 
+ &nbsp; delay(1000);
+ &nbsp;
+ &nbsp; lcd.clear();
+ &nbsp; lcd.setCursor(0, 0);
+ &nbsp; lcd.print(" Cooking Hacks");
+ &nbsp; delay(1000);
+ &nbsp;
+ &nbsp; lcd.clear();
+ &nbsp; lcd.setCursor(0,1);&nbsp; 
+ &nbsp; lcd.print("www.cooking-hacks.com");
+ &nbsp; delay(500);
+ &nbsp; for (int i=0;i&lt;5;i++){
+ &nbsp;&nbsp;&nbsp; delay(200);&nbsp; 
+ &nbsp;&nbsp;&nbsp; lcd.scrollDisplayLeft();
+ &nbsp; }
+ &nbsp; delay(500);
+ &nbsp;
+ &nbsp; lcd.clear();
+ &nbsp; lcd.setCursor(0, 0);
+ &nbsp; lcd.print("&nbsp; - Libelium -");
+ &nbsp; lcd.setCursor(0,1);
+ &nbsp; lcd.print("www.libelium.com");&nbsp;&nbsp;&nbsp; 
+ &nbsp; delay(1000);
+ &nbsp;
+ &nbsp; lcd.clear();&nbsp; 
+ &nbsp; lcd.setCursor(0, 0);
+ &nbsp; lcd.print("CPM=");
+ &nbsp; lcd.setCursor(4,0);
+ &nbsp; lcd.print(6*count);
+ &nbsp; lcd.setCursor(0,1);
+ &nbsp; lcd.print(radiationValue);
+ &nbsp;
+ &nbsp; attachInterrupt(0,countPulse,FALLING);
+ }
+ &nbsp;
+ void loop(){
+ &nbsp; if (millis()-timePreviousMeassure &gt; 10000){
+ &nbsp;&nbsp;&nbsp; countPerMinute = 6*count;
+ &nbsp;&nbsp;&nbsp; radiationValue = countPerMinute * CONV_FACTOR;
+ &nbsp;&nbsp;&nbsp; timePreviousMeassure = millis();
+ &nbsp;&nbsp;&nbsp; Serial.print("cpm = "); 
+ &nbsp;&nbsp;&nbsp; Serial.print(countPerMinute,DEC);
+ &nbsp;&nbsp;&nbsp; Serial.print(" - ");
+ &nbsp;&nbsp;&nbsp; Serial.print("uSv/h = ");
+ &nbsp;&nbsp;&nbsp; Serial.println(radiationValue,4);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ &nbsp;&nbsp;&nbsp; lcd.clear();&nbsp;&nbsp;&nbsp; 
+ &nbsp;&nbsp;&nbsp; lcd.setCursor(0, 0);
+ &nbsp;&nbsp;&nbsp; lcd.print("CPM=");
+ &nbsp;&nbsp;&nbsp; lcd.setCursor(4,0);
+ &nbsp;&nbsp;&nbsp; lcd.print(countPerMinute);
+ &nbsp;&nbsp;&nbsp; lcd.setCursor(0,1);
+ &nbsp;&nbsp;&nbsp; lcd.print(radiationValue,4);
+ &nbsp;&nbsp;&nbsp; lcd.setCursor(6,1);
+ &nbsp;&nbsp;&nbsp; lcd.print(" uSv/h");
+ &nbsp;
+ &nbsp;&nbsp;&nbsp; //led var setting&nbsp; 
+ &nbsp;&nbsp;&nbsp; if(countPerMinute &lt;= TH1) ledVar(0);
+ &nbsp;&nbsp;&nbsp; if((countPerMinute &lt;= TH2)&amp;&amp;(countPerMinute&gt;TH1)) ledVar(1);
+ &nbsp;&nbsp;&nbsp; if((countPerMinute &lt;= TH3)&amp;&amp;(countPerMinute&gt;TH2)) ledVar(2);
+ &nbsp;&nbsp;&nbsp; if((countPerMinute &lt;= TH4)&amp;&amp;(countPerMinute&gt;TH3)) ledVar(3);
+ &nbsp;&nbsp;&nbsp; if((countPerMinute &lt;= TH5)&amp;&amp;(countPerMinute&gt;TH4)) ledVar(4);
+ &nbsp;&nbsp;&nbsp; if(countPerMinute&gt;TH5) ledVar(5);
+ &nbsp;
+ &nbsp;&nbsp;&nbsp; count = 0;
+ &nbsp; }
+ }
+ &nbsp;
+ void countPulse(){
+ &nbsp; detachInterrupt(0);
+ &nbsp; count++;
+ &nbsp; while(digitalRead(2)==0){
+ &nbsp; }
+ &nbsp; attachInterrupt(0,countPulse,FALLING);
+ }
+ &nbsp;
+ void ledVar(int value){
+ &nbsp; if (value &gt; 0){
+ &nbsp;&nbsp;&nbsp; for(int i=0;i&lt;=value;i++){
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(ledArray[i],HIGH);
+ &nbsp;&nbsp;&nbsp; }
+ &nbsp;&nbsp;&nbsp; for(int i=5;i&gt;value;i--){
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(ledArray[i],LOW);
+ &nbsp;&nbsp;&nbsp; }
+ &nbsp; }
+ &nbsp; else {
+ &nbsp;&nbsp;&nbsp; for(int i=5;i&gt;=0;i--){
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; digitalWrite(ledArray[i],LOW);
+ &nbsp;&nbsp;&nbsp; }
+ &nbsp; }
+ } </pre>
+			</div><!-- .entry-content -->
+    
+    <footer class="entry-footer"><span class="cat-links">Posted in <a href="https://www.meccanismocomplesso.org/en/category/arduino-eng/" rel="category tag">Arduino ENG</a></span></footer><!-- .entry-footer -->
+    </article><!-- #post-## -->
+
+
+					
+<div id="comments" class="comments-area">
+
+	
+	
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/#respond" style="display:none;">Cancel reply</a></small></h3><p class="must-log-in">You must be <a href="https://www.meccanismocomplesso.org/wp-login.php?redirect_to=https%3A%2F%2Fwww.meccanismocomplesso.org%2Fen%2Fgeiger-counter-measuring-radiation-levels-with-arduino%2F">logged in</a> to post a comment.</p>	</div><!-- #respond -->
+	<p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>
+</div><!-- #comments -->
+
+				
+				</main><!-- #main -->
+			</div><!-- #primary -->
+
+                            
+<div id="secondary" class="widget-area sidebar" role="complementary">
+	<aside id="polylang-2" class="widget widget_polylang"><ul>
+	<li class="lang-item lang-item-920 lang-item-it lang-item-first"><a lang="it-IT" hreflang="it-IT" href="https://www.meccanismocomplesso.org/contatore-geiger-misuriamo-i-livelli-di-radiazione-con-arduino/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAUVBMVEUAiQAAgADk5OTe3t7vAAB3yXf9/f36+vr5Vlb3RkZjwWNYvVj4+Pj1MzP1KChQuFD1GxviAABHtUf19fXzDw4/sT8AcAA2qzYAWgDLy8vDw8ObXclsAAAAVElEQVR4AQXBSwoCQRQEsNT70CC69P5XdCUMA2ISSAiBWAQScg8bN7GJWxFDrCivwhCLMipGx3LKUOi2HAZluy2HgXprxQGfGL6G63B5MJ5FCD/4A3DaCLvbBle5AAAAAElFTkSuQmCC" alt="Italiano" width="16" height="11" style="width: 16px; height: 11px;"><span style="margin-left:0.3em;">Italiano</span></a></li>
+</ul>
+</aside><aside id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://www.meccanismocomplesso.org/en/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form></aside><aside id="randomvideosidebar-2" class="widget randomvideosidebar"><div class="fluid-width-video-wrapper" style="padding-top: 72%;"><iframe src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/uScO2wVVpH8.html" frameborder="0" allowfullscreen="" name="fitvid0"></iframe></div></aside><aside id="themoneytizer_widget-2" class="widget widget_themoneytizer_widget" style="display: none !important;"><h2 class="widget-title"></h2><div id="15038-2"><script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/gen.js(1).download" style="display: none !important;"></script><script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/requestform.js(1).download" style="display: none !important;"></script></div></aside>      <aside id="mailpoet_form-3" class="widget widget_mailpoet_form">
+  
+      <h2 class="widget-title">Subscribe to newsletter</h2>
+  
+  <div class="
+    mailpoet_form_popup_overlay
+      "></div>
+  <div id="mailpoet_form_9" class="mailpoet_form mailpoet_form_widget mailpoet_form_position_ mailpoet_form_animation_ mailpoet_form_tight_container">
+    
+    <style type="text/css">
+     .mailpoet_hp_email_label{display:none!important;}#mailpoet_form_9 .mailpoet_form {  }
+#mailpoet_form_9 .mailpoet_column_with_background { padding: 10px; }
+#mailpoet_form_9 .mailpoet_form_column:not(:first-child) { margin-left: 20px; }
+#mailpoet_form_9 .mailpoet_paragraph { line-height: 20px; margin-bottom: 20px; }
+#mailpoet_form_9 .mailpoet_segment_label, #mailpoet_form_9 .mailpoet_text_label, #mailpoet_form_9 .mailpoet_textarea_label, #mailpoet_form_9 .mailpoet_select_label, #mailpoet_form_9 .mailpoet_radio_label, #mailpoet_form_9 .mailpoet_checkbox_label, #mailpoet_form_9 .mailpoet_list_label, #mailpoet_form_9 .mailpoet_date_label { display: block; font-weight: normal; }
+#mailpoet_form_9 .mailpoet_text, #mailpoet_form_9 .mailpoet_textarea, #mailpoet_form_9 .mailpoet_select, #mailpoet_form_9 .mailpoet_date_month, #mailpoet_form_9 .mailpoet_date_day, #mailpoet_form_9 .mailpoet_date_year, #mailpoet_form_9 .mailpoet_date { display: block; }
+#mailpoet_form_9 .mailpoet_text, #mailpoet_form_9 .mailpoet_textarea { width: 200px; }
+#mailpoet_form_9 .mailpoet_checkbox {  }
+#mailpoet_form_9 .mailpoet_submit {  }
+#mailpoet_form_9 .mailpoet_divider {  }
+#mailpoet_form_9 .mailpoet_message {  }
+#mailpoet_form_9 .mailpoet_form_loading { width: 30px; text-align: center; line-height: normal; }
+#mailpoet_form_9 .mailpoet_form_loading > span { width: 5px; height: 5px; background-color: #5b5b5b; }#mailpoet_form_9{;}#mailpoet_form_9 .mailpoet_message {margin: 0; padding: 0 20px;}#mailpoet_form_9 .mailpoet_paragraph.last {margin-bottom: 0} @media (max-width: 500px) {#mailpoet_form_9 {background-image: none;}} @media (min-width: 500px) {#mailpoet_form_9 .last .mailpoet_paragraph:last-child {margin-bottom: 0}}  @media (max-width: 500px) {#mailpoet_form_9 .mailpoet_form_column:last-child .mailpoet_paragraph:last-child {margin-bottom: 0}} 
+    </style>
+
+    <form target="_self" method="post" action="https://www.meccanismocomplesso.org/wp-admin/admin-post.php?action=mailpoet_subscription_form" class="mailpoet_form mailpoet_form_form mailpoet_form_widget" novalidate="" data-delay="" data-exit-intent-enabled="" data-font-family="" data-cookie-expiration-time="">
+      <input type="hidden" name="data[form_id]" value="9">
+      <input type="hidden" name="token" value="3c143e63bf">
+      <input type="hidden" name="api_version" value="v1">
+      <input type="hidden" name="endpoint" value="subscribers">
+      <input type="hidden" name="mailpoet_method" value="subscribe">
+
+      <label class="mailpoet_hp_email_label">Please leave this field empty<input type="email" name="data[email]"></label><div class="mailpoet_paragraph"><label for="form_first_name_9" class="mailpoet_text_label" data-automation-id="form_first_name_label">Name</label><input type="text" autocomplete="given-name" class="mailpoet_text" id="form_first_name_9" name="data[form_field_OTQ5ZjI0ODNkMjQ1X2ZpcnN0X25hbWU=]" title="Name" value="" data-automation-id="form_first_name" data-parsley-names="[&quot;Please specify a valid name.&quot;,&quot;Addresses in names are not permitted, please add your name instead.&quot;]"></div>
+<div class="mailpoet_paragraph"><label for="form_email_9" class="mailpoet_text_label" data-automation-id="form_email_label">Email <span class="mailpoet_required">*</span></label><input type="email" autocomplete="email" class="mailpoet_text" id="form_email_9" name="data[form_field_YTI4OTc1YmRlYzc1X2VtYWls]" title="Email" value="" data-automation-id="form_email" data-parsley-required="true" data-parsley-minlength="6" data-parsley-maxlength="150" data-parsley-error-message="Please specify a valid email address." data-parsley-required-message="This field is required."></div>
+<div class="mailpoet_paragraph"><label for="form_segments_9" class="mailpoet_segment_label">Select the sections (category of topics) to which you want to be registered</label><label class="mailpoet_checkbox_label"><input type="checkbox" class="mailpoet_checkbox" name="data[form_field_NmExMTllOTlkNzlhX3NlZ21lbnRz][]" value="9" data-parsley-required="true" data-parsley-group="segments" data-parsley-errors-container=".mailpoet_error_segments_9" data-parsley-required-message="Please select a list." data-parsley-multiple="dataform_field_NmExMTllOTlkNzlhX3NlZ21lbnRz"> Python ENG</label><label class="mailpoet_checkbox_label"><input type="checkbox" class="mailpoet_checkbox" name="data[form_field_NmExMTllOTlkNzlhX3NlZ21lbnRz][]" value="10" data-parsley-required="true" data-parsley-group="segments" data-parsley-errors-container=".mailpoet_error_segments_9" data-parsley-required-message="Please select a list." data-parsley-multiple="dataform_field_NmExMTllOTlkNzlhX3NlZ21lbnRz"> Arduino ENG</label><label class="mailpoet_checkbox_label"><input type="checkbox" class="mailpoet_checkbox" name="data[form_field_NmExMTllOTlkNzlhX3NlZ21lbnRz][]" value="8" data-parsley-required="true" data-parsley-group="segments" data-parsley-errors-container=".mailpoet_error_segments_9" data-parsley-required-message="Please select a list." data-parsley-multiple="dataform_field_NmExMTllOTlkNzlhX3NlZ21lbnRz"> Raspberry ENG</label><span class="mailpoet_error_segments_9"></span></div>
+<div class="mailpoet_paragraph last"><input type="submit" class="mailpoet_submit" value="Subscribe" data-automation-id="subscribe-submit-button" style="border-color:transparent;"><span class="mailpoet_form_loading"><span class="mailpoet_bounce1"></span><span class="mailpoet_bounce2"></span><span class="mailpoet_bounce3"></span></span></div>
+
+      <div class="mailpoet_message">
+        <p class="mailpoet_validate_success" style="display:none;">Check you email (or spam directory) to confirm your subscription.
+        </p>
+        <p class="mailpoet_validate_error" style="display:none;">        </p>
+      </div>
+    </form>
+  </div>
+
+      </aside>
+  <aside id="themoneytizer_widget-4" class="widget widget_themoneytizer_widget" style="display: none !important;"><h2 class="widget-title"></h2><div id="15038-1"><script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/gen.js(1).download" style="display: none !important;"></script><script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/requestform.js(2).download" style="display: none !important;"></script></div></aside><aside id="themoneytizer_widget-3" class="widget widget_themoneytizer_widget" style="display: none !important;"><h2 class="widget-title"></h2><div id="15038-19"><script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/gen.js(1).download" style="display: none !important;"></script><script src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/requestform.js(3).download" style="display: none !important;"></script></div></aside></div><!-- #secondary -->
+            
+		</div><!--#content-inside -->
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+				
+		<div class="site-info">
+			<div class="container">
+									<div class="btt">
+						<a class="back-to-top" href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/#page" title="Back To Top"><i class="fa fa-angle-double-up wow flash" data-wow-duration="2s" style="visibility: hidden; animation-duration: 2s; animation-name: none;"></i></a>
+					</div>
+										Copyright © 2022 Meccanismo Complesso		<span class="sep"> – </span>
+		<a href="https://www.famethemes.com/themes/onepress">OnePress</a> theme by FameThemes					</div>
+		</div>
+		<!-- .site-info -->
+
+	</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+
+		<script>
+			function copy_to_clipBoard() {
+				var copyText = document.getElementById("mref-link-buddypress-profile");
+				copyText.select();
+				document.execCommand("copy");
+			}
+		</script>
+		<link rel="stylesheet" id="mailpoet_public-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/mailpoet-public.861e3103.css" type="text/css" media="all">
+<link rel="stylesheet" id="mailpoet_custom_fonts_0-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/css(1)" type="text/css" media="all">
+<link rel="stylesheet" id="mailpoet_custom_fonts_1-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/css(2)" type="text/css" media="all">
+<link rel="stylesheet" id="mailpoet_custom_fonts_2-css" href="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/css(3)" type="text/css" media="all">
+<script type="text/javascript" id="thickbox-js-extra">
+/* <![CDATA[ */
+var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":"https:\/\/www.meccanismocomplesso.org\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/thickbox.js.download" id="thickbox-js"></script>
+<script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/plugins.js.download" id="onepress-js-plugins-js"></script>
+<script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/bootstrap.min.js.download" id="onepress-js-bootstrap-js"></script><iframe name="__tcfapiLocator" style="display: none;" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/saved_resource.html"></iframe>
+<script type="text/javascript" id="onepress-theme-js-extra">
+/* <![CDATA[ */
+var onepress_js_settings = {"onepress_disable_animation":"","onepress_disable_sticky_header":"","onepress_vertical_align_menu":"","hero_animation":"flipInX","hero_speed":"5000","hero_fade":"750","hero_duration":"5000","hero_disable_preload":"","is_home":"","gallery_enable":"1","is_rtl":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/theme.js.download" id="onepress-theme-js"></script>
+<script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/comment-reply.min.js.download" id="comment-reply-js"></script>
+<script type="text/javascript" id="wp_slimstat-js-extra">
+/* <![CDATA[ */
+var SlimStatParams = {"ajaxurl":"https:\/\/www.meccanismocomplesso.org\/wp-admin\/admin-ajax.php","baseurl":"\/","dnt":"noslimstat,ab-item","ci":"YTo0OntzOjEyOiJjb250ZW50X3R5cGUiO3M6NDoicG9zdCI7czo4OiJjYXRlZ29yeSI7czoxMzoiMTgyOSw5MjMsMzU4MCI7czoxMDoiY29udGVudF9pZCI7aToxNDY2NjtzOjY6ImF1dGhvciI7czo5OiJ3ZWJtYXN0ZXIiO30-.99e912834217ea46d7848f24b13be238"};
+/* ]]> */
+</script>
+<script defer="" type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/wp-slimstat.min.js.download" id="wp_slimstat-js"></script>
+<script type="text/javascript" id="mailpoet_public-js-extra">
+/* <![CDATA[ */
+var MailPoetForm = {"ajax_url":"https:\/\/www.meccanismocomplesso.org\/wp-admin\/admin-ajax.php","is_rtl":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/public.673bd5d2.js.download" id="mailpoet_public-js"></script>
+<script type="text/javascript" id="mailpoet_public-js-after">
+function initMailpoetTranslation() {
+  if (typeof MailPoet !== 'undefined') {
+    MailPoet.I18n.add('ajaxFailedErrorMessage', 'An error has happened while performing a request, please try again later.')
+  } else {
+    setTimeout(initMailpoetTranslation, 250);
+  }
+}
+setTimeout(initMailpoetTranslation, 250);
+</script>
+<script type="text/javascript">
+(function() {
+				var expirationDate = new Date();
+				expirationDate.setTime( expirationDate.getTime() + 31536000 * 1000 );
+				document.cookie = "pll_language=en; expires=" + expirationDate.toUTCString() + "; path=/; secure; SameSite=Lax";
+			}());
+</script>
+
+		<!-- Cookie Notice plugin v2.3.1 by Hu-manity.co https://hu-manity.co/ -->
+		<div id="cookie-notice" role="dialog" class="cookie-revoke-hidden cn-position-bottom cn-effect-fade cookie-notice-visible" aria-label="Cookie Notice" style="background-color: rgba(0,0,0,1);"><div class="cookie-notice-container" style="color: #fff;"><span id="cn-notice-text" class="cn-text-container">We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will assume that you are happy with it.</span><span id="cn-notice-buttons" class="cn-buttons-container"><a href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/#" id="cn-accept-cookie" data-cookie-set="accept" class="cn-set-cookie cn-button cn-button-custom button" aria-label="Ok">Ok</a><a href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/#" id="cn-refuse-cookie" data-cookie-set="refuse" class="cn-set-cookie cn-button cn-button-custom button" aria-label="No">No</a><a href="https://www.meccanismocomplesso.org/privacy-policy/" target="_blank" id="cn-more-info" class="cn-more-info cn-button cn-button-custom button" aria-label="Read more">Read more</a></span><span id="cn-close-notice" data-cookie-set="accept" class="cn-close-icon" title="No"></span></div>
+			<div class="cookie-revoke-container" style="color: #fff;"><span id="cn-revoke-buttons" class="cn-buttons-container"><a href="https://www.meccanismocomplesso.org/en/geiger-counter-measuring-radiation-levels-with-arduino/#" class="cn-revoke-cookie cn-button cn-button-custom button" aria-label=""></a></span>
+			</div>
+		</div>
+		<!-- / Cookie Notice plugin -->
+
+
+
+<!-- Dynamic page generated in 2.896 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2022-07-26 13:58:35 -->
+
+<!-- super cache --><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><div id="aswift_0_host" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;" tabindex="0" title="Advertisement" aria-label="Advertisement"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/ads.html" data-google-container-id="a!1" data-load-complete="true"></iframe></div></ins><iframe src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/aframe.html" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/zrt_lookup.html" style="display: none;"></iframe><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important; width: 100vw !important; height: 100vh !important; inset: 0px auto auto 0px !important; clear: none !important; float: none !important; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; padding: 0px !important; position: fixed !important; vertical-align: baseline !important; visibility: visible !important; z-index: 2147483647 !important; background: transparent !important;" aria-hidden="true" data-ad-status="filled" data-vignette-loaded="true"><div id="aswift_1_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none !important; height: 100vh !important; width: 100vw !important; margin: 0px !important; padding: 0px !important; position: relative !important; visibility: visible !important; background-color: transparent !important; display: block !important; inset: auto !important; clear: none !important; float: none !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; vertical-align: baseline !important; z-index: auto !important;"><iframe id="aswift_1" name="aswift_1" style="width: 100vw !important; height: 100vh !important; inset: 0px auto auto 0px !important; position: absolute !important; clear: none !important; display: inline !important; float: none !important; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; padding: 0px !important; vertical-align: baseline !important; visibility: visible !important; z-index: auto !important;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="" height="" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./Geiger Counter – Measuring Radiation Levels with Arduino – Meccanismo Complesso_files/zrt_lookup(1).html" data-google-container-id="a!2" data-google-query-id="CNbW_K3AlvkCFUUE1Aodt5wLGA" data-load-complete="true"></iframe></div></ins></html>
