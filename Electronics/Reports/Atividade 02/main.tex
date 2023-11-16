@@ -1,0 +1,313 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{amsmath}  
+\usepackage{physics}
+\usepackage{graphicx} 
+\usepackage[portuguese]{babel}
+\usepackage[margin=1in,letterpaper]{geometry} 
+\usepackage{cite} 
+\usepackage[final]{hyperref} 
+\hypersetup{
+	colorlinks=true,       
+	linkcolor=blue,        
+	citecolor=blue,        
+	filecolor=magenta,     
+	urlcolor=blue         
+}
+
+\begin{document}
+
+\title{\bf Circuitos RC como filtros}
+\author{Gabriel Wendell Celestino Rocha\footnote{\href{mailto:gabrielwendell@fisica.ufrn.br}{gabrielwendell@fisica.ufrn.br}}}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+Os filtros eletrônicos são um tipo de filtro de processamento de sinal na forma de circuitos elétricos. 
+
+Resumo do experimento abordado neste relatório. Deve conter uma descrição bastante breve e geral dos \textbf{objetivos} do experimento, os \textbf{métodos} utilizados para a coleta dos dados e posterior tratamento dos mesmos, os \textbf{resultados} obtidos e a \textbf{conclusão} do relatório.
+\end{abstract}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introdução}\label{Sec 1 - Introdução}
+A que a reatância capacitiva é uma grandeza física que depende da frequência: quanto maior a frequência do sinal que alimenta um capacitor, menor será a resistência que o componente oferecerá à passagem de corrente. Essa propriedade pode ser utilizada para a confecção de filtros de frequência que atenuem sinais com certos valores de frequência num dado circuito elétrico. Os filtros que cortam os sinais com frequências abaixo de um certo valor são chamados de “\textit{filtros passa-alta}”, ao passo que aqueles que cortam sinais com frequências acima de um dado valor chamam-se “\textit{filtros passa-baixa}”. A combinação dos dois tipos de filtros pode resultar num outro tipo de filtro (chamado de \textit{passa-banda}) que deixa passar somente sinais com frequências próximas de um certo valor, atenuando todos os sinais com frequências acima e abaixo deste valor; desta forma o filtro define uma \textbf{banda passante}.
+
+Por meio das definições de reatância capacitiva e impedância discutidas anteriormente, as amplitudes das voltagens no capacitor ($V_{0C}$) e no resistor ($V_{0R}$) em um circuito RC em série podem ser escritas como:
+\begin{equation}\label{V_0C - Introd.}
+    V_{0C}=\frac{X_{C}}{Z}V_{0}
+\end{equation}
+\begin{equation}\label{V_0R - Introd.}
+    V_{0R}=\frac{R}{Z}V_{0}
+\end{equation}
+
+onde $V_{0}$ é a amplitude da voltagem de alimentação do circuito, $X=\frac{1}{\omega C}$ é a reatância capacitiva, $R$ é a resistência e $Z=\sqrt{R^{2}+X_{C}^{2}}$ a impedância do circuito. Observe que o termo "resistência" aplica-se somente ao resistor. Para o capacitor utiliza-se o termo \textit{reatância capacitiva} e para a \textit{resistência total do circuito} empregou-se o termo \textit{impedância}. Os filtros deixarão passar certas faixas de frequência dependendo da escolha de qual dispositivo será usado para obter o sinal de saída do filtro, capacitor ou resistor, e de seus valores de capacitância e resistência.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Embasamento teórico}\label{Sec 2 - Teoria}
+Quando se alimenta um circuito RC em série com uma voltagem alternada de frequência angular $\omega$ e amplitude $V_{0}$, as amplitudes das voltagens no capacitor ($V_{0C}$) e no resistor ($V_{0R}$) serão dadas por
+
+\begin{equation}\label{V_0C}
+    V_{0C}=\frac{X}{Z}V_{0}=\frac{1}{\sqrt{1+(\omega RC)^{2}}}V_{0}
+\end{equation}
+\begin{equation}\label{V_0R}
+    V_{0R}=\frac{R}{Z}V_{0}=\frac{\omega RC}{\sqrt{1+(\omega RC)^{2}}}V_{0}
+\end{equation}
+
+Note que $V_{0C}$ e $V_{0R}$ dependem da frequência $\omega$, mas de maneira oposta. No capacitor, a amplitude $V_{0C}\rightarrow V_{0}$ quando a frequência angular $\omega\rightarrow0$. Conforme a frequência aumenta, a razão $\frac{V_{0C}}{V_{0}}$ vai diminuindo, e no limite em que $\omega\rightarrow\infty$, $V_{0C}\rightarrow0$. No resistor observa-se o comportamento oposto. Para frequências baixas e amplitude $V_{0R}$ é baixa. Esta amplitude aumenta com o aumento da frequência, e no limite de frequências muito altas, $V_{0R}\rightarrow V_{0}$. Assim, de acordo com a faixa de frequências que desejamos eliminar do sinal de entrada, escolhe-se o dispositivo de onde se deseja extrair o sinal de saída. Para eliminarmos frequências altas, é necessário utilizar o sinal de tensão no capacitor como saído (filtro passa-baixa), se para eliminar frequências baixas, usar o sinal de tensão do resistor como saída (filtro passa-alta).
+
+
+\subsection{Filtro passa-baixa}
+Vamos analisar um circuito RC em série atuando como um filtro passa-baixa. Para isso deve-se comparar o sinal de entrada, fornecido pelo gerador de funções, com o sinal de saída, extraído do capacitor. Isto é feito montando o circuito mostrado na Fig. (\ref{fig:Low-pass_RC_Filter}).
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/Low-pass_RC_Filter.png}
+    \label{fig:Low-pass_RC_Filter}
+    \caption{Representação esquemática de um filtro passa-baixa construído a partir de um circuito RC em série, alimentado com corrente alternada.}
+\end{figure}
+
+Para tal tipo de circuito, a amplitude de voltagem no capacitor $V_{0C}$ é dada pela Equação (\ref{V_0C}). A razão entre as amplitudes $V_{0C}$ e $V_{0}$ será chamada de $A_{\text{PB}}$, representando a razão entre as amplitudes de tensão de entrada e saída, e será expressa como:
+\begin{equation}\label{A_PB}
+    A_{\text{PB}}\equiv\frac{V_{0C}}{V_{0}}=\frac{1}{\sqrt{1+(\omega RC)^{2}}}
+\end{equation}
+
+A Equação (\ref{A_PB}) mostra que para frequências próximas de zero, a voltagem no capacitor tem a mesma amplitude que a voltagem no gerador ($A_{\text{PB}}\approx1$), ou seja, o sinal não é atenuado. Por sua vez, à medida que a frequência cresce, a voltagem no capacitor diminui, o que significa que esta voltagem apresenta uma atenuação em relação ao sinal do gerador. Se torarmos o limite da frequência tendendo a infinito, a amplitude $A_{\text{PB}}$ tende a zero e neste caso a voltagem no capacitor é totalmente atenuada. Portanto, somente sinais com frequências muito baixas não terão suas amplitudes diminuídas.
+
+
+\subsection{Filtro passa-alta}
+Devemos agora comparar o sinal fornecido pelo gerador de funções com o sinal de saída extraído do resistor. Isto será feito mostrando o circuito mostrado na Fig. (\ref{fig:High-pass_RC_Filter}). Ele é obtido a partir do circuito da Fig. (\ref{fig:Low-pass_RC_Filter}) simplesmente invertendo as posições do resistor e do capacitor. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/High-pass_RC_Filter.png}
+    \label{fig:High-pass_RC_Filter}
+    \caption{Representação esquemática de um filtro passa-alta construído a partir de um circuito RC em série, alimentado com corrente alternada.}
+\end{figure}
+
+Para este circuito a amplitude da voltagem no resistor $V_{0R}$ será dada pela Equação (\ref{V_0R}). Definimos a razão entre as amplitudes $V_{0R}$ e $V_{0}$ como sendo $A_{\text{PA}}$, que pode ser expressa na forma:
+\begin{equation}\label{A_PA}
+    A_{\text{PA}}\equiv\frac{V_{0R}}{V_{0}}=\frac{\omega RC}{\sqrt{1+(\omega RC)^{2}}}
+\end{equation}
+
+A Equação (\ref{A_PA}) mostra que o filtro passa-alta tem uma dependência com $\omega$ oposta àquela observada no caso do filtro passa-baixa. Sinais com frequências muito baixas são fortemente atenuados enquanto sinais com frequências muito altas são transmitidos com pequena (ou nenhuma atenuação).
+
+
+\subsection{Frequência de corte}
+Nas seções anteriores, falou-se de frequências "muito altas" e "muito baixas", mas ao utilizarmos este tipo de expressão devemos especificar em relação a qual valor é feita a comparação. É costume definir para estes filtros uma frequência, chamada de \textit{frequência angular de corte}, que especifica a faixa de frequências a ser filtrada. Esta frequência ($\omega_{c}$) é definida como aquela que torna a reatância capacitiva igual à resistência do circuito, ou seja, o valor de $\omega$ que satisfaz a condição $X_{C}=R$. Usando esta definição obtemos
+\begin{equation}\label{Freq. angular de corte}
+    X_{C}=\frac{1}{\omega_{c}C}=R\implies\omega_{c}=\frac{1}{RC}
+\end{equation}
+
+A partir da Equação (\ref{Freq. angular de corte}) obtemos a \textit{frequência linear de corte}, ou simplesmente frequência de corte, dada por:
+\begin{equation}\label{Freq. linear de corte}
+    f_{c}=\frac{1}{2\pi RC}
+\end{equation}
+
+Na frequência de corte, tanto $A_{\text{PB}}$ quanto $A_{\text{PA}}$ temo o mesmo valor:
+\begin{equation}\label{0.707}
+    A_{\text{PA}}=A_{\text{PB}}=\frac{\sqrt{2}}{2}\approx0.707.
+\end{equation}
+
+Na frequência de corte a voltagem do sinal no capacitor ou no resistor atinge 70.7\% do seu valor máximo. Graficamente, nota-se o comportamento de $A_{\text{PA}}$ e $A_{\text{PB}}$ com a frequência angular para um circuito RC, com $R=1\text{ k}\Omega$ e $C=1\text{ nF}$. Este tipo de gráfico é denominado \textit{curva característica} do filtro.
+
+
+\subsection{Transmitância e diagrama de Bode}
+O funcionamento de um filtro pode ser descrito por sua curva característica, mas também
+pode ser representado por uma grandeza chamada \textit{função de transferência}. Esta é uma função complexa, definida como a razão entre a tensão (complexa) de saída (a voltagem sobre o resistor ou sobre o capacitor, dependendo do filtro utilizado) e a tensão (complexa) de entrada (a voltagem do gerador). Como toda grandeza complexa, ha informação tanto em seu modulo (que será simplesmente a razão entre as amplitudes dos sinais) quanto em sua fase (que sera a diferença de fase entre os sinais).
+
+Muitas das vezes estamos mais interessados nas amplitudes do que na diferença de
+fase. A partir da função de transferência definimos então a \textit{transmitância} de um filtro $T(\omega)$ (também chamada de resposta em potência) como sendo o quadrado da razão entre as amplitudes de saída ($V_{0S}$) e de entrada ($V_{0E}$):
+\begin{equation}\label{T(omega)}
+    T(\omega)=\Bigg[\frac{V_{0S}(\omega)}{V_{0E}(\omega)}\Bigg]^{3}
+\end{equation}
+
+Grandezas como a transmitância (que é uma razão entre voltagens ao quadrado) são comumente expressas em termos de decibéis (dB) da seguinte maneira
+\begin{equation}\label{Transmitância - dB}
+    T_{\text{db}}(\omega)=10\log{[T(\omega)]}
+\end{equation}
+
+Para os filtros passa-baixa e passa-alta baseados no circuito RC, as transmitâncias são dadas respectivamente por:
+\begin{equation}\label{T_PB}
+    T_{\text{PB}}(\omega)=\frac{1}{1+(\omega RC)^{2}}
+\end{equation}
+
+\begin{equation}\label{T_PA}
+    T_{\text{PA}}(\omega)=\frac{1}{1+\frac{1}{(\omega RC)^{2}}}
+\end{equation}
+
+Tomemos como exemplo o filtro passa-baixa; este filtro possui transmitância máxima $T_{\text{máx.}}=1$ para $\omega=0$ e cai para zero como $\frac{1}{(\omega RC)^{2}}$ na medida em que $\omega\rightarrow\infty$. Na frequência de corte, $\omega_{c}=\frac{1}{RC}$, a transmitância cai à metade do máximo. Este comportamento é mais fácil de ser visualizado em um gráfico que apresentas a transmitância em decibéis (ver Equação \ref{Transmitância - dB}) em função do logaritmo de $\omega RC$, chamado \textit{diagrama de Bode}. 
+
+Há três características a serem observadas neste diagrama para um filtro passa-baixas:
+\begin{itemize}
+    \item para $\omega\ll\omega_{c}$, a resposta do filtro é praticamente plana e a transmitância é de 0 dB;
+    
+    \item para $\omega=\omega_{c}$, a transmitância é igual a -3 dB ($10\log{(1/2)}\approx-3.010$). Neste ponto temos $\log{(\omega_{c}RC)}=\log{(1)}=0$;
+    
+    \item para $\omega\gg\omega_{c}$, a transmitância cai a uma taxa de -20 dB/dec (decibéis por década), com $10\log{[1/(\omega RC)^{2}]}=-20\log{(\omega)}+\text{const.}$
+\end{itemize}
+
+A faixa de frequências entre 0 e $\omega_{c}$ é chamada \textit{largura de banda do filtro}. No diagrama de Bode a dependência com $\frac{1}{\omega^{2}}$ em alta frequência (para o filtro passa-baixas) é muito mais evidente do que em um gráfico em escala linear.
+
+Diagramas de Bode para filtros passa-alta terão características semelhantes, mas inversas em relação à frequência de corte. O filtro passa-altas também apresenta transmitância de -3 dB em $\omega=\omega_{c}$. Para $\omega\ll\omega_{c}$ a transmitância sobe a uma faixa de 20 dB/dec, e para $\omega\gg\omega_{c}$ ela é aproximadamente constante com valor $T_{\text{dB}}=0$ dB (ver Fig. 5).
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Procedimento experimental}\label{Sec 3 - Experimento}
+O experimento como um todo foi realizado em três etapas. Na primeira foi-se investigado o comportamento do circuito como um filtro passa-baixa. Já na segunda se investigou o comportamento do mesmo como um filtro passa-alta. Por fim, na terceira etapa foi realizada uma simulação usando o programa \href{https://docente.ifrn.edu.br/leonardoteixeira/links/instalador-do-circuitmaker-student/view}{\texttt{CircuitMaker}} utilizando os mesmos componentes e instrumentos utilizados na experiência no laboratório. A comparação entre os dados experimentais e a simulação se encontra na seção \ref{Sec 4 - Resultados}. 
+
+Abaixo está listado os materiais utilizados nas duas etapas do experimento:
+\begin{enumerate}
+    \item 1 gerador de funções AGF1022 da Tektronix;
+    \item 1 osciloscópio digital TDS11002B da Tektronix;
+    \item 1 protoboard de duas seções;
+    \item 1 capacitor de $1\mu$F;
+    \item 1 resistor de 1k$\Omega$.
+\end{enumerate}
+
+Vamos agora descrever o procedimento experimental em cada etapa.
+\subsection{Etapa 1: Filtro passa-baixa}\label{Etapa 1}
+\begin{enumerate}
+    \item Primeiramente, montou-se um circuito RC de acordo com a Fig. (\ref{fig:Low-pass_RC_Filter}) e usamos um $V_{i}$ como sendo uma onda senoidal cujo $\omega$ variava dentro do intervalo $[1,1\times10^{3}]$ Hz e $400\text{m}V_{pp}$, onde $V_{pp}$ representa a tensão de pico a pico da onda senoidal.
+    
+    \item Em seguida, por meio do osciloscópio, captou-se o sinal direto do gerador de funções. O sinal capturado pelo osciloscópio encontra-se abaixo. O canal utilizado foi o 1.
+    
+    \begin{itemize}
+        \item Captura do sinal de entrada no circuito durante a Etapa 1:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Input_signal.jpeg}
+            \caption{Sinal capturado direto do gerador de funções para uma onda senoidal cuja frequência varia de 1 Hz até 1 kHz.}
+            \label{fig:Input_signal}
+        \end{figure}
+    \end{itemize}
+    
+    O valor de referência do eixo horizontal (tempo) é de 50.0 ms enquanto o valor de referência do eixo vertical (tensão) é de 5.00 V.
+    
+    \item Em seguida, captou-se o sinal entre os terminais do capacitor para avaliar o sinal do filtro passa-baixa. O gráfico gerado pelo osciloscópio foi o que se segue.
+    \begin{itemize}
+        \item Captura do sinal de saída do capacitor (filtro passa-baixa):
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Capacitor_signal.jpeg}
+            \caption{Sinal capturado entre os terminais do capacitor para um filtro passa-baixa.}
+            \label{fig:Low-pass_filter}
+        \end{figure}
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Etapa 2: Filtro passa-alta}\label{Etapa 2}
+\begin{enumerate}
+    \item Analogamente ao que foi feito na etapa 1, montou-se um circuito RC e selecionou-se $V_{i}$ como sendo uma onda senoidal cujo intervalo de variação da frequência é o mesmo exposto na etapa 1.
+    
+    \item Em seguida, capturou-se então o sinal direto do gerador de funções.
+    \begin{itemize}
+        \item Captura do sinal de entrada no circuito durante a Etapa 2:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Input_signal2.jpeg}
+             \caption{Sinal capturado direto do gerador de funções para uma onda senoidal cuja frequência varia de 1 Hz até 1 kHz.}
+            \label{fig:Input_signal-2}
+        \end{figure}
+    \end{itemize}
+    
+    Note que o resultado foi basicamente o mesmo obtido na etapa anterior.
+    
+    \item Por fim, avaliou-se o sinal de saída direto dos terminais do resistor.
+    \begin{itemize}
+        \item Captura do sinal de saída do resistor:
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figures/Resistor_signal.jpeg}
+            \caption{Sinal capturado entre os terminais do capacitor para um filtro passa-alta.}
+            \label{fig:High-pass_filter}
+        \end{figure}
+    \end{itemize}
+    
+    Note que os sinais de saída do capacitor (Fig. \ref{fig:Low-pass_filter}) e no resistor (Fig. \ref{fig:High-pass_filter}) são complementares, ou seja, uma função é a inversa da outra.
+\end{enumerate}
+
+
+\subsection{Etapa 3: Simulação da Etapa 1 usando o \texttt{CircuitMaker}}
+\begin{enumerate}
+    \item Inicialmente, criou-se um arquivo na extensão \texttt{.CKT} intitulado \texttt{Low\_Pass\_Filter.ckt} onde se montou um circuito como descrito na etapa 1, subseção \ref{Etapa 1}.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/Low_pass.png}
+        \caption{{\it Schematic} de um filtro passa-baixa montado no \texttt{CircuitMaker} seguindo a descrição exposta na Etapa 1, Seção \ref{Etapa 1}.}
+        \label{Low_pass}
+    \end{figure}
+    
+    \item O sinal de entrada foi definido de forma a ser semelhante ao utilizado durante a prática em laboratório.
+    
+    \item Dessa forma, avaliou-se o sinal de saída do circuito e obteve-se o seguinte gráfico:
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/Low_pass_filter.png}
+        \caption{Sinal de saída capturado no filtro passa-baixa.}
+        \label{Low_pass_filter}
+    \end{figure}
+    
+\end{enumerate}
+
+\subsection{Etapa 4: Simulação da Etapa 2 usando o \texttt{CircuitMaker}}
+\begin{enumerate}
+    \item Semelhantemente ao que foi feito na etapa anterior, foi criado um arquivo na extensão \texttt{.CKT} intitulado \texttt{High\_Pass\_Filter.ckt} onde foi montado um circuito como descrito na etapa 2, subseção \ref{Etapa 2}.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/High_pass.png}
+        \caption{{\it Schematic} de um filtro passa-alta montado no \texttt{CircuitMaker} seguindo a descrição exposta na Etapa 2, Seção \ref{Etapa 2}.}
+        \label{RC_Circuit_Integrator}
+    \end{figure}
+    
+    \item E da mesma forma como foi feito na etapa anterior, avaliou-se o sinal de saída do resistor:
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\linewidth]{figures/High_pass_filter.png}
+        \caption{Sinal de saída capturado no filtro passa-alta.}
+        \label{RC_Circuit_Resistor}
+    \end{figure}
+    
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Análise dos resultados}\label{Sec 4 - Resultados}
+Nesta seção iremos discutir os resultados obtidos ao longo das etapas experimentais descritas anteriormente.
+
+Como descrito na seção \ref{Sec 2 - Teoria}, a ideia dos filtro passa-baixa e passa-alta é impedir a passagem de sinais de alta e baixa frequência, respectivamente. Dessa forma, para o filtro passa-baixa, teremos um gráfico decrescente que só permite a passagem de baixas frequências, como pode ser observado na Fig. (\ref{fig:Low-pass_filter}). Com relação ao filtro passa-alta, o mesmo deve impedir a passagem de sinais de baixa frequência mostrando assim um caráter crescente com o tempo, como ilustrado na Fig. (\ref{fig:High-pass_filter}). 
+
+
+Com relação ao modelo teórico obtido por meio de uma simulação através do programa \texttt{CircuitMaker}, temos algumas semelhanças. Primeiramente, note que como o \texttt{CircuitMaker} é um programa que simula a parte teórica dos componentes eletrônicos, ele irá simular apenas o funcionamento dos filtros tendo como sinal de entrada uma onda senoidal com uma frequência específica constante e não um conjunto de frequências variadas. Dessa forma, vemos que o modelo teórico exprime muito bem o caráter esperado para os filtros passa-baixa e passa-alta, respectivamente.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusões}\label{Sec 5 - Conclusão}
+Dado o exposto ao longo deste relatório, temos que os resultados experimentais expostos na seção \ref{Sec 3 - Experimento} condizem com o modelo matemático exposto na seção \ref{Sec 2 - Teoria}. Portanto, temos que os resultados experimentais estão dentro do esperado do modelo teórico a menos de alguns ruídos experimentais, mostrando assim que os modelos teóricos tanto para um filtro passa-baixa quanto para um filtro passa-alta exprimem razoavelmente bem os filtros passa-alta e passa-baixa reais.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{100}
+
+\bibitem{Spitzer}
+Spitzer, Frank; Howarth (1973). \textit{Principles of Modern Instrumentation}. Nova York: [s.n.] p. Ch. 11
+
+\bibitem{Sedra}
+SEDRA, Adel S., \textit{Microeletrônica} 5º ed. volume único, Prentice Hall, 1997
+
+\bibitem{Bakshi}
+Bakshi, U.A.; Bakshi, A.V., \textit{Circuit Analysis - II}, Technical Publications, 2009 \texttt{ISBN 9788184315974}.
+
+\bibitem{Horowitz}
+Horowitz, Paul; Hill, Winfield, \textit{The Art of Electronics} (3rd edition), Cambridge University Press, 2015 \texttt{ISBN 0521809266}.
+
+\end{thebibliography}
+
+\end{document}
